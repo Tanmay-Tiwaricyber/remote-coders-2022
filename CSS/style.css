@@ -1,0 +1,438 @@
+
+/* Media Queries: Tabled Portrait */
+@media screen and (max-width: 700px) {
+  
+
+body{
+    width: 100%;
+    max-width: 960px;
+    margin:0 auto ;
+    font-family:  cursive;
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgb(166, 161, 193) 0%, rgb(64, 9, 153) 35%, rgb(15, 163, 114) 100%);
+
+}
+/* -----NAVBAR AREA --------- */
+nav{
+    width: 100%;
+    margin:0px 0 ;
+}
+
+nav ul{
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding:0 ;    
+}
+
+nav ul li{
+    width: 16.66666%;
+    float: left;
+}
+
+nav ul li a{
+    display: block;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    padding:8px 0;
+    display: block;
+    width: 100%; 
+    background: #a219cc; /* Old browsers */
+    background: -moz-linear-gradient(top,
+      #700999 0%,#f7f6f6 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear,
+       left top, left bottom, color-stop(0%,rgb(15, 163, 114)),
+       color-stop(100%,rgb(15, 163, 114))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,
+     #14cc3c 0%,#f7f6f6 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,
+     #700999 0%,#f7f6f6 100%); /* Opera 11.10+ */
+    background: linear-gradient(to bottom,
+     #700999 0%,#f7f6f6 100%); /* W3C standard, IE10+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(
+     startColorstr=’#700999,
+     endColorstr=’#f7f6f6,GradientType=0 ); /* IE6-9 */
+}
+nav ul li a:hover {
+    background: #f7f6f6; /* Old browsers */
+    background: -moz-linear-gradient(top,
+     #dddddd 0%,#5f3bc2 100%); /* FF3.6+ */
+    background: -webkit-linear-gradient(top,
+     #dddddd 0%,#5f3bc2 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,
+     #dddddd 0%,#5f3bc2 100%); /* Opera 11.10+ */
+    background: linear-gradient(to bottom,
+      #dddddd 0%,#5f3bc2 100%); /* W3C standard, IE10+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(
+      startColorstr=’#dddddd,
+      endColorstr=’#5f3bc2,GradientType=0 ); /* IE6-9 */
+}
+nav ul li a,
+nav ul li a:focus,
+
+nav ul li a:visited,
+nav ul li a:hover,
+nav ul li a:active {
+        color: #000;
+        text-decoration:none; 
+}
+:first-child
+:last-child
+:nth-of-type(n)
+nav ul li:first-child a {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+nav ul li:last-child a {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+/*------------- Body Area-----------   */
+.text1{
+    margin-left: 5%;
+    font-size: 25px;
+    margin-top: 25%;
+    padding: 5px;
+}
+.text2{
+    margin-left: 5%;
+    margin-top: 15%;
+    font-size:18px;
+    padding: 5px;   
+}
+
+.first_button{
+    padding: 5%; 
+    border-radius:12px;
+    background-color: rgb(161, 147, 147);
+    border: 5%;
+    text-align: center;
+    font-size: 100%;
+    padding: 1%;
+    transition: all 0.3s;
+    cursor: pointer;
+    margin: 8%;
+    height: 50px;
+    width: 30%;
+    justify-content: center;
+    color: black;
+    box-shadow: #202cda 0px 20px 20px -17px;
+    text-shadow:  0 0 30px #006fff;
+}
+.first_button span {
+    cursor: pointer;  
+    transition: 0.5s;
+}
+.first_button span:after {
+    content: '\00bb';
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+.first_button:hover span {
+    padding-right: 25px;
+    transform: scale(1.2);
+    
+} 
+.first_button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+.second_button{
+    padding: 1%; 
+    border-radius:12px;
+    background-color: white;
+    border: 5%;
+    text-align: center;
+    font-size: 100%;
+    transition: all 0.3s;
+    cursor: pointer;
+    margin-left: 3%;
+    height: 35px;
+    width: 110px;
+    justify-content: center;
+    color: black;
+    box-shadow: #513480 0px 20px 20px -17px;
+    text-shadow:  0 0 30px #006fff;
+    margin-top: 3%;
+}
+.second_button span {
+    cursor: pointer;  
+    transition: 0.5s;
+}
+.second_button span:after {
+    content: '\00bb';
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+.second_button:hover span {
+    padding-right: 25px;
+    transform: scale(1.2);
+    
+} 
+.second_button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+.div2{
+    margin-top: 10%;
+    margin-left: 10%;
+    font-size: 18px;
+
+}
+.div3{
+    font-size: 15px;
+    margin-top: 5%;
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 1%;
+    margin-bottom: 1%;
+    
+    background-color: black;
+}
+.copy{
+    font-size: 14px;
+    margin-bottom: 2%;
+    color:blue;
+}
+.animation{
+    height: 50%;
+    width: 50%;
+    position:absolute;
+    right:5%;
+    top:70%;
+  }
+}
+
+
+
+
+
+
+/* Media Queries: Tablet Landscape */
+@media screen and (min-width:700px) {
+    
+
+body{
+    width: 100%;
+    max-width: 960px;
+    margin:0 auto ;
+    font-family:  cursive;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgb(166, 161, 193) 0%, rgb(195, 35, 96) 35%, rgb(15, 163, 114) 100%);
+
+}
+    /* -----NAVBAR AREA --------- */
+    nav{
+        width: 100%;
+        margin:0px 0 ;
+    }
+    
+    nav ul{
+        width: 100%;
+        list-style: none;
+        margin: 0;
+        padding:0 ;    
+    }
+    
+    nav ul li{
+        width: 16.66666%;
+        float: left;
+    }
+    
+    nav ul li a{
+        display: block;
+        width: 100%;
+        height: 40px;
+        text-align: center;
+        padding:8px 0;
+        display: block;
+        width: 100%; 
+        background: #a219cc; /* Old browsers */
+        background: -moz-linear-gradient(top,
+          #700999 0%,#f7f6f6 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear,
+           left top, left bottom, color-stop(0%,rgb(15, 163, 114)),
+           color-stop(100%,rgb(15, 163, 114))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,
+         #700999 0%,#f7f6f6 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,
+         #700999 0%,#f7f6f6 100%); /* Opera 11.10+ */
+        background: linear-gradient(to bottom,
+         #700999 0%,#f7f6f6 100%); /* W3C standard, IE10+ */
+        filter: progid:DXImageTransform.Microsoft.gradient(
+         startColorstr=’#700999,
+         endColorstr=’#f7f6f6,GradientType=0 ); /* IE6-9 */
+    }
+    nav ul li a:hover {
+        background: #f7f6f6; /* Old browsers */
+        background: -moz-linear-gradient(top,
+         #dddddd 0%,rgb(195, 35, 96) 100%); /* FF3.6+ */
+        background: -webkit-linear-gradient(top,
+         #dddddd 0%,rgb(195, 35, 96) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,
+         #dddddd 0%,rgb(195, 35, 96) 100%); /* Opera 11.10+ */
+        background: linear-gradient(to bottom,
+          #dddddd 0%,rgb(195, 35, 96) 100%); /* W3C standard, IE10+ */
+        filter: progid:DXImageTransform.Microsoft.gradient(
+          startColorstr=’#dddddd,
+          endColorstr=’ rgb(195, 35, 96),GradientType=0 ); /* IE6-9 */
+    }
+    nav ul li a,
+    nav ul li a:focus,
+    
+    nav ul li a:visited,
+    nav ul li a:hover,
+    nav ul li a:active {
+            color: #000;
+            text-decoration:none; 
+    }
+    :first-child
+    :last-child
+    :nth-of-type(n)
+    nav ul li:first-child a {
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+    nav ul li:last-child a {
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    
+    /*------------- Body Area-----------   */
+    .div1{
+        background: rgb(255,255,255);
+        background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgb(195, 35, 96) 35%, rgb(15, 163, 114) 100%);
+    margin-top: 0px;
+    
+    }
+    .text1{
+        margin-left: 5%;
+        font-size: 30px;
+        margin-top: 0%;
+        padding-top: 120px;
+    }
+    .text2{
+        margin-left: 5%;
+       padding-top: 20px;
+        font-size:18px;
+        padding-bottom: 6%;
+        
+    }
+    
+    .first_button{
+        padding: 5%; 
+        border-radius:12px;
+        background-color: rgb(161, 147, 147);
+        border: 5%;
+        text-align: center;
+        font-size: 100%;
+        padding: 1%;
+        transition: all 0.3s;
+        cursor: pointer;
+        margin-left: 8%;
+        height: 50px;
+        width: 30%;
+        justify-content: center;
+        color: black;
+        box-shadow: rgb(195, 35, 96) 0px 20px 20px -17px;
+        text-shadow:  0 0 30px #006fff;
+    }
+    .first_button span {
+        cursor: pointer;  
+        transition: 0.5s;
+    }
+    .first_button span:after {
+        content: '\00bb';
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+    .first_button:hover span {
+        padding-right: 25px;
+        transform: scale(1.2);
+        
+    } 
+    .first_button:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+    
+.second_button{
+    padding: 1%; 
+    border-radius:12px;
+    background-color: white;
+    border: 5%;
+    text-align: center;
+    font-size: 100%;
+    transition: all 0.3s;
+    cursor: pointer;
+    margin-left: 3%;
+    height: 35px;
+    width: 110px;
+    justify-content: center;
+    color: black;
+    box-shadow: rgb(195, 35, 96) 0px 20px 20px -17px;
+    text-shadow:  0 0 30px #006fff;
+    margin-top: 3%;
+}
+.second_button span {
+    cursor: pointer;  
+    transition: 0.5s;
+}
+.second_button span:after {
+    content: '\00bb';
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+.second_button:hover span {
+    padding-right: 25px;
+    transform: scale(1.2);
+    
+} 
+.second_button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+    .div2{
+        
+        margin-top: 10%;
+        margin-left: 10%;
+        font-size: 18px;
+    
+    }
+    .div3{
+        
+        font-size: 15px;
+        margin-top: 5%;
+        font-family: 'Times New Roman', Times, serif;
+        margin-left: 1%;
+        margin-bottom: 1%;
+        
+        background-color: black;
+    }
+    .div90{
+        background: rgb(255,255,255);
+        background: linear-gradient(0deg, rgb(215, 184, 226) 0%, rgb(195, 35, 96) 35%, rgb(15, 163, 114) 100%);
+    }
+    .copy{
+        padding-top: 5%;
+        font-size: 14px;
+        margin-bottom: 2%;
+        color:rgb(18, 228, 18);
+    }
+    .animation{
+      height: 50%;
+      width: 50%;
+      position:absolute;
+      right:5%;
+      bottom: 5%;
+    }
+}
