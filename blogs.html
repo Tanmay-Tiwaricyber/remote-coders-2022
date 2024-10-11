@@ -1,87 +1,171 @@
 <!DOCTYPE html>
-<!-- saved from url=(0081)file:///I:/Vs%20code/New%20folder%20(2)/bootstrap-5.0.2-examples/cover/index.html -->
-<html lang="en" class="h-100"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="en" class="h-100">
+
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.84.0">
+    <meta name="description" content="Remote Coders - Blogs">
+    <meta name="author" content="Tanmay Tiwari">
     <title>Remote Coders</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
-    <link rel="shortcut icon" href="res/web_icon.png">
-    
-
     <!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/cover.css">
 
+    <!-- Custom styles -->
     <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
+        /* Blog card styling */
+        .blog-slider {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 50px 0;
         }
-      }
+
+        .blog-slider__wrp {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 20px;
+        }
+
+        .blog-slider__item {
+            width: 100%;
+            max-width: 400px;
+            background: #1a1e2b;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog-slider__item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+        }
+
+        .blog-slider__img {
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .blog-slider__img img {
+            width: 100px;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-slider__item:hover .blog-slider__img img {
+            transform: scale(1.1);
+        }
+
+        .blog-slider__content {
+            color: #fff;
+            text-align: left;
+        }
+
+        .blog-slider__code {
+            color: #00ccff;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .blog-slider__title {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #ff8800;
+        }
+
+        .blog-slider__text {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .blog-slider__button {
+            padding: 10px 20px;
+            background: #00ccff;
+            color: #fff;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: background 0.3s ease;
+        }
+
+        .blog-slider__button:hover {
+            background: #ff8800;
+            color: #fff;
+        }
     </style>
+</head>
 
-    
-    <!-- Custom styles for this template -->
-    <link href="css/cover.css" rel="stylesheet">
-  </head>
-  <body class="d-flex h-100 text-center text-white bg-dark">
-    
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-  <header class="mb-auto">
-    <div>
-      <h4 class="float-md-start mb-0">Blogs</h4>
-      <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link" aria-current="page" href="index.html">Home</a>
-        <a class="nav-link" href="blogs.html">Blogs</a>
-        <a class="nav-link" href="tryhackme.html">THM WALKTHROUGHS</a>
-        <a class="nav-link" href="partners.html">Partners</a>
-        <a class="nav-link" href="supporters.html">Supporters</a>
-        <a class="nav-link" href="contact us.html">Contact Us</a>
-        <a class="nav-link" href="about us.html">About Us</a>
-        
+<body class="d-flex h-100 text-white bg-dark">
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+            <div>
+                <h4 class="float-md-start mb-0">Blogs</h4>
+                <nav class="nav nav-masthead justify-content-center float-md-end">
+                    <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link" href="blogs.html">Blogs</a>
+                    <a class="nav-link" href="tryhackme.html">THM Walkthroughs</a>
+                    <a class="nav-link" href="partners.html">Partners</a>
+                    <a class="nav-link" href="supporters.html">Supporters</a>
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                    <a class="nav-link" href="about.html">About Us</a>
+                </nav>
+            </div>
+        </header>
+        <table>
+          <tr>
+            <td>
+              <div class="blog-slider">
+                <div class="blog-slider__wrp">
+                    <div class="blog-slider__item">
+                        <div class="blog-slider__img">
+                            <img src="https://cdn1.iconfinder.com/data/icons/folder-outline-cracked/32/folder_Blind_eye_off_invisible_Hidden_document-512.png" alt="Blog Image">
+                        </div>
+                        <div class="blog-slider__content">
+                            <span class="blog-slider__code">26 December 2022</span>
+                            <div class="blog-slider__title">Hide Folder📂</div>
+                            <div class="blog-slider__text">How to Hide Folder or Files from Windows?</div>
+                            <a href="blogs/blog1.html" class="blog-slider__button">Read More</a>
+                        </div>
+                    </div>
+                    <!-- Add more blog-slider__item blocks as needed -->
+                </div>
+            </div>
+            </td>
+            <td>
+              <div class="blog-slider">
+                <div class="blog-slider__wrp">
+                    <div class="blog-slider__item">
+                        <div class="blog-slider__img">
+                            <img src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1535759872/kuldar-kalvik-799168-unsplash.webp" alt="Blog Image">
+                        </div>
+                        <div class="blog-slider__content">
+                            <span class="blog-slider__code">26 December 2019</span>
+                            <div class="blog-slider__title">Lorem Ipsum Dolor</div>
+                            <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?</div>
+                            <a href="#" class="blog-slider__button">Read More</a>
+                        </div>
+                    </div>
+                    <!-- Add more blog-slider__item blocks as needed -->
+                </div>
+            </div>
+            </td>
+          </tr>
+        </table>
         
 
-      </nav>
+      
+        <footer class="mt-auto text-white-50" align="center">
+            © 2022 Remote Coders (A Community for Hackers and Programmers) <br> by - Tanmay Tiwari
+        </footer>
     </div>
-  </header>
 
-  <br>
-  <div class="div2">      
-    <h2 style="color: whitesmoke;">
-        How to hide folder or files from windows?
-    </h2>
-    <h3>Step : 1 <a href="Locked and hide.bat"><h3> Download This file</h3></a></h3>
-    <h3>Step : 2 Run this .bat file</h3>
-    <h3>Step : 3 A folder is created named private</h3>
-    <h3>Step : 4 Right click on .bat file and click on edit option and enter your password where you see written Enter Your Password</h3>
-    <h3>Step : 5 Place your files and folder in private folder</h3>
-    <h3>Step : 6 Then close private folder</h3>
-    <h3>Step : 7 Then run .bat file and Enter Y for yes</h3>
-    <h3>Step : 8 To unlock and unhide these files, click on .bat file and enter your password which you enter in step 3</h3>
-</div>
-
-    <br>
-    <br>
-      <a href="Download center.html"><button class="glow-on-hover" type="button">Download Center</button></a>
-      <br>
-      <!-- <a href="Download center.html" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Download Center</a> -->
-
-      <footer class="mt-auto text-white-50">
-        © 2022 Remote Coders(A Community for Hackers and Programmars) <br> by - Tanmay Tiwari
-        <br>
-      </footer>
-</div>
-<script src=index.js></script>
+    <script src="blog.js"></script>
 </body>
+
 </html>
