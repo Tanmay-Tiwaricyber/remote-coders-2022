@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Remote Coders - A blog for hackers and programmers">
+    <meta name="author" content="Tanmay Tiwari">
+    <title>Python Environment Variable Fix</title>
+    
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS for styling -->
+    <style>
+        body {
+            background-color: #0a0f1e;
+            font-family: 'Fira Code', monospace;
+            color: #e0e0e0;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: center;
+        }
+
+        header {
+            border-bottom: 1px solid #00ccff;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        h4 {
+            color: #ff6600;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        nav .nav-link {
+            color: #e0e0e0;
+            font-size: 1.2em;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        nav .nav-link:hover {
+            color: #00ccff;
+        }
+
+        .div2 {
+            text-align: left;
+            padding: 20px;
+            background-color: #151d2b;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 204, 255, 0.3);
+        }
+
+        .step-box {
+            background-color: #0f1624;
+            border: 1px solid #00ccff;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .div2 h2 {
+            color: #00ccff;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+        }
+
+        .step-box h3 {
+            font-size: 1.3em;
+            color: #e0e0e0;
+        }
+
+        .glow-on-hover {
+            margin: 20px 0;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #ff6600;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(255, 102, 0, 0.6);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .glow-on-hover:hover {
+            background-color: #ff8800;
+            box-shadow: 0 8px 20px rgba(255, 102, 0, 0.9);
+        }
+
+        footer {
+            margin-top: 40px;
+            color: #ffffff;
+            font-size: 1em;
+        }
+
+        footer a {
+            color: #00ccff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #ffcc00;
+        }
+
+        /* Button Hover Effect */
+        button:hover {
+            background: linear-gradient(45deg, #00ccff, #ff6600);
+            color: #fff;
+            transition: all 0.4s ease;
+        }
+
+        /* Container glow effect */
+        .cover-container:hover {
+            border: 1px solid #00ccff;
+            box-shadow: 0 0 20px #00ccff;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .cover-container {
+                padding: 15px;
+            }
+        }
+
+        /* Blog specific styling */
+        .step-box img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="d-flex h-100 text-white bg-dark">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+  <header class="mb-auto">
+    <div>
+      <h4 class="float-md-start mb-0">Remote Coders</h4>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="blogs.html">Blogs</a>
+        <a class="nav-link" href="tryhackme.html">THM WALKTHROUGHS</a>
+        <a class="nav-link" href="partners.html">Partners</a>
+        <a class="nav-link" href="supporters.html">Supporters</a>
+        <a class="nav-link" href="contact us.html">Contact Us</a>
+        <a class="nav-link" href="about us.html">About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="div2">
+    <h2>How to Fix the "Python Was Not Found" Error</h2>
+
+    <p>At <strong>Remote Coders</strong>, our aim is to help you understand how things work and why you got this error in the first place.</p>
+
+    <p>This error typically occurs when the Python interpreter's path is not correctly set in your environment variables. This can happen due to improper installation or system updates. But no worries! The fix is straightforward.</p>
+
+    <div class="step-box">
+      <h3>Quick Fix</h3>
+      <p>Install Python from the official Python website and <strong>check the "Add Python to environment variables" option</strong> during installation.</p>
+      <img src="https://cwh-full-next-space.fra1.cdn.digitaloceanspaces.com/blogpost/solving-python-not-found-run-without-arguments/python-install-with-path.png" alt="Python Installation Screenshot" height="500px">
+    </div>
+
+    <div class="step-box">
+      <h3>Step 1: Locate Your Python Installation Paths</h3>
+      <p>The paths are usually one of the following:</p>
+      <ul>
+        <li><code>%AppData%\Programs\Python\Python311</code></li>
+        <li><code>%AppData%\Programs\Python\Python311\Scripts</code></li>
+      </ul>
+      <p>If you can't find your Python installation, <a href="find-python.html">here's a quick guide</a>.</p>
+      <!-- <img src="" alt="Search Environment Variables"> -->
+      <video src="https://cwh-full-next-space.fra1.cdn.digitaloceanspaces.com/blogpost/solving-python-not-found/python-location.mp4" autoplay height="500px"></video>
+    </div>
+
+    <div class="step-box">
+      <h3>Step 2: Access and Set the Path Environment Variables</h3>
+      <p>Search for "Environment Variables" in Windows search:</p>
+      <img src="https://cwh-full-next-space.fra1.cdn.digitaloceanspaces.com/blogpost/solving-python-not-found/step-1-search-for-environment-variables.png" alt="Search Environment Variables" height="500px"> <br>
+      <img src="https://cwh-full-next-space.fra1.cdn.digitaloceanspaces.com/blogpost/solving-python-not-found/step2-system-properties.png" alt="" height="500px">
+    </div>
+
+    <div class="step-box">
+      <h3>Step 3: Modify the System Variables</h3>
+      <p>Navigate to System Properties &gt; Environment Variables &gt; Select "Path" &gt; Click Edit:</p>
+      <img src="https://cwh-full-next-space.fra1.cdn.digitaloceanspaces.com/blogpost/solving-python-not-found/step3-system-variable.png" alt="Edit Path" height="500px"> <br>
+      <img src="https://cwh-full-next-space.fra1.cdn.digitaloceanspaces.com/blogpost/solving-python-not-found/step4-edit-system-variable.png" alt="" height="500px">
+    </div>
+
+    <div class="step-box">
+      <h3>Step 4: Add Python Paths</h3>
+      <p>Click "New" and add the previously copied Python paths to the list. It should look like this:</p>
+      <img src="https://cwh-full-next-space.fra1.cdn.digitaloceanspaces.com/blogpost/solving-python-not-found/step-5-click-new.png" alt="Python Paths" height="500px"> <br>
+      <img src="https://cwh-full-next-space.fra1.cdn.digitaloceanspaces.com/blogpost/solving-python-not-found/edit-environment-variable-dialogue.png" alt="" height="500px">
+    </div>
+  </div>
+
+  <a href="../blogs.html"><button class="glow-on-hover">Go Back</button></a>
+
+  <footer class="mt-auto text-white-50">
+    © 2022 Remote Coders (A Community for Hackers and Programmers) <br> by - Tanmay Tiwari <br>
+  </footer>
+
+</div>
+
+<!-- External JS -->
+<script src="index.js"></script>
+</body>
+</html>
