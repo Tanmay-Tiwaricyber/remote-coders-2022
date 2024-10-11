@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr. Robot CTF</title>
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #e0e0e0;
+            font-family: 'Fira Code', monospace;
+            padding: 20px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 50%, #0a0f1e, #000000 80%);
+        }
+
+        h1 {
+            color: #00ccff;
+            font-size: 2.8em;
+            margin-bottom: 20px;
+        }
+
+        .banner {
+            width: 100%;
+            height: 250px;
+            background: url('../res/thm-banner.png') no-repeat center center;
+            background-size: cover;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #00ccff;
+        }
+
+        .content-container {
+            border: 1px solid #2f2f2f;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: #1b1b1b;
+            border-radius: 10px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .content-container h2 {
+            color: #ff6600;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin: 15px 0;
+            background-color: #111;
+            border-left: 5px solid #00ccff;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+            text-align: left;
+        }
+
+        .section strong {
+            color: #ff6600;
+        }
+
+        .hint {
+            color: #ffcc00;
+            font-style: italic;
+        }
+
+        .answer {
+            background-color: #0a0f1e;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+
+        .back-button {
+            padding: 12px 25px;
+            color: #fff;
+            background-color: #00ccff;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #0099cc;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Add glowing border to content container */
+        .content-container:hover {
+            border: 1px solid #00ccff;
+            box-shadow: 0px 0px 20px #00ccff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Banner -->
+    <div class="banner"></div>
+
+    <!-- Back Button -->
+    <a href="javascript:history.back()" class="back-button">Back</a>
+
+    <!-- Main Heading -->
+    <h1>Mr. Robot CTF</h1>
+
+    <!-- Content Section -->
+    <div class="content-container">
+        <h2 align="left">Task 2 Hack the Machine</h2>
+
+        <div class="section">
+            Can you root this Mr. Robot-styled machine? This is a virtual machine meant for beginners/intermediate users. There are 3 hidden keys located on the machine, can you find them?<br>
+            <em>Credit to Leon Johnson for creating this machine. This machine is used here with the explicit permission of the creator <3</em>
+        </div>
+
+        <div class="section">
+            <strong>What is key 1?</strong><br><br>
+            <div class="answer">073403c8a58a1f80d943455fb30724b9</div>
+            <div class="hint">Hint: First key is hidden within the initial steps of exploration.</div>
+        </div>
+
+        <div class="section">
+            <strong>What is key 2?</strong><br><br>
+            <div class="answer">822c73956184f694993bede3eb39f959</div>
+            <div class="hint">Hint: Don’t forget to check those web directories.</div>
+        </div>
+
+        <div class="section">
+            <strong>What is key 3?</strong><br><br>
+            <div class="answer">04787ddef27c3dee1ee161b21670b4e4</div>
+            <div class="hint">Hint: The final key is well-hidden within the root of the machine.</div>
+        </div>
+        <h4 align="right">Written with 💌 by - Silent Programmer</h4>
+    </div>
+
+</body>
+</html>
