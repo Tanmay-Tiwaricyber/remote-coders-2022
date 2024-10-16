@@ -8,29 +8,10 @@
     <title>Remote Coders</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="blog1.css" rel="stylesheet">
 
     <!-- Custom CSS for styling -->
     <style>
-        body {
-            background-color: #0a0f1e;
-            font-family: 'Fira Code', monospace;
-            color: #e0e0e0;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            justify-content: center;
-            line-height: 1.6;
-        }
-
-        header {
-            border-bottom: 1px solid #00ccff;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-        }
-
         h4 {
             color: #ff6600;
             font-size: 2em;
@@ -38,16 +19,6 @@
             margin: 0;
         }
 
-        nav .nav-link {
-            color: #e0e0e0;
-            font-size: 1.1em;
-            margin: 0 5px;
-            transition: color 0.3s ease;
-        }
-
-        nav .nav-link:hover {
-            color: #00ccff;
-        }
 
         .div2 {
             text-align: left;
@@ -55,6 +26,7 @@
             background-color: #151d2b;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 204, 255, 0.3);
+            margin: 20px 0;
         }
 
         .step-box {
@@ -64,6 +36,11 @@
             padding: 10px;
             margin-bottom: 10px;
             font-size: 0.95em;
+            transition: transform 0.2s;
+        }
+
+        .step-box:hover {
+            transform: scale(1.02);
         }
 
         .div2 h2 {
@@ -94,26 +71,6 @@
         .glow-on-hover:hover {
             background-color: #ff8800;
             box-shadow: 0 8px 20px rgba(255, 102, 0, 0.9);
-        }
-
-        footer {
-            margin-top: 30px;
-            color: #ffffff;
-            font-size: 0.9em;
-        }
-
-        footer a {
-            color: #00ccff;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            color: #ffcc00;
-        }
-
-        /* Container glow effect */
-        .cover-container:hover {
-            box-shadow: 0 0 20px #00ccff;
         }
 
         /* Responsive styling */
@@ -161,25 +118,27 @@
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 
   <header class="mb-auto">
-    <div>
-      <h4 class="float-md-start mb-0">Remote Coders</h4>
-      <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="blogs.html">Blogs</a>
-        <a class="nav-link" href="tryhackme.html">THM WALKTHROUGHS</a>
-        <a class="nav-link" href="partners.html">Partners</a>
-        <a class="nav-link" href="supporters.html">Supporters</a>
-        <a class="nav-link" href="contact us.html">Contact Us</a>
-        <a class="nav-link" href="about us.html">About Us</a>
-      </nav>
+    <div class="nav-container">
+        <h3 class="float-md-start mb-0">Remote Coders</h3>
+        <button class="hamburger" onclick="toggleMenu()">&#9776;</button> <!-- Hamburger icon -->
+        <nav class="nav nav-masthead justify-content-center float-md-end" id="navLinks">
+            <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
+            <a class="nav-link" href="../blogs.html">Blogs</a>
+            <a class="nav-link" href="../tryhackme.html">THM Walkthroughs</a>
+            <!-- <a class="nav-link" href="../partners.html">Partners</a> -->
+            <!-- <a class="nav-link" href="../supporters.html">Supporters</a> -->
+            <a class="nav-link" href="../contact us.html">Contact Us</a>
+            <a class="nav-link" href="../about us.html">About Us</a>
+        </nav>
     </div>
-  </header>
+    
+</header>
 
   <div class="div2">
     <h2>How to Hide Folder or Files from Windows?</h2>
 
     <div class="step-box">
-      <h3>Step 1: <a href="Locked and hide.bat">Download This File</a></h3>
+      <h3>Step 1: <a href="Locked and hide.bat" style="color: #00ccff;">Download This File</a></h3>
     </div>
 
     <div class="step-box">
