@@ -8,29 +8,28 @@
     <meta name="author" content="Tanmay Tiwari">
     <title>Remote Coders</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/cover.css">
+    <link rel="stylesheet" href="CSS/style.css">
 
     <!-- Custom styles -->
     <style>
-        /* Blog card styling */
-        .blog-slider {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            padding: 50px 0;
+        /* Global Styling */
+        body {
+            font-family: 'Arial', sans-serif;
         }
 
-        .blog-slider__wrp {
+        /* Responsive Blog Card Layout */
+        .blog-container {
             display: flex;
-            gap: 20px;
-            padding-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
         }
 
+        /* Blog card styling */
         .blog-slider__item {
             width: 100%;
-            max-width: 400px;
+            max-width: 350px;
             background: #1a1e2b;
             border-radius: 10px;
             padding: 20px;
@@ -51,6 +50,7 @@
 
         .blog-slider__img img {
             width: 100px;
+            height: auto;
             transition: transform 0.3s ease;
         }
 
@@ -97,6 +97,43 @@
             background: #ff8800;
             color: #fff;
         }
+
+        /* Responsive Menu (Hamburger) */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #0d1117;
+                padding: 10px 0;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                z-index: 99;
+            }
+
+            .hamburger {
+                display: block;
+                background-color: transparent;
+                border: none;
+                color: white;
+                font-size: 30px;
+                cursor: pointer;
+                position: absolute;
+                right: 20px;
+                top: 10px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .hamburger {
+                display: none;
+            }
+
+            nav {
+                display: flex;
+            }
+        }
     </style>
 </head>
 
@@ -104,68 +141,66 @@
 
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="mb-auto">
-            <div>
-                <h4 class="float-md-start mb-0">Blogs</h4>
-                <nav class="nav nav-masthead justify-content-center float-md-end">
-                    <a class="nav-link" aria-current="page" href="index.html">Home</a>
-                    <a class="nav-link" href="blogs.html">Blogs</a>
+            <div class="nav-container">
+                <h3 class="float-md-start mb-0">RC / Blogs</h3>
+                <button class="hamburger" onclick="toggleMenu()">&#9776;</button> <!-- Hamburger icon -->
+                <nav class="nav nav-masthead justify-content-center float-md-end" id="navLinks">
+                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link active" aria-current="page"  href="blogs.html">Blogs</a>
                     <a class="nav-link" href="tryhackme.html">THM Walkthroughs</a>
-                    <a class="nav-link" href="partners.html">Partners</a>
-                    <a class="nav-link" href="supporters.html">Supporters</a>
-                    <a class="nav-link" href="contact.html">Contact Us</a>
-                    <a class="nav-link" href="about.html">About Us</a>
+                    <!-- <a class="nav-link" href="partners.html">Partners</a> -->
+                    <!-- <a class="nav-link" href="supporters.html">Supporters</a> -->
+                    <a class="nav-link" href="contact us.html">Contact Us</a>
+                    <a class="nav-link" href="about us.html">About Us</a>
                 </nav>
             </div>
+            
         </header>
-        <table>
-          <tr>
-            <td>
-              <div class="blog-slider">
-                <div class="blog-slider__wrp">
-                    <div class="blog-slider__item">
-                        <div class="blog-slider__img">
-                            <img src="https://cdn1.iconfinder.com/data/icons/folder-outline-cracked/32/folder_Blind_eye_off_invisible_Hidden_document-512.png" alt="Blog Image">
-                        </div>
-                        <div class="blog-slider__content">
-                            <span class="blog-slider__code">26 December 2022</span>
-                            <div class="blog-slider__title">Hide Folder📂</div>
-                            <div class="blog-slider__text">How to Hide Folder or Files from Windows?</div>
-                            <a href="blogs/blog1.html" class="blog-slider__button">Read More</a>
-                        </div>
-                    </div>
-                    <!-- Add more blog-slider__item blocks as needed -->
-                </div>
-            </div>
-            </td>
-            <td>
-              <div class="blog-slider">
-                <div class="blog-slider__wrp">
-                    <div class="blog-slider__item">
-                        <div class="blog-slider__img">
-                            <img src="https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/267_Python-1024.png" alt="Blog Image">
-                        </div>
-                        <div class="blog-slider__content">
-                            <span class="blog-slider__code">28 December 2022</span>
-                            <div class="blog-slider__title">Python was not found;</div>
-                            <div class="blog-slider__text">[Solved] python was not found; run without arguments to install from the microsoft store, or...</div>
-                            <a href="/blogs/blog2.html" class="blog-slider__button">Read More</a>
-                        </div>
-                    </div>
-                    <!-- Add more blog-slider__item blocks as needed -->
-                </div>
-            </div>
-            </td>
-          </tr>
-        </table>
-        
 
-      
+        <!-- Blog Cards Container -->
+        <div class="blog-container">
+            <div class="blog-slider__item">
+                <div class="blog-slider__img">
+                    <img src="https://cdn1.iconfinder.com/data/icons/folder-outline-cracked/32/folder_Blind_eye_off_invisible_Hidden_document-512.png" alt="Blog Image">
+                </div>
+                <div class="blog-slider__content">
+                    <span class="blog-slider__code">26 December 2022</span>
+                    <div class="blog-slider__title">Hide Folder📂</div>
+                    <div class="blog-slider__text">How to Hide Folder or Files from Windows?</div>
+                    <a href="blogs/blog1.html" class="blog-slider__button">Read More</a>
+                </div>
+            </div>
+
+            <div class="blog-slider__item">
+                <div class="blog-slider__img">
+                    <img src="https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/267_Python-1024.png" alt="Blog Image">
+                </div>
+                <div class="blog-slider__content">
+                    <span class="blog-slider__code">28 December 2022</span>
+                    <div class="blog-slider__title">Python was not found</div>
+                    <div class="blog-slider__text">[Solved] python was not found; run without arguments to install from the Microsoft store, or...</div>
+                    <a href="blogs/blog2.html" class="blog-slider__button">Read More</a>
+                </div>
+            </div>
+        </div>
+
         <footer class="mt-auto text-white-50" align="center">
             © 2022 Remote Coders (A Community for Hackers and Programmers) <br> by - Tanmay Tiwari
         </footer>
     </div>
 
-    <script src="blog.js"></script>
+    <script>
+        // Toggle the hamburger menu
+        function toggleMenu() {
+            const nav = document.getElementById("navLinks");
+            if (nav.style.display === "flex") {
+                nav.style.display = "none";
+            } else {
+                nav.style.display = "flex";
+            }
+        }
+    </script>
+
 </body>
 
 </html>
