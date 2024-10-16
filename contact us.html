@@ -1,19 +1,16 @@
 <!DOCTYPE html>
-<!-- saved from url=(0081)file:///I:/Vs%20code/New%20folder%20(2)/bootstrap-5.0.2-examples/cover/index.html -->
-<html lang="en" class="h-100"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Remote Coders</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
+    <title>Remote Coders - Contact Us</title>
     <link rel="shortcut icon" href="res/web_icon.png">
-    
 
     <!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -29,54 +26,107 @@
           font-size: 3.5rem;
         }
       }
+
+      /* Custom styles */
+      body {
+        /* background-color: #111; */
+        color: #fff;
+        font-family: 'Roboto', sans-serif;
+      }
+
+      .nav-masthead .nav-link {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.8);
+        padding: 0.75rem;
+        transition: color 0.3s ease;
+      }
+
+      .nav-masthead .nav-link:hover, .nav-masthead .nav-link.active {
+        color: #fff;
+        border-bottom: 2px solid #00ff99;
+      }
+
+      .cover-container {
+        max-width: 800px;
+      }
+
+      h4 {
+        font-weight: 600;
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+
+      .div2 {
+        margin-top: 40px;
+        text-align: left;
+        line-height: 1.8;
+      }
+
+      .div2 a {
+        color: #00ff99;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .div2 a:hover {
+        color: #fff;
+      }
+
+      img {
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+
+      footer {
+        font-size: 0.85rem;
+        margin-top: 40px;
+        color: #aaa;
+      }
     </style>
 
-    
     <!-- Custom styles for this template -->
     <link href="css/cover.css" rel="stylesheet">
-  </head>
-  <body class="d-flex h-100 text-center text-white bg-dark">
-    
+</head>
+<body class="d-flex h-100 text-center bg-dark">
+
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
   <header class="mb-auto">
-    <div>
-      <h4 class="float-md-start mb-0">Contact Us</h4>
-      <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link" aria-current="page" href="index.html">Home</a>
-        <a class="nav-link" href="blogs.html">Blogs</a>
-        <a class="nav-link" href="tryhackme.html">THM WALKTHROUGHS</a>
-        <a class="nav-link" href="partners.html">Partners</a>
-        <a class="nav-link" href="supporters.html">Supporters</a>
-        <a class="nav-link" href="contact us.html">Contact Us</a>
-        <a class="nav-link" href="about us.html">About Us</a>
-        
-        
-
-      </nav>
+    <div class="nav-container">
+        <h3 class="float-md-start mb-0">Contact</h3>
+        <button class="hamburger" onclick="toggleMenu()">&#9776;</button> <!-- Hamburger icon -->
+        <nav class="nav nav-masthead justify-content-center float-md-end" id="navLinks">
+            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="blogs.html">Blogs</a>
+            <a class="nav-link" href="tryhackme.html">THM </a>
+            <!-- <a class="nav-link" href="partners.html">Partners</a> -->
+            <!-- <a class="nav-link" href="supporters.html">Supporters</a> -->
+            <a class="nav-link active" aria-current="page" href="contact us.html">Contact Us</a>
+            <a class="nav-link" href="about us.html">About Us</a>
+        </nav>
     </div>
-  </header>
+    
+</header>
 
-  <div class=div2>
-    <img src="res/remote-coders_logo.png" alt="remote-coders" style="width: 250px;">
+  <div class="div2 text-start">
+    <img src="res/remote-coders_logo.png" alt="Remote Coders Logo" style="width: 250px;">
+    <h5>Get in Touch:</h5>
+    <p>WhatsApp me: 
+      <a href="https://wa.me/+916306256015" target="_blank">+91 6306256015</a>
+    </p>
+    <!-- <p>WhatsApp Group: 
+       <a href="https://chat.whatsapp.com/IKy4JjNQIvvHZh9VTu5Jxh" target="_blank">Join Here</a> 
+    </p> -->
+    <p>Telegram Group: 
+      <a href="https://t.me/remote_coders" target="_blank">Join Here</a>
+    </p>
     <br>
-    <br>
-    Whatsapp me --><a href=https://wa.me/+916306256015> https://wa.me/+916306256015</a> 
-    <br>Whastapp Group -->
-        <a href=https://chat.whatsapp.com/IKy4JjNQIvvHZh9VTu5Jxh> https://chat.whatsapp.com/IKy4JjNQIvvHZh9VTu5Jxh
-            </a> <br>Telegram Group --><a href=https://t.me/remote_coders> https://t.me/remote_coders </a> 
-            <!-- <form>
-                <textarea name="comments" id="comments" style="font-family:sans-serif;font-size:15px; width: 60%; height: 80px;">
-                Type Your Reviews here... 
-                Don't forget to mention your name.
-                </textarea>
-            </form>  -->
+  </div>
+
+  <footer class="mt-auto">
+    <p>© 2022 Remote Coders (A Community for Hackers and Programmers) <br> by Tanmay Tiwari</p>
+  </footer>
 </div>
 
-<footer class="mt-auto text-white-50">
-  © 2022 Remote Coders(A Community for Hackers and Programmars) <br> by - Tanmay Tiwari
-  <br>
-</footer>
-</div>
-<script src=index.js></script>
+<script src="index.js"></script>
 </body>
 </html>
