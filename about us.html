@@ -1,90 +1,111 @@
 <!DOCTYPE html>
-<!-- saved from url=(0081)file:///I:/Vs%20code/New%20folder%20(2)/bootstrap-5.0.2-examples/cover/index.html -->
-<html lang="en" class="h-100"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.84.0">
-    <title>Remote Coders</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
+    <meta name="description" content="About Remote Coders Community">
+    <meta name="author" content="Tanmay Tiwari, Remote Coders">
+    <title>About Us - Remote Coders</title>
+    
+    <!-- Bootstrap core CSS -->
+    <link href="CSS/style.css" rel="stylesheet">
     <link rel="shortcut icon" href="res/web_icon.png">
     
-
-    <!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-
-    
     <!-- Custom styles for this template -->
-    <link href="css/cover.css" rel="stylesheet">
-  </head>
-  <body class="d-flex h-100 text-center text-white bg-dark">
-    
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-  <header class="mb-auto">
-    <div>
-      <h3 class="float-md-start mb-0">About Us</h3>
-      <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link" aria-current="page" href="index.html">Home</a>
-        <a class="nav-link" href="blogs.html">Blogs</a>
-        <a class="nav-link" href="tryhackme.html">THM WALKTHROUGHS</a>
-        <a class="nav-link" href="partners.html#">Partners</a>
-        <a class="nav-link" href="supporters.html">Supporters</a>
-        <a class="nav-link" href="contact us.html">Contact Us</a>
-        <a class="nav-link" href="about us.html">About Us</a>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* background: linear-gradient(45deg, #121212, #282828); */
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+        .cover-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            width: 100%;
+            padding: 2rem;
+            text-align: center;
+        }
+        header {
+            margin-bottom: 3rem;
+        }
+        h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            background: -webkit-linear-gradient(45deg, #ff007a, #4ff2c8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientMove 3s ease infinite;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        .nav-link {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #4ff2c8;
+            text-shadow: 0 0 10px #4ff2c8;
+        }
+        .div3 {
+            max-width: 700px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+            font-size: 1.1rem;
+        }
+        .div3 b {
+            color: #4ff2c8;
+        }
+        footer {
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover-container">
+        <header class="mb-auto">
+            <div class="nav-container">
+                <h3 class="float-md-start mb-0">Remote Coders</h3>
+                <button class="hamburger" onclick="toggleMenu()">&#9776;</button> <!-- Hamburger icon -->
+                <nav class="nav nav-masthead justify-content-center float-md-end" id="navLinks">
+                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="blogs.html">Blogs</a>
+                    <a class="nav-link" href="tryhackme.html">THM Walkthroughs</a>
+                    <!-- <a class="nav-link" href="partners.html">Partners</a> -->
+                    <!-- <a class="nav-link" href="supporters.html">Supporters</a> -->
+                    <a class="nav-link" href="contact us.html">Contact Us</a>
+                    <a class="nav-link active" aria-current="page" href="about us.html">About Us</a>
+                </nav>
+            </div>
+            
+        </header>
+
+        <h1>About Us</h1>
         
-        
+        <div class="div3">
+            <p><b>Remote Coders</b> is a thriving community for hackers and programmers. My name is Tanmay Tiwari, the proud owner and founder of this community.</p>
+            <p>I created this space to bring together hackers and developers where they can collaborate, solve challenges, and help secure the digital world.</p>
+            <p>With over 150+ members to date, our mission is to make the world a safer place by sharing knowledge and solving problems together.</p>
+        </div>
 
-      </nav>
+        <footer class="mt-auto">
+            © 2022 Remote Coders - A Community for Hackers and Programmers <br> by - Tanmay Tiwari
+        </footer>
     </div>
-  </header>
-
-  
-    <h1>About Us</h1>
-    <div class=div3>
-
-      <b>Remote Coders</b> is a community for hackers and programmars<br>
-      I, Tanmay Tiwari owner of this community.<br>
-      <br>
-      I created this community for all programmars and hackers<br>
-      so they can ask their problem in this community so we can solve their problems.
-      <br>
-      <br>  
-      I am happy to have this community.
-      till now we have more than 150+ members in this community.
-      <br>
-        <br>
-      My goal is to make a big place for programmars and hackers to solve their problems and make this world safe
-      from cyber attacks.
-
-    </div>
-    <!-- <p class="lead">
-      <a href="file:///I:/Vs%20code/New%20folder%20(2)/bootstrap-5.0.2-examples/cover/index.html#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
-    </p> -->
-  
-
-    <footer class="mt-auto text-white-50">
-      © 2022 Remote Coders(A Community for Hackers and Programmars) <br> by - Tanmay Tiwari
-      <br>
-    </footer>
-</div>
-<script src=index.js></script>
 </body>
 </html>
