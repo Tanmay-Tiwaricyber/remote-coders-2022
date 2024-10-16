@@ -1,0 +1,249 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    /* height: 100%; */
+    font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+/* Background and Text Colors */
+body {
+    background-color: #0d1117; /* Dark modern background */
+    color: #e6e6e6; /* Soft white text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Navigation Styling */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #444;
+    padding: 10px 30px;
+    background-color: #0d1117;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-radius: 0 0 20px 20px; /* Rounded bottom edges */
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-container h3 {
+    font-weight: 700;
+    font-size: 28px;
+    color: #00ffcc;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+a.nav-link {
+    font-size: 18px;
+    color: #ffffff;
+    margin-right: 20px;
+    text-transform: uppercase;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    padding: 10px;
+    border-radius: 10px; /* Curved edges for links */
+    background-color: #161b22;
+    margin-left: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+a.nav-link:hover {
+    color: #00ffcc;
+    background-color: #1f2937;
+    transform: scale(1.05);
+}
+
+/* Cyber Theme Animation for Navigation */
+a.nav-link::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: -2px;
+    left: 0;
+    background-color: #00ffcc;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+}
+
+a.nav-link:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+/* Main Content Styling */
+main {
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, rgba(0, 255, 204, 0.2), rgba(0, 255, 204, 0.8));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+.highlight {
+    color: #00ffcc;
+    background-color: rgba(0, 255, 204, 0.1);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Glow animation for the header */
+@keyframes textGlow {
+    from {
+        text-shadow: 0 0 20px #00ffcc, 0 0 30px #00ffcc;
+    }
+    to {
+        text-shadow: 0 0 40px #00ffcc, 0 0 60px #00ffcc;
+    }
+}
+
+/* Lead Text */
+p.lead {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    color: #ccc;
+    line-height: 1.6;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Fade in animation for text */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Button Styling */
+.glow-on-hover {
+    width: 220px;
+    height: 55px;
+    border: none;
+    outline: none;
+    color: #000;
+    background-color: #00ffcc;
+    border-radius: 30px;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    animation: pulse 2s infinite;
+}
+
+.glow-on-hover:hover {
+    box-shadow: 0 0 25px #00ffcc, 0 0 45px #00ffcc;
+    transform: translateY(-5px);
+}
+
+/* Pulse animation for the button */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Footer Styling */
+footer {
+    color: #999;
+    padding: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 30px;
+    border-top: 1px solid #444;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-container nav {
+        display: none; /* Hide the nav links */
+        flex-direction: column;
+        width: 100%;
+        background-color: #0d1117;
+        padding: 20px;
+        position: absolute;
+        top: 60px; /* Adjust to the height of the navbar */
+        left: 0;
+        z-index: 99;
+    }
+
+    .nav-container {
+        position: relative;
+    }
+
+    /* Show hamburger icon */
+    .hamburger {
+        display: block;
+        background-color: transparent;
+        border: none;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+        position: absolute;
+        right: 20px;
+        top: 10px;
+    }
+    
+    /* Hide links in desktop view */
+    .nav-container .nav-link {
+        margin: 10px 0;
+        text-align: left;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    p.lead {
+        font-size: 1rem;
+    }
+
+    .glow-on-hover {
+        width: 160px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    a.nav-link {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+/* Ensure the hamburger icon is hidden on larger screens */
+@media (min-width: 769px) {
+    .hamburger {
+        display: none;
+    }
+
+    .nav-container nav {
+        display: flex; /* Ensure nav links are shown on larger screens */
+    }
+}
