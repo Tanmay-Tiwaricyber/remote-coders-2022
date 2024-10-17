@@ -12,11 +12,14 @@
 
     <!-- Custom styles -->
     <style>
-        /* Global Styling */
-        body {
-            font-family: 'Arial', sans-serif;
+        body, html {
+            margin: 0;
+            padding: 0;
+            /* height: 100%; */
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+            box-sizing: border-box;
         }
-
         /* Responsive Blog Card Layout */
         .blog-container {
             display: flex;
@@ -98,42 +101,6 @@
             color: #fff;
         }
 
-        /* Responsive Menu (Hamburger) */
-        @media (max-width: 768px) {
-            nav {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background-color: #0d1117;
-                padding: 10px 0;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                z-index: 99;
-            }
-
-            .hamburger {
-                display: block;
-                background-color: transparent;
-                border: none;
-                color: white;
-                font-size: 30px;
-                cursor: pointer;
-                position: absolute;
-                right: 20px;
-                top: 10px;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .hamburger {
-                display: none;
-            }
-
-            nav {
-                display: flex;
-            }
-        }
     </style>
 </head>
 
@@ -182,10 +149,22 @@
                     <a href="blogs/blog2.html" class="blog-slider__button">Read More</a>
                 </div>
             </div>
+
+            <div class="blog-slider__item">
+                <div class="blog-slider__img">
+                    <img src="https://img.icons8.com/?size=100&id=tScMUnfxVE7Q&format=png&color=000000" alt="Blog Image">
+                </div>
+                <div class="blog-slider__content">
+                    <span class="blog-slider__code">17 October 2024</span>
+                    <div class="blog-slider__title">Canva Premium</div>
+                    <div class="blog-slider__text">check it out</div>
+                    <a href="blogs/blog3.html" class="blog-slider__button">Read More</a>
+                </div>
+            </div>
         </div>
 
-        <footer class="mt-auto text-white-50" align="center">
-            © 2022 Remote Coders (A Community for Hackers and Programmers) <br> by - Tanmay Tiwari
+        <footer class="mt-auto text-white-50">
+            © 2022 Remote Coders - A Community for Hackers and Programmers <br> Developed by Tanmay Tiwari
         </footer>
     </div>
 
