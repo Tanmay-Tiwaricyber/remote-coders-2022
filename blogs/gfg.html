@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Remote Coders - Blogs">
+    <meta name="author" content="Tanmay Tiwari">
+    <title>Remote Coders</title>
+
+    <link rel="stylesheet" href="../CSS/style.css">
+
+    <!-- Custom styles -->
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            /* height: 100%; */
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+            box-sizing: border-box;
+        }
+        /* Responsive Blog Card Layout */
+        .blog-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+        }
+
+        /* Blog card styling */
+        .blog-slider__item {
+            width: 100%;
+            max-width: 350px;
+            background: #1a1e2b;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* background-image: url(res/Picture1.png); */
+        }
+
+        .blog-slider__item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+        }
+
+        .blog-slider__img {
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .blog-slider__img img {
+            width: 100px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-slider__item:hover .blog-slider__img img {
+            transform: scale(1.1);
+        }
+
+        .blog-slider__content {
+            color: #fff;
+            text-align: left;
+        }
+
+        .blog-slider__code {
+            color: #00ccff;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .blog-slider__title {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #ff8800;
+        }
+
+        .blog-slider__text {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .blog-slider__button {
+            padding: 10px 20px;
+            background: #00ccff;
+            color: #fff;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: background 0.3s ease;
+        }
+
+        .blog-slider__button:hover {
+            background: #ff8800;
+            color: #fff;
+        }
+
+    </style>
+</head>
+
+<body class="d-flex h-100 text-white bg-dark">
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+            <div class="nav-container">
+                <h3 class="float-md-start mb-0">RC / GfG</h3>
+                <button class="hamburger" onclick="toggleMenu()">&#9776;</button> <!-- Hamburger icon -->
+                <nav class="nav nav-masthead justify-content-center float-md-end" id="navLinks">
+                    <a class="nav-link" href="../index.html">Home</a>
+                    <a class="nav-link active" aria-current="page"  href="../blogs.html">Blogs</a>
+                    <a class="nav-link" href="../tryhackme.html">THM Walkthroughs</a>
+                    <!-- <a class="nav-link" href="partners.html">Partners</a> -->
+                    <!-- <a class="nav-link" href="supporters.html">Supporters</a> -->
+                    <a class="nav-link" href="../contact us.html">Contact Us</a>
+                    <a class="nav-link" href="../about us.html">About Us</a>
+                </nav>
+            </div>
+            
+        </header>
+
+        <!-- Blog Cards Container -->
+        <div class="blog-container">
+            <div class="blog-slider__item">
+                <div class="blog-slider__img">
+                    <img src="https://img.icons8.com/?size=100&id=AbQBhN9v62Ob&format=png&color=000000" alt="Blog Image">
+                </div>
+                <div class="blog-slider__content">
+                    <span class="blog-slider__code">18 October 2024</span>
+                    <div class="blog-slider__title">GfG problem of the day</div>
+                    <div class="blog-slider__text">Single Number</div>
+                    <a href="../gfg-potd/1.html" class="blog-slider__button">Read More</a>
+                </div>
+            </div>
+            
+        </div>
+
+        <footer class="mt-auto text-white-50">
+            © 2022 Remote Coders - A Community for Hackers and Programmers <br> Developed by Tanmay Tiwari
+        </footer>
+    </div>
+
+    <script>
+        // Toggle the hamburger menu
+        function toggleMenu() {
+            const nav = document.getElementById("navLinks");
+            if (nav.style.display === "flex") {
+                nav.style.display = "none";
+            } else {
+                nav.style.display = "flex";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
