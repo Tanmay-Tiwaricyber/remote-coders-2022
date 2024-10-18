@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Number Problem Walkthrough</title>
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #e0e0e0;
+            font-family: 'Fira Code', monospace;
+            padding: 20px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 50%, #0a0f1e, #000000 80%);
+        }
+
+        h1, h2 {
+            color: #00ccff;
+            font-size: 2.5em;
+        }
+
+        h5 {
+            color: #ff6600;
+            font-size: 1.2em;
+        }
+
+        blockquote {
+            background-color: #111;
+            color: #e0e0e0;
+            border-left: 5px solid #00ccff;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            text-align: left;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        pre {
+            background-color: #1b1b1b;
+            color: #00ccff;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: left;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .content-container {
+            border: 1px solid #2f2f2f;
+            padding: 30px;
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #1b1b1b;
+            border-radius: 10px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .back-button {
+            padding: 12px 25px;
+            color: #fff;
+            background-color: #00ccff;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #0099cc;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Glowing effect */
+        .content-container:hover {
+            border: 1px solid #00ccff;
+            box-shadow: 0px 0px 20px #00ccff;
+        }
+
+        h4 {
+            text-align: right;
+            color: #ff6600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content-container">
+        <!-- Back Button -->
+        <a href="javascript:history.back()" class="back-button">Go Back</a>
+
+        <!-- Main Heading -->
+        <h2>Single Number Problem Walkthrough</h2>
+        <h5>Written by Silent Programmer</h5><br>
+
+        <!-- Problem Description -->
+        <h1>Problem Description:</h1>
+        <blockquote>
+            Given an array <strong>arr[]</strong> of positive integers where every element appears even times except for
+            one. Find that number occurring an odd number of times.
+        </blockquote>
+
+        <!-- Example Section -->
+        <h2>Example:</h2>
+        <blockquote>
+            <strong>Input:</strong> arr[] = [1, 1, 2, 2, 2]<br>
+            <strong>Output:</strong> 2<br>
+            <strong>Explanation:</strong> In the given array, all elements appear twice except for 2, which appears three times.
+        </blockquote>
+
+        <blockquote>
+            <strong>Input:</strong> arr[] = [8, 8, 7, 7, 6, 6, 1]<br>
+            <strong>Output:</strong> 1<br>
+            <strong>Explanation:</strong> In the given array, all elements appear twice except for 1, which appears only once.
+        </blockquote>
+
+        <!-- Solution Section -->
+        <h1>Solution:</h1>
+        <h2>Code Implementation (C++):</h2>
+        <pre>
+            class Solution {
+                public:
+                  // Function to find the element in the array which occurs only once.
+                  int getSingle(vector<int>& arr) {
+                      for (int i = 0; i < arr.size(); i++) {
+                          int count = 0;
+                          for (int j = 0; j < arr.size(); j++) {
+                              if (arr[i] == arr[j]) count++;
+                          }
+                          if (count % 2 != 0) return arr[i];
+                      }
+                      return -1;
+                  }
+              };
+        </pre>
+
+        <!-- Footer -->
+        <h4>Written with 💌 by Silent Programmer</h4>
+    </div>
+</body>
+
+</html>
