@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Winning Factors Challenge - DEADFACE CTF Challenge on solving mathematic equations via socket programming.">
+    <title>Winning Factors Challenge | DEADFACE CTF</title>
+    <link rel="stylesheet" href="Winning Factors.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="main-title">🧮 Winning Factors Challenge</h1>
+            <!-- Banner Image for the CTF Challenge -->
+            <div class="banner">
+                <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/misc/winningfactors.jpg" alt="CTF Challenge Banner">
+            </div>
+        </header>
+
+        <section class="overview glass">
+            <h2>Overview</h2>
+            <p>The "Winning Factors" challenge, created by <span class="highlight">syyntax</span>, tests your ability to solve math equations in real-time using Python socket programming. The challenge involves calculating factorials and submitting the results to a remote server.</p>
+        </section>
+
+        <section class="challenge-details glass">
+            <h2>Challenge Details</h2>
+            <ul>
+                <li><strong>Points:</strong> 50</li>
+                <li><strong>Creator:</strong> syyntax</li>
+                <li><strong>Objective:</strong> Write a script to solve mathematic equations, specifically factorials, and submit the results within 3 seconds to a remote server.</li>
+                <li><strong>Submission Format:</strong> flag{flag-text}</li>
+                <li><strong>Server Address:</strong> <span class="highlight">147.182.245.126:33001</span></li>
+            </ul>
+        </section>
+
+        <section class="provided-info glass">
+            <h2>Provided Information</h2>
+            <p>No files were provided for this challenge. You need to connect to the remote server and solve the equations using the provided <span class="highlight">socket programming</span> code.</p>
+        </section>
+
+        <section class="solution-process glass">
+            <h2>Solution Process</h2>
+            <h3>Socket Programming Explanation</h3>
+            <p>The challenge requires connecting to the remote server via socket programming. The server sends a mathematic equation, specifically the factorial of a number, and the player needs to calculate the answer and send it back within 3 seconds.</p>
+
+            <h3>Provided Python Code</h3>
+            <div class="code-block">
+                <pre><code>import socket
+import re
+from math import factorial
+
+def calculate_factorial(n):
+    try:
+        return factorial(n)
+    except ValueError as e:
+        print(f"Error calculating factorial: {e}")
+        return None
+
+def connect_and_solve():
+    host = "147.182.245.126"
+    port = 33001
+
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.settimeout(5)  
+    s.connect((host, port))
+
+    try:
+        while True:
+            data = s.recv(1024).decode().strip()
+            if not data:
+                continue
+
+            print(f"Received: '{data}'")
+
+            if "flag{" in data:
+                print("Found flag:", data)
+                break
+
+            number_match = re.search(r'factorial of (\d+)\.?', data)
+            if number_match:
+                number = int(number_match.group(1))
+                answer = calculate_factorial(number)
+
+                if answer is not None:
+                    response = str(answer)
+                    print(f"Sending answer: {response}")
+                    s.send(response.encode())
+
+                    feedback = s.recv(1024).decode().strip()
+                    print(f"Server response: '{feedback}'")
+
+    except socket.timeout:
+        print("Socket timeout occurred")
+    except Exception as e:
+        print(f"Error occurred: {e}")
+    finally:
+        s.close()
+
+if __name__ == "__main__":
+    connect_and_solve()</code></pre>
+            </div>
+
+            <h3>Decoded Flag</h3>
+            <p>After submitting the correct answers to the server, the flag received is: <span class="flag">flag{1ntr0_f4ct0r14l_5t3p}</span></p>
+        </section>
+
+        <footer class="mt-auto text-white-50">
+            © 2022 Remote Coders - A Community for Hackers and Programmers <br> Developed by Tanmay Tiwari
+        </footer>
+    </div>
+</body>
+</html>

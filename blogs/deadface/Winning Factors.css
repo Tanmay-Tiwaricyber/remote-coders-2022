@@ -1,0 +1,108 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Container styling */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header section */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.main-title {
+    font-size: 2.5em;
+    color: #00ff88;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.banner img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 255, 136, 0.3);
+    margin-bottom: 20px;
+}
+
+/* Sections with glass effect */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+/* Highlight text */
+.highlight {
+    color: #ff4081;
+    font-weight: bold;
+}
+
+/* Code block styling */
+.code-block {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+.code-block code {
+    font-family: 'Source Code Pro', monospace;
+    color: #00ff88;
+    font-size: 1.1em;
+}
+
+/* Download link */
+.download-link {
+    color: #00ff88;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.download-link:hover {
+    text-decoration: underline;
+}
+
+/* Footer styling */
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #e0e0e0;
+}
+
+.cyber-tagline {
+    color: #ff4081;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2em;
+    }
+}
+.flag {
+    font-weight: bold;
+    color: #27ae60;
+    background-color: #2d3436;
+    padding: 5px 10px;
+    border-radius: 5px;
+}

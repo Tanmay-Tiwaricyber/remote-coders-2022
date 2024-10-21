@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Missing Pieces Challenge - DEADFACE CTF on cryptography and XOR encryption.">
+    <title>Missing Pieces Challenge | DEADFACE CTF</title>
+    <link rel="stylesheet" href="Missing Pieces.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="main-title">🧩 Missing Pieces Challenge</h1>
+            <!-- Banner Image for the CTF Challenge -->
+            <div class="banner">
+                <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/misc/missingpieces.jpg" alt="CTF Challenge Banner">
+            </div>
+        </header>
+
+        <section class="overview glass">
+            <h2>Overview</h2>
+            <p>The "Missing Pieces" challenge, created by <span class="highlight">syyntax</span>, revolves around cryptography involving XOR encryption. The code provided contains a hidden flag that is encrypted, and the objective is to fix the missing pieces to uncover the flag.</p>
+        </section>
+
+        <section class="challenge-details glass">
+            <h2>Challenge Details</h2>
+            <ul>
+                <li><strong>Points:</strong> 100</li>
+                <li><strong>Creator:</strong> syyntax</li>
+                <li><strong>Objective:</strong> Solve the missing code and reveal the hidden flag.</li>
+                <li><strong>Submission Format:</strong> flag{flag_text}</li>
+            </ul>
+        </section>
+
+        <section class="provided-info glass">
+            <h2>Provided Information</h2>
+            <p>File Download: <a href="link_to_download" class="download-link">Download File (4KB)</a></p>
+            <p>SHA1: <span class="highlight">895ca32d397db50ee2fe3ad7021a63efc5dc7582</span></p>
+        </section>
+
+        <section class="solution-process glass">
+            <h2>Solution Process</h2>
+            <h3>Problem Description</h3>
+            <p>We are provided with a program that uses XOR encryption to hide a flag. The hexadecimal string and key are given, but the program is incomplete. We need to fix the missing parts of the code and retrieve the hidden flag.</p>
+
+            <h3>Provided Code</h3>
+            <div class="code-block">
+                <pre><code># include &lt;stdio.h&gt;
+# include &lt;string.h&gt;
+
+const char *hex_string = "b52195a4a82bc5ade23e9c9c8725c79cb07d90f0ae";  // The hex string for the flag
+const char *key = "d34df4c3";
+
+int hex_char_to_int(char c) {
+    if (c >= '0' && c <= '9') return c - '0';
+    if (c >= 'a' && c <= 'f') return c - 'a' + 10;
+    return -1;
+}
+
+void hex_string_to_bytes(const char *hex, unsigned char *bytes, size_t length) {
+    for (size_t i = 0; i < length; ++i) {
+        bytes[i] = (hex_char_to_int(hex[i * 2]) << 4) | hex_char_to_int(hex[i * 2 + 1]);
+    }
+}
+
+void xor_bytes(unsigned char *data, size_t data_length, const unsigned char *key, size_t key_length) {
+    for (size_t i = 0; i < data_length; ++i) {
+        data[i] ^= key[i % key_length];
+    }
+}
+
+int main() {
+    size_t flag_length = strlen(hex_string) / 2;
+    unsigned char flag[flag_length];
+    unsigned char key_bytes[4];
+
+    hex_string_to_bytes(hex_string, flag, flag_length);
+    hex_string_to_bytes(key, key_bytes, 4);
+
+    xor_bytes(flag, flag_length, key_bytes, 4);
+
+    printf("Resulting string: ");
+    for (size_t i = 0; i < flag_length; ++i) {
+        printf("%c", flag[i]);
+    }
+    printf("\n");
+
+    return 0;
+</code></pre>
+            </div>
+
+            <h3>Decoded Flag</h3>
+            <p>After running the fixed program, we obtained the flag: <span class="flag">flag{f1n1sh_Th3_c0d3}</span></p>
+        </section>
+
+        <footer class="mt-auto text-white-50">
+            © 2022 Remote Coders - A Community for Hackers and Programmers <br> Developed by Tanmay Tiwari
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sleeping Marble Beauty Challenge - DEADFACE CTF Challenge on cryptography and ROT47 decoding.">
+    <title>Sleeping Marble Beauty Challenge | DEADFACE CTF</title>
+    <link rel="stylesheet" href="Sleeping Marble Beauty Challenge.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="main-title">💤 Sleeping Marble Beauty Challenge</h1>
+            <!-- Banner Image for the CTF Challenge -->
+            <div class="banner">
+                <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/misc/sleepingmarblebeauty.jpg" alt="CTF Challenge Banner">
+            </div>
+        </header>
+
+        <section class="overview glass">
+            <h2>Overview</h2>
+            <p>The "Sleeping Marble Beauty" challenge, created by <span class="highlight">TheZeal0t</span>, is a unique <span class="highlight">cryptography and steganography</span> puzzle involving ROT47 encoding. This variant of the Caesar cipher operates on different ASCII ranges.</p>
+        </section>
+
+        <section class="challenge-details glass">
+            <h2>Challenge Details</h2>
+            <ul>
+                <li><strong>Points:</strong> 75</li>
+                <li><strong>Creator:</strong> TheZeal0t</li>
+                <li><strong>Source Material:</strong> <i>Phantastes</i> by George MacDonald</li>
+                <li><strong>Objective:</strong> Decode the creator’s personal recommendation/Words of Wisdom for handling this situation.</li>
+                <li><strong>Submission Format:</strong> flag{flag-text}</li>
+            </ul>
+        </section>
+
+        <section class="provided-info glass">
+            <h2>Provided Information</h2>
+            <p>File Download: <a href="link_to_download" class="download-link">Download File (4KB)</a></p>
+            <p>SHA1: <span class="highlight">fb0cc233849c7a83f7536389eec6346f881fbd2c</span></p>
+        </section>
+
+        <section class="decoding-process glass">
+            <h2>Decoding Process</h2>
+            <h3>ROT47 Explanation</h3>
+            <p>ROT47 is a substitution cipher that shifts ASCII characters within the printable range (33 to 126). A shift of 94 characters is applied, wrapping around once the range is exceeded.</p>
+
+            <h3>Provided Code</h3>
+            <div class="code-block">
+                <pre><code>def rot47(char, shift):
+    if 33 <= ord(char) <= 126:
+        return chr(33 + ((ord(char) - 33 + shift) % 94))
+    return char
+
+def decode_rot47(encoded_str, shift):
+    decoded_str = ''.join(rot47(char, shift) for char in encoded_str)
+    return decoded_str
+
+encoded_string = "( . # ) = u * M 1 * M M M y 1 7 M 5 * 1 7 . & M * # 8 ' M . ' 6 M * ' 4 M s l e e p M b r o A M Z o ?"
+
+for shift in range(1, 63):
+    decoded_string = decode_rot47(encoded_string, shift)
+    print(f"Shift {shift}: {decoded_string.replace(' ', '')}")</code></pre>
+            </div>
+
+            <h3>Decoded Flag</h3>
+            <p>The flag is: <span class="flag">flag{Uh-oh---You-should-have-let-her-SLEEP-BRO!-:O}</span></p>
+        </section>
+
+        <footer class="mt-auto text-white-50">
+            © 2022 Remote Coders - A Community for Hackers and Programmers <br> Developed by Tanmay Tiwari
+        </footer>
+    </div>
+</body>
+</html>
