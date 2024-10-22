@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SkyWave 1: High Tower - DEADFACE CTF SQL Challenge on identifying the correct tower_id.">
+    <title>SkyWave 1: High Tower Challenge | DEADFACE CTF</title>
+    <link rel="stylesheet" href="SkyWave1-hightower.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="main-title">📡 SkyWave 1: High Tower Challenge</h1>
+            <!-- Banner Image for the CTF Challenge -->
+            <div class="banner">
+                <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/challenges/sql/sql03/sql03.jpg" alt="CTF Challenge Banner">
+            </div>
+        </header>
+
+        <section class="overview glass">
+            <h2>Overview</h2>
+            <p>The "SkyWave 1: High Tower" challenge, created by <span class="highlight">syyntax</span>, requires the participant to identify the <span class="highlight">tower_id</span> of a cell tower with a specific elevation using SQL queries. This challenge tests basic SQL knowledge and data filtering techniques.</p>
+        </section>
+
+        <section class="challenge-details glass">
+            <h2>Challenge Details</h2>
+            <ul>
+                <li><strong>Points:</strong> 5</li>
+                <li><strong>Creator:</strong> syyntax</li>
+                <li><strong>Objective:</strong> Use SQL commands to find the tower_id for the tower that sits at an approximate elevation of 220 ft.</li>
+                <li><strong>Submission Format:</strong> flag{tower_id}</li>
+            </ul>
+        </section>
+
+        <section class="provided-info glass">
+            <h2>Provided Information</h2>
+            <p>Database Access: <code>ssh skywave@skywave.deadface.io</code></p>
+            <p><strong>Username:</strong> skywave</p>
+            <p><strong>Password:</strong> d34df4c3</p>
+        </section>
+
+        <section class="solution-process glass">
+            <h2>Solution Process</h2>
+            <h3>Step-by-Step Query Process</h3>
+            <p>The goal is to find the tower with an elevation close to 220 feet. The steps to solve the challenge were:</p>
+            <div class="code-block">
+                <pre><code>1. Connect to the SQL database via SSH:
+ssh skywave@skywave.deadface.io
+
+2. List all the tables in the database:
+SHOW TABLES;
+
+3. Describe the structure of the Towers table to understand its columns:
+DESCRIBE Towers;
+
+4. Query the tower with an elevation close to 220 feet:
+SELECT tower_id FROM Towers WHERE elevation BETWEEN 219.5 AND 220.5;</code></pre>
+            </div>
+
+            <h3>Identified Tower ID</h3>
+            <p>Based on the SQL query result, the <strong>tower_id</strong> with the specified elevation was <span class="highlight">215</span>.</p>
+        </section>
+
+        <section class="flag glass">
+            <h2>Flag</h2>
+            <p>The flag is: <span class="flag">flag{215}</span></p>
+        </section>
+
+        <footer class="mt-auto text-white-50">
+            © 2022 Remote Coders - A Community for Hackers and Programmers <br> Developed by Tanmay Tiwari
+        </footer>
+    </div>
+</body>
+</html>

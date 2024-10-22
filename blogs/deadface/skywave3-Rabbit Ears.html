@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SkyWave 3: Rabbit Ears - DEADFACE CTF SQL Challenge on finding the most common antenna type managed by Florian Olyff.">
+    <title>SkyWave 3: Rabbit Ears Challenge | DEADFACE CTF</title>
+    <link rel="stylesheet" href="SkyWave3-RabbitEars.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="main-title">📡 SkyWave 3: Rabbit Ears Challenge</h1>
+            <!-- Banner Image for the CTF Challenge -->
+            <div class="banner">
+                <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/challenges/sql/sql03/sql03.jpg" alt="CTF Challenge Banner">
+            </div>
+        </header>
+
+        <section class="overview glass">
+            <h2>Overview</h2>
+            <p>The "SkyWave 3: Rabbit Ears" challenge, created by <span class="highlight">syyntax</span>, asks participants to determine the most commonly used antenna type managed by <span class="highlight">Florian Olyff</span>. This challenge requires SQL knowledge and the ability to use joins across multiple tables.</p>
+        </section>
+
+        <section class="challenge-details glass">
+            <h2>Challenge Details</h2>
+            <ul>
+                <li><strong>Points:</strong> 80</li>
+                <li><strong>Creator:</strong> syyntax</li>
+                <li><strong>Objective:</strong> Identify the most frequently used antenna type on the towers managed by Florian Olyff.</li>
+                <li><strong>Submission Format:</strong> flag{antenna_name number}</li>
+            </ul>
+        </section>
+
+        <section class="provided-info glass">
+            <h2>Provided Information</h2>
+            <p>Database Access: Continue using the same SSH connection from the previous challenge (<strong>High Tower</strong>).</p>
+            <p><strong>Username:</strong> skywave</p>
+            <p><strong>Password:</strong> d34df4c3</p>
+        </section>
+
+        <section class="solution-process glass">
+            <h2>Solution Process</h2>
+            <h3>SQL Query Breakdown</h3>
+            <p>To find the most commonly used antenna type on towers managed by Florian Olyff, we used the following SQL query:</p>
+            <div class="code-block">
+                <pre><code>SELECT a.antenna_name, COUNT(*) AS antenna_count
+FROM Towers t
+JOIN Tower_Sectors ts ON t.tower_id = ts.tower_id
+JOIN Antennas a ON ts.antenna_id = a.antenna_id
+WHERE t.operator_id = 4  -- Florian Olyff's operator_id
+GROUP BY a.antenna_name
+ORDER BY antenna_count DESC
+LIMIT 1;</code></pre>
+            </div>
+
+            <p>This query joins the <strong>Towers</strong>, <strong>Tower_Sectors</strong>, and <strong>Antennas</strong> tables, filtering by Florian Olyff’s operator ID (<code>operator_id = 4</code>), and groups the results by <code>antenna_name</code> to find the most frequent antenna type.</p>
+
+            <h3>Result</h3>
+            <p>The most commonly used antenna type is <span class="highlight">Multiple Input Multiple Output (MIMO)</span>, with a count of <span class="highlight">3</span>.</p>
+        </section>
+
+        <section class="flag glass">
+            <h2>Flag</h2>
+            <p>The flag is: <span class="flag">flag{Multiple Input Multiple Output (MIMO) 3}</span></p>
+        </section>
+
+        <footer class="footer">
+            © 2024 DEADFACE CTF - Developed by your CyberSecurity Team
+        </footer>
+    </div>
+</body>
+</html>

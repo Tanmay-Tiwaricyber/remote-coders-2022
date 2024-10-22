@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SkyWave 2: Trifecta - DEADFACE CTF SQL Challenge on counting devices by type.">
+    <title>SkyWave 2: Trifecta Challenge | DEADFACE CTF</title>
+    <link rel="stylesheet" href="SkyWave2-Trifecta.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="main-title">📲 SkyWave 2: Trifecta Challenge</h1>
+            <!-- Banner Image for the CTF Challenge -->
+            <div class="banner">
+                <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/challenges/sql/sql03/sql03.jpg" alt="CTF Challenge Banner">
+            </div>
+        </header>
+
+        <section class="overview glass">
+            <h2>Overview</h2>
+            <p>The "SkyWave 2: Trifecta" challenge, created by <span class="highlight">syyntax</span>, requires participants to determine how many devices in the database are categorized as either a <span class="highlight">smartphone</span>, <span class="highlight">computer</span>, or <span class="highlight">tablet</span>. This challenge tests your ability to join tables and filter data based on specific conditions.</p>
+        </section>
+
+        <section class="challenge-details glass">
+            <h2>Challenge Details</h2>
+            <ul>
+                <li><strong>Points:</strong> 15</li>
+                <li><strong>Creator:</strong> syyntax</li>
+                <li><strong>Objective:</strong> Count the number of devices that are either a smartphone, computer, or tablet in the database.</li>
+                <li><strong>Submission Format:</strong> flag{number}</li>
+            </ul>
+        </section>
+
+        <section class="provided-info glass">
+            <h2>Provided Information</h2>
+            <p>Database Access: Continue using the same SSH connection from the previous challenge (<strong>High Tower</strong>).</p>
+            <p><strong>Username:</strong> skywave</p>
+            <p><strong>Password:</strong> d34df4c3</p>
+        </section>
+
+        <section class="solution-process glass">
+            <h2>Solution Process</h2>
+            <h3>SQL Query Breakdown</h3>
+            <p>To find the number of devices in the database that are smartphones, computers, or tablets, we used the following SQL query:</p>
+            <div class="code-block">
+                <pre><code>SELECT COUNT(*)
+FROM Devices d
+JOIN Device_Types dt ON d.device_type_id = dt.device_type_id
+WHERE dt.device_type_name IN ('smartphone', 'computer', 'tablet');</code></pre>
+            </div>
+
+            <p>The SQL query joins the <strong>Devices</strong> and <strong>Device_Types</strong> tables based on the <code>device_type_id</code>, then filters the results for devices categorized as <code>smartphone</code>, <code>computer</code>, or <code>tablet</code>.</p>
+
+            <h3>Result</h3>
+            <p>The query returned <span class="highlight">714</span> devices matching the criteria.</p>
+        </section>
+
+        <section class="flag glass">
+            <h2>Flag</h2>
+            <p>The flag is: <span class="flag">flag{714}</span></p>
+        </section>
+
+        <footer class="mt-auto text-white-50">
+            © 2022 Remote Coders - A Community for Hackers and Programmers <br> Developed by Tanmay Tiwari
+        </footer>
+    </div>
+</body>
+</html>
