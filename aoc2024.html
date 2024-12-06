@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advent of Cyber 2024</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0d1117;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background: url('https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/62c435d1f4d84a005f5df811-1729071862101.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            text-align: left;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .logo img {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0 0 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #bdbdbd;
+            margin-bottom: 20px;
+        }
+
+        .info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #8cff8c;
+        }
+
+        .info span img {
+            width: 18px;
+            height: 18px;
+        }
+
+        .buttons {
+            margin-top: 15px;
+        }
+
+        .buttons button {
+            background-color: #006eff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .buttons button:hover {
+            background-color: #0055cc;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Task Section */
+        .task-section {
+            padding: 20px;
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #161b22;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .task-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #8cff8c;
+        }
+
+        .task {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            background-color: #0d1117;
+            border: 1px solid #2e3238;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .task:hover {
+            background-color: #1a1f27;
+        }
+
+        .task-title {
+            font-size: 1.5rem;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .task-desc {
+            font-size: 1rem;
+            color: #bdbdbd;
+            margin: 5px 0 0;
+        }
+        .flag-container {
+            border: 1px solid #2f2f2f;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 700px;
+            background-color: #1b1b1b;
+            border-radius: 10px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .flag-container h2 {
+            color: #ff7b00;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .flag {
+            font-size: 1.2em;
+            margin: 15px 0;
+            background-color: #111;
+            border-left: 5px solid #00f7ff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .flag strong {
+            color: #ff7b00;
+        }
+
+        .back-button {
+            padding: 12px 25px;
+            color: #fff;
+            background-color: #00f7ff;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #00d6ff;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Add a glowing border to the flag container */
+        .flag-container:hover {
+            border: 1px solid #00f7ff;
+            box-shadow: 0px 0px 20px #00f7ff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner Section -->
+    <div class="banner">
+        <div class="banner-overlay"></div>
+        <div class="content">
+            <div class="logo">
+                <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/62c435d1f4d84a005f5df811-1728982657816" alt="Room Logo">
+                <h1 class="title">Advent of Cyber 2024</h1>
+            </div>
+            <p class="subtitle">Dive into the wonderful world of cybersecurity by engaging in festive beginner-friendly exercises every day in the lead-up to Christmas!</p>
+            <div class="info">
+                <span><img src="https://img.icons8.com/emoji/48/000000/green-circle-emoji.png" alt="Difficulty"> Easy</span>
+                <span><img src="https://img.icons8.com/ios/50/ffffff/clock--v1.png" alt="Duration"> 1440 min</span>
+            </div>
+            <div class="buttons">
+                <!-- <button>Share the challenge</button> -->
+                <!-- <button>Start AttackBox</button> -->
+                <a href="https://tryhackme.com/r/room/adventofcyber2024"><button>Room Link</button></a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Task Data Section -->
+    <div class="task-section">
+           <!-- Back to Top Button -->
+            <a href="../tryhackme.html" class="back-button">Back</a>
+        <!-- Task 1 -->
+    <div class="flag-container">
+        <h2>Day 1: Maybe SOC-mas music, he thought, doesn't come from a store?</h2>
+        <div class="flag"><strong>Looks like the song.mp3 file is not what we expected! Run "exiftool song.mp3" in your terminal to find out the author of the song. Who is the author? </strong> <br><br> <b>Answer</b><br> <br> Tyler Ramsbey</div>
+        <div class="flag"><strong>The malicious PowerShell script sends stolen info to a C2 server. What is the URL of this C2 server?</strong> <br><br><b>Answer</b><br><br>http://papash3ll.thm/data</div>
+        <div class="flag"><strong>Who is M.M? Maybe his Github profile page would provide clues?</strong> <br><br> <b>Answer</b><br> <br>Mayor Malware</div>
+        <div class="flag"><strong>What is the number of commits on the GitHub repo where the issue was raised?</strong> <br><br> <b>Answer</b><br> <br>1</div>
+    </div>
+
+    <!-- Task 2 -->
+    <div class="flag-container">
+        <h2>Day 2: One man's false positive is another man's potpourri.</h2>
+        <div class="flag"><strong>What is the name of the account causing all the failed login attempts?</strong> <br><br> <b>Answer</b><br> <br> </div>
+        <div class="flag"><strong>How many failed logon attempts were observed?</strong> <br><br>Answer<br><br></div>
+        <div class="flag"><strong>What is the IP address of Glitch?</strong> <br><br> <b>Answer</b><br> <br></div>
+        <div class="flag"><strong>When did Glitch successfully logon to ADM-01? Format: MMM D, YYYY HH:MM:SS.SSS</strong> <br><br> <b>Answer</b><br> <br></div>
+        <div class="flag"><strong>What is the decoded command executed by Glitch to fix the systems of Wareville?</strong> <br><br> <b>Answer</b><br> <br></div>
+        <div class="flag"><strong>If you enjoyed this task, feel free to check out the Investigating with ELK 101 room.</strong> <br><br> <b>Answer</b><br> <br> </div>
+    </div>
+
+    <!-- Task 8 -->
+    <div class="flag-container">
+        <h2>Day 3: Even if I wanted to go, their vulnerabilities wouldn't allow it.</h2>
+        <div class="flag"><strong>BLUE: Where was the web shell uploaded to?</strong><br><br>Answer<br><br>/media/images/rooms/shell.php</div>
+        <div class="flag"><strong>BLUE: What is the IP address that accessed the web shell?</strong><br><br>Answer<br><br>10.11.83.34</div>
+        <div class="flag"><strong>RED: What is the contents of the flag.txt?</strong> <br><br>Answer<br><br>THM{Gl1tch_Was_H3r3}</div>
+    </div>
+
+    <!-- Task 9 -->
+    <!-- <div class="flag-container">
+        <h2>Task 9: Web Shell Forensics</h2>
+        <div class="flag"><strong>Web Shell Path:</strong> /media/images/rooms/shell.php</div>
+        <div class="flag"><strong>IP Accessing Web Shell:</strong> 10.11.83.34</div>
+        <div class="flag"><strong>Flag:</strong> THM{Gl1tch_Was_H3r3}</div>
+    </div> -->
+
+    <!-- Task 10 -->
+    <!-- <div class="flag-container">
+        <h2>Task 10: Phishing Investigation</h2>
+        <div class="flag"><strong>Flag:</strong> THM{GlitchTestingForSpearphishing}</div>
+        <div class="flag"><strong>ATT&CK Technique ID:</strong> T1059</div>
+        <div class="flag"><strong>ATT&CK Subtechnique ID:</strong> T1059.003</div>
+        <div class="flag"><strong>Atomic Test Name:</strong> Simulate BlackByte Ransomware Print Bombing</div>
+        <div class="flag"><strong>Test File Name:</strong> Wareville_Ransomware.txt</div>
+        <div class="flag"><strong>Flag from Test:</strong> THM{R2xpdGNoIGlzIG5vdCB0aGUgZW5lbXk=}</div>
+    </div> -->
+    <!-- Back to Top Button -->
+    <a href="#" class="back-button">Back to Top</a>
+    </div>
+</body>
+</html>
