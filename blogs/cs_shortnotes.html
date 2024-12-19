@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortnote CS</title>
+    
+    <style>
+        /* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Container */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text color */
+    padding: 20px;
+    background-image: url('background.jpg'); /* Optional: Add your own background image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Container to hold the content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+/* Header Styling */
+h1 {
+    font-size: 2rem;
+    color: #81C784; /* Light green color for headings */
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Section Styling with Glass Effect */
+.content {
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow around the sections */
+    backdrop-filter: blur(10px); /* Glass effect (blurring the background) */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    color: #e0e0e0; /* Light text on dark background */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    text-align: center;
+}
+
+/* Image styling */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow around the images */
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="content">
+            <h1>Function</h1>
+            <img src="function.png" alt="Function">
+        </section>
+        <section class="content">
+            <h1>File Handling in Python</h1>
+            <img src="File Handling in Python.png" alt="File Handling in Python">
+        </section>
+        <section class="content">
+            <h1>Stacks</h1>
+            <img src="stacks.png" alt="Stacks">
+        </section>
+        <section class="content">
+            <h1>Computer Network 1</h1>
+            <img src="Computer Network 1.png" alt="Computer Network 1">
+        </section>
+        <section class="content">
+            <h1>Computer Network 2</h1>
+            <img src="Computer Network 2.png" alt="Computer Network 2">
+        </section>
+    </div>
+</body>
+</html>
