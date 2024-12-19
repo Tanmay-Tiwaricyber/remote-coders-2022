@@ -202,6 +202,52 @@
             border: 1px solid #00f7ff;
             box-shadow: 0px 0px 20px #00f7ff;
         }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #00f7ff;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            text-align: center;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .back-to-top:hover {
+            background-color: #00d6ff;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+        }
+        .task-banner {
+            display: inline-block;
+            position: relative;
+            border-radius: 8px; /* Rounded corners */
+            padding: 10px; /* Padding for spacing */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            overflow: hidden;
+        }
+
+        .task-banner img {
+            width: 100%; /* Image takes full width */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 6px; /* Match rounded corners */
+            display: block;
+        }
+
+        .task-banner:hover {
+            background-color: #e0f7fa00; /* Light cyan on hover */
+            transform: scale(1.02); /* Slight zoom effect */
+            transition: 0.3s ease-in-out; /* Smooth transition for hover effect */
+        }
+
+        .task-banner img:hover {
+            transform: scale(1.05); /* Slight zoom effect on image */
+            transition: 0.3s ease-in-out; /* Smooth transition for hover effect */
+        }
+
+        
     </style>
 </head>
 <body>
@@ -233,6 +279,7 @@
         <!-- Task 1 -->
     <div class="flag-container">
         <h2>Day 1: Maybe SOC-mas music, he thought, doesn't come from a store?</h2>
+        <span class=task-banner><img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/5fc2847e1bbebc03aa89fbf2-1730193392309.svg" alt="" srcset=""></span >
         <div class="flag"><strong>Looks like the song.mp3 file is not what we expected! Run "exiftool song.mp3" in your terminal to find out the author of the song. Who is the author? </strong> <br><br> <b>Answer</b><br> <br> Tyler Ramsbey</div>
         <div class="flag"><strong>The malicious PowerShell script sends stolen info to a C2 server. What is the URL of this C2 server?</strong> <br><br><b>Answer</b><br><br>http://papash3ll.thm/data</div>
         <div class="flag"><strong>Who is M.M? Maybe his Github profile page would provide clues?</strong> <br><br> <b>Answer</b><br> <br>Mayor Malware</div>
@@ -241,7 +288,9 @@
 
     <!-- Task 2 -->
     <div class="flag-container">
+        
         <h2>Day 2: One man's false positive is another man's potpourri.</h2>
+        <span class=task-banner><img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/5dbea226085ab6182a2ee0f7-1730369227263.png" alt="" srcset=""></span >
         <div class="flag"><strong>What is the name of the account causing all the failed login attempts?</strong> <br><br> <b>Answer</b><br> <br> </div>
         <div class="flag"><strong>How many failed logon attempts were observed?</strong> <br><br>Answer<br><br></div>
         <div class="flag"><strong>What is the IP address of Glitch?</strong> <br><br> <b>Answer</b><br> <br></div>
@@ -253,18 +302,24 @@
     <!-- Task 8 -->
     <div class="flag-container">
         <h2>Day 3: Even if I wanted to go, their vulnerabilities wouldn't allow it.</h2>
+        <span class=task-banner><img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/5de96d9ca744773ea7ef8c00-1731420330182.png" alt="" srcset=""></span >
         <div class="flag"><strong>BLUE: Where was the web shell uploaded to?</strong><br><br>Answer<br><br>/media/images/rooms/shell.php</div>
         <div class="flag"><strong>BLUE: What is the IP address that accessed the web shell?</strong><br><br>Answer<br><br>10.11.83.34</div>
         <div class="flag"><strong>RED: What is the contents of the flag.txt?</strong> <br><br>Answer<br><br>THM{Gl1tch_Was_H3r3}</div>
     </div>
 
     <!-- Task 9 -->
-    <!-- <div class="flag-container">
-        <h2>Task 9: Web Shell Forensics</h2>
-        <div class="flag"><strong>Web Shell Path:</strong> /media/images/rooms/shell.php</div>
-        <div class="flag"><strong>IP Accessing Web Shell:</strong> 10.11.83.34</div>
-        <div class="flag"><strong>Flag:</strong> THM{Gl1tch_Was_H3r3}</div>
-    </div> -->
+    <div class="flag-container">
+        <h2>Day 4: I’m all atomic inside!</h2>
+        <span class=task-banner><img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/5fc2847e1bbebc03aa89fbf2-1730709355879.png" alt="" srcset=""></span >
+        <div class="flag"><strong>What was the flag found in the .txt file that is found in the same directory as the PhishingAttachment.xslm artefact?</strong><br><br>Answer<br><br>THM{GlitchTestingForSpearphishing}</div>
+        <div class="flag"><strong>What ATT&CK technique ID would be our point of interest?</strong><br><br>Answer<br><br>THM{GlitchTestingForSpearphishing}</div>
+        <div class="flag"><strong>What ATT&CK subtechnique ID focuses on the Windows Command Shell?</strong><br><br>Answer<br><br>T1059.003</div>
+        <div class="flag"><strong>What is the name of the Atomic Test to be simulated?</strong><br><br>Answer<br><br>Simulate BlackByte Ransomware Print Bombing</div>
+        <div class="flag"><strong>What is the name of the file used in the test?</strong><br><br>Answer<br><br>Wareville_Ransomware.txt</div>
+        <div class="flag"><strong>What is the flag found from this Atomic Test?</strong><br><br>Answer<br><br>THM{R2xpdGNoIGlzIG5vdCB0aGUgZW5lbXk=}</div>
+
+    </div>
 
     <!-- Task 10 -->
     <!-- <div class="flag-container">
