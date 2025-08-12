@@ -1,248 +1,292 @@
 <!DOCTYPE html>
-<html lang="en" class="h-100">
-
+<html lang="en" class="no-js h-100">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Remote Coders - Blogs">
-    <meta name="author" content="Tanmay Tiwari">
-    <title>Remote Coders</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Tanmay Tiwari" />
+  <meta name="description" content="Remote Coders — Blogs: cybersecurity, programming writeups, THM walkthroughs." />
+  <meta name="theme-color" content="#000000" />
+  <title>Remote Coders — Blogs</title>
 
-    <link rel="stylesheet" href="CSS/style.css">
+  <!-- Google Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3307941732805238" crossorigin="anonymous"></script>
 
-    <!-- Custom styles -->
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            /* height: 100%; */
-            font-family: 'Roboto', sans-serif;
-            scroll-behavior: smooth;
-            box-sizing: border-box;
-        }
-        /* Responsive Blog Card Layout */
-        .blog-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            padding: 20px;
-        }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
 
-        /* Blog card styling */
-        .blog-slider__item {
-            width: 100%;
-            max-width: 350px;
-            background: #1a1e2b;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            /* background-image: url(res/Picture1.png); */
-        }
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="res/web_icon.png" />
 
-        .blog-slider__item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
-        }
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="CSS/style.css" />
+  <link rel="stylesheet" href="CSS/blog.css" />
 
-        .blog-slider__img {
-            overflow: hidden;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
 
-        .blog-slider__img img {
-            width: 100px;
-            height: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .blog-slider__item:hover .blog-slider__img img {
-            transform: scale(1.1);
-        }
-
-        .blog-slider__content {
-            color: #fff;
-            text-align: left;
-        }
-
-        .blog-slider__code {
-            color: #00ccff;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .blog-slider__title {
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            font-weight: bold;
-            color: #ff8800;
-        }
-
-        .blog-slider__text {
-            font-size: 1em;
-            margin-bottom: 20px;
-        }
-
-        .blog-slider__button {
-            padding: 10px 20px;
-            background: #00ccff;
-            color: #fff;
-            border-radius: 5px;
-            text-transform: uppercase;
-            font-weight: bold;
-            font-size: 0.9em;
-            transition: background 0.3s ease;
-        }
-
-        .blog-slider__button:hover {
-            background: #ff8800;
-            color: #fff;
-        }
-
-    </style>
+  <!-- Site JS -->
+  <script defer src="index.js"></script>
 </head>
+<body class="h-100">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="cursor"></div>
 
-<body class="d-flex h-100 text-white bg-dark">
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a class="brand" href="index.html" aria-label="Remote Coders Home">
+        <span class="brand-bracket">[</span>
+        <span class="brand-name glitch" data-text="REMOTE CODERS">REMOTE CODERS</span>
+        <span class="brand-bracket">]</span>
+      </a>
 
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <header class="mb-auto">
-            <div class="nav-container">
-                <h3 class="float-md-start mb-0">RC / Blogs</h3>
-                <button class="hamburger" onclick="toggleMenu()">&#9776;</button> <!-- Hamburger icon -->
-                <nav class="nav nav-masthead justify-content-center float-md-end" id="navLinks">
-                    <a class="nav-link" href="index.html">Home</a>
-                    <a class="nav-link active" aria-current="page"  href="blogs.html">Blogs</a>
-                    <a class="nav-link" href="tryhackme.html">THM Walkthroughs</a>
-                    <!-- <a class="nav-link" href="partners.html">Partners</a> -->
-                    <!-- <a class="nav-link" href="supporters.html">Supporters</a> -->
-                    <a class="nav-link" href="contact us.html">Contact Us</a>
-                    <a class="nav-link" href="about us.html">About Us</a>
-                </nav>
-            </div>
-            
-        </header>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link active" aria-current="page" href="blogs.html">Blogs</a></li>
+          <li><a class="nav-link" href="tryhackme.html">THM Walkthroughs</a></li>
+          <li><a class="nav-link" href="contact us.html">Contact Us</a></li>
+          <li><a class="nav-link" href="about us.html">About Us</a></li>
+        </ul>
+      </nav>
 
-        <!-- Blog Cards Container -->
-        <div class="blog-container">
-            <div class="blog-slider__item">
-                <div class="blog-slider__img">
-                    <img src="https://cdn1.iconfinder.com/data/icons/folder-outline-cracked/32/folder_Blind_eye_off_invisible_Hidden_document-512.png" alt="Blog Image">
-                </div>
-                <div class="blog-slider__content">
-                    <span class="blog-slider__code">26 December 2022</span>
-                    <div class="blog-slider__title">Hide Folder📂</div>
-                    <div class="blog-slider__text">How to Hide Folder or Files from Windows?</div>
-                    <a href="blogs/blog1.html" class="blog-slider__button">Read More</a>
-                </div>
-            </div>
-
-            <div class="blog-slider__item">
-                <div class="blog-slider__img">
-                    <img src="https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/267_Python-1024.png" alt="Blog Image">
-                </div>
-                <div class="blog-slider__content">
-                    <span class="blog-slider__code">28 December 2022</span>
-                    <div class="blog-slider__title">Python was not found</div>
-                    <div class="blog-slider__text">[Solved] python was not found; run without arguments to install from the Microsoft store, or...</div>
-                    <a href="blogs/blog2.html" class="blog-slider__button">Read More</a>
-                </div>
-            </div>
-
-            <div class="blog-slider__item">
-                <div class="blog-slider__img">
-                    <img src="https://img.icons8.com/?size=100&id=tScMUnfxVE7Q&format=png&color=000000" alt="Blog Image">
-                </div>
-                <div class="blog-slider__content">
-                    <span class="blog-slider__code">17 October 2024</span>
-                    <div class="blog-slider__title">Canva Premium</div>
-                    <div class="blog-slider__text">check it out</div>
-                    <a href="blogs/blog3.html" class="blog-slider__button">Read More</a>
-                </div>
-            </div>
-
-            <div class="blog-slider__item">
-                <div class="blog-slider__img">
-                    <img src="https://img.icons8.com/?size=100&id=AbQBhN9v62Ob&format=png&color=000000" alt="Blog Image">
-                </div>
-                <div class="blog-slider__content">
-                    <span class="blog-slider__code">17 October 2024</span>
-                    <div class="blog-slider__title">GfG Problem of the day</div>
-                    <div class="blog-slider__text">Geeks For Geeks</div>
-                    <a href="blogs/gfg.html" class="blog-slider__button">Read More</a>
-                </div>
-            </div>
-
-            <div class="blog-slider__item">
-                <div class="blog-slider__img">
-                    <img src="res/logo_deadface_ctf_2024.png" alt="Blog Image">
-                </div>
-                <div class="blog-slider__content">
-                    <span class="blog-slider__code">20 October 2024</span>
-                    <div class="blog-slider__title">DEADFACE CTF 2024</div>
-                    <div class="blog-slider__text">Write-up</div>
-                    <a href="blogs/deadfacectf2024.html" class="blog-slider__button">Read More</a>
-                </div>
-            </div>
-
-            <div class="blog-slider__item">
-                <div class="blog-slider__img">
-                    <img src="https://www.jnvmic.in/front_assets/images/logo-img.png" alt="Blog Image">
-                </div>
-                <div class="blog-slider__content">
-                    <span class="blog-slider__code">15 December 2024</span>
-                    <div class="blog-slider__title">Live Class</div>
-                    <div class="blog-slider__text"></div>
-                    <a href="blogs/liveclass.html" class="blog-slider__button">See More</a>
-                </div>
-            </div>
-
-            <div class="blog-slider__item">
-                <div class="blog-slider__img">
-                    <img src="rc-blog.png" alt="Blog Image">
-                </div>
-                <div class="blog-slider__content">
-                    <span class="blog-slider__code">19 December 2024</span>
-                    <div class="blog-slider__title">Short Notes CS</div>
-                    <div class="blog-slider__text"></div>
-                    <a href="blogs/cs_shortnotes.html" class="blog-slider__button">See More</a>
-                </div>
-            </div>
-
-            <div class="blog-slider__item">
-                <div class="blog-slider__img">
-                    <img src="rc-blog.png" alt="Blog Image">
-                </div>
-                <div class="blog-slider__content">
-                    <span class="blog-slider__code">19 March 2025</span>
-                    <div class="blog-slider__title">IMP Differences CS 12</div>
-                    <div class="blog-slider__text"></div>
-                    <a href="blogs/imp_diff_cs.html" class="blog-slider__button">See More</a>
-                </div>
-            </div>
-
-            
-        </div>
-
-        <footer class="mt-auto text-white-50">
-            © 2022 Remote Coders - A Community for Hackers and Programmers <br> Developed by Tanmay Tiwari
-        </footer>
+      <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-controls="menuOverlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
 
-    <script>
-        // Toggle the hamburger menu
-        function toggleMenu() {
-            const nav = document.getElementById("navLinks");
-            if (nav.style.display === "flex") {
-                nav.style.display = "none";
-            } else {
-                nav.style.display = "flex";
-            }
-        }
-    </script>
+    <!-- Mobile Fullscreen Menu -->
+    <div id="menuOverlay" class="menu-overlay" hidden>
+      <nav class="overlay-nav" aria-label="Mobile">
+        <a class="overlay-link" href="index.html">> Home</a>
+        <a class="overlay-link" href="blogs.html" aria-current="page">> Blogs</a>
+        <a class="overlay-link" href="tryhackme.html">> THM Walkthroughs</a>
+        <a class="overlay-link" href="contact us.html">> Contact Us</a>
+        <a class="overlay-link" href="about us.html">> About Us</a>
+      </nav>
+    </div>
+  </header>
 
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero-min">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="noise" aria-hidden="true"></div>
+      <div class="grid-floor" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <!-- <p class="status monospace" data-reveal>
+          <span class="dot"></span> SYS: ONLINE • LATEST POSTS
+        </p> -->
+        <h1 class="hero-title glitch" data-text="BLOGS" data-reveal>BLOGS</h1>
+        <p class="hero-subtitle monospace" data-reveal>Writeups, guides, notes, and more.</p>
+      </div>
+    </section>
+
+    <!-- Toolbar -->
+    <section class="blog-toolbar">
+      <div class="container">
+        <input id="search" class="search-input monospace" type="search" placeholder="Search posts, topics, tags..." aria-label="Search posts" />
+        <div class="tags" role="toolbar" aria-label="Filter by tag">
+          <button class="tag monospace" data-tag="windows" aria-pressed="false">#windows</button>
+          <button class="tag monospace" data-tag="python" aria-pressed="false">#python</button>
+          <button class="tag monospace" data-tag="ctf" aria-pressed="false">#ctf</button>
+          <button class="tag monospace" data-tag="tools" aria-pressed="false">#tools</button>
+          <button class="tag monospace" data-tag="notes" aria-pressed="false">#notes</button>
+          <button class="tag monospace" data-tag="classes" aria-pressed="false">#classes</button>
+          <button class="tag monospace" data-tag="cs" aria-pressed="false">#cs</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="blog-section">
+      <div class="container">
+        <div id="blogGrid" class="blog-grid">
+          <!-- 1 -->
+          <a href="blogs/blog1.html" class="card tilt blog-card" data-reveal
+             data-tags="windows tips how-to" data-title="Hide Folder" data-date="2022-12-26">
+            <div class="thumb">
+              <img src="https://cdn1.iconfinder.com/data/icons/folder-outline-cracked/32/folder_Blind_eye_off_invisible_Hidden_document-512.png" alt="Hidden folder icon" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">26 December 2022 • Windows</div>
+              <h3 class="title">Hide Folder</h3>
+              <p class="excerpt">How to hide folders and files on Windows securely.</p>
+              <span class="arrow monospace">></span>
+            </div>
+          </a>
+
+          <!-- 2 -->
+          <!-- <a href="blogs/blog2.html" class="card tilt blog-card" data-reveal
+             data-tags="python setup troubleshooting" data-title="Python was not found" data-date="2022-12-28">
+            <div class="thumb">
+              <img src="https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/267_Python-1024.png" alt="Python logo" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">28 December 2022 • Python</div>
+              <h3 class="title">Python was not found</h3>
+              <p class="excerpt">Fix: “python was not found; run without arguments to install...”</p>
+              <span class="arrow monospace">></span>
+            </div>
+          </a> -->
+
+          <!-- 3 -->
+          <a href="blogs/blog3.html" class="card tilt blog-card" data-reveal
+             data-tags="tools design" data-title="Canva Premium" data-date="2024-10-17">
+            <div class="thumb">
+              <img src="https://img.icons8.com/?size=100&id=tScMUnfxVE7Q&format=png&color=000000" alt="Canva icon" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">17 October 2024 • Tools</div>
+              <h3 class="title">Canva Premium</h3>
+              <p class="excerpt">Quick notes and tips for design workflows.</p>
+              <span class="arrow monospace">></span>
+            </div>
+          </a>
+
+          <!-- 4 -->
+          <a href="blogs/gfg.html" class="card tilt blog-card" data-reveal
+             data-tags="cs practice dsa" data-title="GfG Problem of the day" data-date="2024-10-17">
+            <div class="thumb">
+              <img src="https://img.icons8.com/?size=100&id=AbQBhN9v62Ob&format=png&color=000000" alt="GfG icon" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">17 October 2024 • CS</div>
+              <h3 class="title">GfG Problem of the day</h3>
+              <p class="excerpt">Daily practice and explanations for GfG POTD.</p>
+              <span class="arrow monospace">></span>
+            </div>
+          </a>
+
+          <!-- 5 -->
+          <a href="blogs/deadfacectf2024.html" class="card tilt blog-card" data-reveal
+             data-tags="ctf writeup forensics" data-title="DEADFACE CTF 2024" data-date="2024-10-20">
+            <div class="thumb">
+              <img src="res/logo_deadface_ctf_2024.png" alt="DEADFACE CTF 2024" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">20 October 2024 • CTF</div>
+              <h3 class="title">DEADFACE CTF 2024</h3>
+              <p class="excerpt">Write-up of solved challenges and methodology.</p>
+              <span class="arrow monospace">></span>
+            </div>
+          </a>
+
+          <!-- 6 -->
+          <a href="blogs/liveclass.html" class="card tilt blog-card" data-reveal
+             data-tags="classes updates" data-title="Live Class" data-date="2024-12-15">
+            <div class="thumb">
+              <img src="https://www.jnvmic.in/front_assets/images/logo-img.png" alt="Live Class" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">15 December 2024 • Classes</div>
+              <h3 class="title">Live Class</h3>
+              <p class="excerpt">Schedule and resources for sessions.</p>
+              <span class="arrow monospace">></span>
+            </div>
+          </a>
+
+          <!-- 7 -->
+          <a href="blogs/cs_shortnotes.html" class="card tilt blog-card" data-reveal
+             data-tags="cs notes study" data-title="Short Notes CS" data-date="2024-12-19">
+            <div class="thumb">
+              <img src="rc-blog.png" alt="Short Notes CS" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">19 December 2024 • Notes</div>
+              <h3 class="title">Short Notes CS</h3>
+              <p class="excerpt">Concise topic summaries for quick revision.</p>
+              <span class="arrow monospace">></span>
+            </div>
+          </a>
+
+          <!-- 8 -->
+          <a href="blogs/imp_diff_cs.html" class="card tilt blog-card" data-reveal
+             data-tags="cs notes differences" data-title="IMP Differences CS 12" data-date="2025-03-19">
+            <div class="thumb">
+              <img src="rc-blog.png" alt="Important Differences CS 12" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">19 March 2025 • CS</div>
+              <h3 class="title">IMP Differences CS 12</h3>
+              <p class="excerpt">High-yield comparisons for exams.</p>
+              <span class="arrow monospace">></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="foot-brand">
+          <span class="brand-bracket">[</span>
+          <span class="monospace">RC</span>
+          <span class="brand-bracket">]</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="blogs.html" aria-current="page">Blogs</a>
+          <a href="tryhackme.html">THM</a>
+          <a href="contact us.html">Contact</a>
+          <a href="about us.html">About</a>
+        </nav>
+        <div class="foot-copy monospace">
+          © 2022 Remote Coders — A Community for Hackers and Programmers<br />
+          Developed by Silent Programmer
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page filtering script -->
+  <script>
+    document.documentElement.classList.remove('no-js');
+
+    (function blogFilters() {
+      const input = document.getElementById('search');
+      const tags = Array.from(document.querySelectorAll('.tag'));
+      const cards = Array.from(document.querySelectorAll('.blog-card'));
+
+      let activeTags = new Set();
+
+      const norm = s => (s || '').toLowerCase().trim();
+      const matches = (card, q, tagSet) => {
+        const hay = [
+          card.dataset.title,
+          card.dataset.tags,
+          card.textContent
+        ].join(' ').toLowerCase();
+
+        const qOk = !q || hay.includes(q);
+        const tagsOk = !tagSet.size || [...tagSet].every(t => (card.dataset.tags || '').toLowerCase().includes(t));
+        return qOk && tagsOk;
+      };
+
+      const apply = () => {
+        const q = norm(input.value);
+        cards.forEach(c => {
+          c.style.display = matches(c, q, activeTags) ? '' : 'none';
+        });
+      };
+
+      // Search
+      input.addEventListener('input', apply);
+
+      // Tag toggles
+      tags.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const t = btn.dataset.tag.toLowerCase();
+          const pressed = btn.getAttribute('aria-pressed') === 'true';
+          btn.setAttribute('aria-pressed', String(!pressed));
+          if (pressed) activeTags.delete(t); else activeTags.add(t);
+          apply();
+        });
+      });
+
+      // Init
+      apply();
+    })();
+  </script>
 </body>
-
 </html>
