@@ -1,163 +1,187 @@
 <!DOCTYPE html>
-<html lang="en" class="h-100">
-
+<html lang="en" class="no-js h-100">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Remote Coders - Blogs">
-    <meta name="author" content="Tanmay Tiwari">
-    <title>Remote Coders</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Tanmay Tiwari" />
+  <meta name="description" content="Remote Coders — GeeksforGeeks POTD and practice notes." />
+  <meta name="theme-color" content="#000000" />
+  <title>Remote Coders — GfG POTD</title>
 
-    <link rel="stylesheet" href="../CSS/style.css">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../res/web_icon.png" />
 
-    <!-- Custom styles -->
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            /* height: 100%; */
-            font-family: 'Roboto', sans-serif;
-            scroll-behavior: smooth;
-            box-sizing: border-box;
-        }
-        /* Responsive Blog Card Layout */
-        .blog-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            padding: 20px;
-        }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
 
-        /* Blog card styling */
-        .blog-slider__item {
-            width: 100%;
-            max-width: 350px;
-            background: #1a1e2b;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            /* background-image: url(res/Picture1.png); */
-        }
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../CSS/style.css" />
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="../CSS/gfg.css" />
 
-        .blog-slider__item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
-        }
-
-        .blog-slider__img {
-            overflow: hidden;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .blog-slider__img img {
-            width: 100px;
-            height: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .blog-slider__item:hover .blog-slider__img img {
-            transform: scale(1.1);
-        }
-
-        .blog-slider__content {
-            color: #fff;
-            text-align: left;
-        }
-
-        .blog-slider__code {
-            color: #00ccff;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .blog-slider__title {
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            font-weight: bold;
-            color: #ff8800;
-        }
-
-        .blog-slider__text {
-            font-size: 1em;
-            margin-bottom: 20px;
-        }
-
-        .blog-slider__button {
-            padding: 10px 20px;
-            background: #00ccff;
-            color: #fff;
-            border-radius: 5px;
-            text-transform: uppercase;
-            font-weight: bold;
-            font-size: 0.9em;
-            transition: background 0.3s ease;
-        }
-
-        .blog-slider__button:hover {
-            background: #ff8800;
-            color: #fff;
-        }
-
-    </style>
+  <!-- Global JS -->
+  <script defer src="../index.js"></script>
 </head>
+<body class="h-100">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="cursor"></div>
 
-<body class="d-flex h-100 text-white bg-dark">
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a class="brand" href="../index.html" aria-label="Remote Coders Home">
+        <span class="brand-bracket">[</span>
+        <span class="brand-name glitch" data-text="REMOTE CODERS">REMOTE CODERS</span>
+        <span class="brand-bracket">]</span>
+      </a>
 
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <header class="mb-auto">
-            <div class="nav-container">
-                <h3 class="float-md-start mb-0">RC / GfG</h3>
-                <button class="hamburger" onclick="toggleMenu()">&#9776;</button> <!-- Hamburger icon -->
-                <nav class="nav nav-masthead justify-content-center float-md-end" id="navLinks">
-                    <a class="nav-link" href="../index.html">Home</a>
-                    <a class="nav-link active" aria-current="page"  href="../blogs.html">Blogs</a>
-                    <a class="nav-link" href="../tryhackme.html">THM Walkthroughs</a>
-                    <!-- <a class="nav-link" href="partners.html">Partners</a> -->
-                    <!-- <a class="nav-link" href="supporters.html">Supporters</a> -->
-                    <a class="nav-link" href="../contact us.html">Contact Us</a>
-                    <a class="nav-link" href="../about us.html">About Us</a>
-                </nav>
-            </div>
-            
-        </header>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="../index.html">Home</a></li>
+          <li><a class="nav-link" href="../blogs.html">Blogs</a></li>
+          <li><a class="nav-link" href="../tryhackme.html">THM Walkthroughs</a></li>
+          <li><a class="nav-link" href="../contact us.html">Contact Us</a></li>
+          <li><a class="nav-link" href="../about us.html">About Us</a></li>
+        </ul>
+      </nav>
 
-        <!-- Blog Cards Container -->
-        <div class="blog-container">
-            <div class="blog-slider__item">
-                <div class="blog-slider__img">
-                    <img src="https://img.icons8.com/?size=100&id=AbQBhN9v62Ob&format=png&color=000000" alt="Blog Image">
-                </div>
-                <div class="blog-slider__content">
-                    <span class="blog-slider__code">18 October 2024</span>
-                    <div class="blog-slider__title">GfG problem of the day</div>
-                    <div class="blog-slider__text">Single Number</div>
-                    <a href="../gfg-potd/1.html" class="blog-slider__button">Read More</a>
-                </div>
-            </div>
-            
-        </div>
-
-        <footer class="mt-auto text-white-50">
-            © 2022 Remote Coders - A Community for Hackers and Programmers <br> Developed by Tanmay Tiwari
-        </footer>
+      <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-controls="menuOverlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
 
-    <script>
-        // Toggle the hamburger menu
-        function toggleMenu() {
-            const nav = document.getElementById("navLinks");
-            if (nav.style.display === "flex") {
-                nav.style.display = "none";
-            } else {
-                nav.style.display = "flex";
-            }
-        }
-    </script>
+    <!-- Mobile Fullscreen Menu -->
+    <div id="menuOverlay" class="menu-overlay" hidden>
+      <nav class="overlay-nav" aria-label="Mobile">
+        <a class="overlay-link" href="../index.html">> Home</a>
+        <a class="overlay-link" href="../blogs.html">> Blogs</a>
+        <a class="overlay-link" href="../tryhackme.html">> THM Walkthroughs</a>
+        <a class="overlay-link" href="../contact us.html">> Contact Us</a>
+        <a class="overlay-link" href="../about us.html">> About Us</a>
+      </nav>
+    </div>
+  </header>
 
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero-min">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="noise" aria-hidden="true"></div>
+      <div class="grid-floor" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <!-- <p class="status monospace" data-reveal>
+          <span class="dot"></span> SYS: ONLINE • GfG POTD
+        </p> -->
+        <h1 class="hero-title glitch" data-text="GEEKSFORGEEKS — POTD" data-reveal>GEEKSFORGEEKS — POTD</h1>
+        <p class="hero-subtitle monospace" data-reveal>
+          Daily DSA practice with concise explanations and code notes.
+        </p>
+      </div>
+    </section>
+
+    <!-- Toolbar -->
+    <section class="gfg-toolbar">
+      <div class="container">
+        <input id="search" class="search-input monospace" type="search" placeholder="Search problems, topics, tags..." aria-label="Search problems" />
+        <div class="tags" role="toolbar" aria-label="Filter by tag">
+          <button class="tag monospace" data-tag="bit" aria-pressed="false">#bit</button>
+          <button class="tag monospace" data-tag="array" aria-pressed="false">#array</button>
+          <button class="tag monospace" data-tag="string" aria-pressed="false">#string</button>
+          <button class="tag monospace" data-tag="dp" aria-pressed="false">#dp</button>
+          <button class="tag monospace" data-tag="greedy" aria-pressed="false">#greedy</button>
+          <button class="tag monospace" data-tag="graph" aria-pressed="false">#graph</button>
+          <button class="tag monospace" data-tag="tree" aria-pressed="false">#tree</button>
+          <button class="tag monospace" data-tag="stack" aria-pressed="false">#stack</button>
+          <button class="tag monospace" data-tag="math" aria-pressed="false">#math</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GfG Grid -->
+    <section class="gfg-section">
+      <div class="container">
+        <div id="gfgGrid" class="gfg-grid">
+          <!-- POTD 1 -->
+          <a href="../gfg-potd/1.html" class="card tilt gfg-card" data-reveal
+             data-tags="bit array xor" data-title="Single Number" data-date="2024-10-18">
+            <div class="thumb">
+              <img src="https://img.icons8.com/?size=100&id=AbQBhN9v62Ob&format=png&color=000000" alt="GfG icon" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">18 October 2024 • POTD</div>
+              <h3 class="title">Single Number</h3>
+              <p class="excerpt">Find the element appearing once (others twice) — XOR trick.</p>
+              <div class="thm-badges">
+                <span class="chip chip--easy monospace">easy</span>
+                <span class="chip monospace">#bit</span>
+                <span class="chip monospace">#array</span>
+              </div>
+              <span class="arrow monospace">></span>
+            </div>
+          </a>
+
+          <!-- Add more POTD cards by duplicating the block above -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="foot-brand">
+          <span class="brand-bracket">[</span>
+          <span class="monospace">RC</span>
+          <span class="brand-bracket">]</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="../blogs.html">Blogs</a>
+          <a href="../tryhackme.html">THM</a>
+          <a href="../contact us.html">Contact</a>
+          <a href="../about us.html">About</a>
+        </nav>
+        <div class="foot-copy monospace">
+          © 2022 Remote Coders — A Community for Hackers and Programmers<br />
+          Developed by Silent Programmer
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page filtering script -->
+  <script>
+    document.documentElement.classList.remove('no-js');
+    (function gfgFilters() {
+      const input = document.getElementById('search');
+      const tags = Array.from(document.querySelectorAll('.gfg-toolbar .tag'));
+      const cards = Array.from(document.querySelectorAll('.gfg-card'));
+      const norm = s => (s || '').toLowerCase().trim();
+      let activeTags = new Set();
+
+      function matches(card, q, set) {
+        const hay = [card.dataset.title, card.dataset.tags, card.textContent].join(' ').toLowerCase();
+        const qOk = !q || hay.includes(q);
+        const tOk = !set.size || [...set].every(t => (card.dataset.tags || '').toLowerCase().includes(t));
+        return qOk && tOk;
+      }
+      function apply() {
+        const q = norm(input.value);
+        cards.forEach(c => c.style.display = matches(c, q, activeTags) ? '' : 'none');
+      }
+
+      input.addEventListener('input', apply);
+      tags.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const t = (btn.dataset.tag || '').toLowerCase();
+          const pressed = btn.getAttribute('aria-pressed') === 'true';
+          btn.setAttribute('aria-pressed', String(!pressed));
+          if (pressed) activeTags.delete(t); else activeTags.add(t);
+          apply();
+        });
+      });
+      apply();
+    })();
+  </script>
 </body>
-
 </html>
