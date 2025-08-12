@@ -1,338 +1,397 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js h-100">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advent of Cyber 2024</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #0d1117;
-            font-family: Arial, sans-serif;
-            color: #fff;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Remote Coders Community" />
+  <meta name="description" content="TryHackMe Advent of Cyber 2024 — selected days walkthrough with Q/A and flags." />
+  <meta name="theme-color" content="#000000" />
+  <title>Remote Coders — AOC 2024</title>
 
-        .banner {
-            position: relative;
-            width: 100%;
-            height: 300px;
-            background: url('https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/62c435d1f4d84a005f5df811-1729071862101.png') center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-        }
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="res/web_icon.png" />
 
-        .banner-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-        }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
 
-        .content {
-            position: relative;
-            z-index: 2;
-            color: #fff;
-            text-align: left;
-            max-width: 900px;
-            width: 100%;
-        }
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="CSS/style.css" />
+  <!-- Article base CSS (reused) -->
+  <link rel="stylesheet" href="CSS/thm-article.css" />
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="CSS/aoc-2024.css" />
 
-        .logo {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .logo img {
-            width: 60px;
-            height: 60px;
-            margin-right: 15px;
-        }
-
-        .title {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin: 0 0 10px;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: #bdbdbd;
-            margin-bottom: 20px;
-        }
-
-        .info {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .info span {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #8cff8c;
-        }
-
-        .info span img {
-            width: 18px;
-            height: 18px;
-        }
-
-        .buttons {
-            margin-top: 15px;
-        }
-
-        .buttons button {
-            background-color: #006eff;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            margin-right: 10px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .buttons button:hover {
-            background-color: #0055cc;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Task Section */
-        .task-section {
-            padding: 20px;
-            max-width: 900px;
-            margin: 20px auto;
-            background-color: #161b22;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .task-section h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #8cff8c;
-        }
-
-        .task {
-            margin-bottom: 15px;
-            padding: 10px 15px;
-            background-color: #0d1117;
-            border: 1px solid #2e3238;
-            border-radius: 8px;
-            transition: background-color 0.3s;
-        }
-
-        .task:hover {
-            background-color: #1a1f27;
-        }
-
-        .task-title {
-            font-size: 1.5rem;
-            margin: 0;
-            font-weight: bold;
-        }
-
-        .task-desc {
-            font-size: 1rem;
-            color: #bdbdbd;
-            margin: 5px 0 0;
-        }
-        .flag-container {
-            border: 1px solid #2f2f2f;
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 700px;
-            background-color: #1b1b1b;
-            border-radius: 10px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
-        }
-
-        .flag-container h2 {
-            color: #ff7b00;
-            font-size: 1.8em;
-            margin-bottom: 20px;
-        }
-
-        .flag {
-            font-size: 1.2em;
-            margin: 15px 0;
-            background-color: #111;
-            border-left: 5px solid #00f7ff;
-            padding: 10px 15px;
-            border-radius: 5px;
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
-        }
-
-        .flag strong {
-            color: #ff7b00;
-        }
-
-        .back-button {
-            padding: 12px 25px;
-            color: #fff;
-            background-color: #00f7ff;
-            text-decoration: none;
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 30px;
-            font-size: 1.1em;
-            font-weight: bold;
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .back-button:hover {
-            background-color: #00d6ff;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Add a glowing border to the flag container */
-        .flag-container:hover {
-            border: 1px solid #00f7ff;
-            box-shadow: 0px 0px 20px #00f7ff;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #00f7ff;
-            color: #fff;
-            padding: 10px 15px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            text-align: center;
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
-            cursor: pointer;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .back-to-top:hover {
-            background-color: #00d6ff;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
-        }
-        .task-banner {
-            display: inline-block;
-            position: relative;
-            border-radius: 8px; /* Rounded corners */
-            padding: 10px; /* Padding for spacing */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-            overflow: hidden;
-        }
-
-        .task-banner img {
-            width: 100%; /* Image takes full width */
-            height: auto; /* Maintain aspect ratio */
-            border-radius: 6px; /* Match rounded corners */
-            display: block;
-        }
-
-        .task-banner:hover {
-            background-color: #e0f7fa00; /* Light cyan on hover */
-            transform: scale(1.02); /* Slight zoom effect */
-            transition: 0.3s ease-in-out; /* Smooth transition for hover effect */
-        }
-
-        .task-banner img:hover {
-            transform: scale(1.05); /* Slight zoom effect on image */
-            transition: 0.3s ease-in-out; /* Smooth transition for hover effect */
-        }
-
-        
-    </style>
+  <!-- Global JS -->
+  <script defer src="index.js"></script>
 </head>
-<body>
-    <!-- Banner Section -->
-    <div class="banner">
-        <div class="banner-overlay"></div>
-        <div class="content">
-            <div class="logo">
-                <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/62c435d1f4d84a005f5df811-1728982657816" alt="Room Logo">
-                <h1 class="title">Advent of Cyber 2024</h1>
-            </div>
-            <p class="subtitle">Dive into the wonderful world of cybersecurity by engaging in festive beginner-friendly exercises every day in the lead-up to Christmas!</p>
-            <div class="info">
-                <span><img src="https://img.icons8.com/emoji/48/000000/green-circle-emoji.png" alt="Difficulty"> Easy</span>
-                <span><img src="https://img.icons8.com/ios/50/ffffff/clock--v1.png" alt="Duration"> 1440 min</span>
-            </div>
-            <div class="buttons">
-                <!-- <button>Share the challenge</button> -->
-                <!-- <button>Start AttackBox</button> -->
-                <a href="https://tryhackme.com/r/room/adventofcyber2024"><button>Room Link</button></a>
-            </div>
+<body class="h-100">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="cursor"></div>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a class="brand" href="index.html" aria-label="Remote Coders Home">
+        <span class="brand-bracket">[</span>
+        <span class="brand-name glitch" data-text="REMOTE CODERS">REMOTE CODERS</span>
+        <span class="brand-bracket">]</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="blogs.html">Blogs</a></li>
+          <li><a class="nav-link" href="tryhackme.html" aria-current="page">THM Walkthroughs</a></li>
+          <li><a class="nav-link" href="contact us.html">Contact Us</a></li>
+          <li><a class="nav-link" href="about us.html">About Us</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-controls="menuOverlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Fullscreen Menu -->
+    <div id="menuOverlay" class="menu-overlay" hidden>
+      <nav class="overlay-nav" aria-label="Mobile">
+        <a class="overlay-link" href="index.html">> Home</a>
+        <a class="overlay-link" href="blogs.html">> Blogs</a>
+        <a class="overlay-link" href="tryhackme.html" aria-current="page">> THM Walkthroughs</a>
+        <a class="overlay-link" href="contact us.html">> Contact Us</a>
+        <a class="overlay-link" href="about us.html">> About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero-min">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="noise" aria-hidden="true"></div>
+      <div class="grid-floor" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <nav class="breadcrumbs monospace" aria-label="Breadcrumb" data-reveal>
+          <a href="index.html">Home</a> /
+          <a href="tryhackme.html">THM</a> /
+          <span aria-current="page">AOC 2024</span>
+        </nav>
+        <h1 class="hero-title glitch" data-text="ADVENT OF CYBER 2024" data-reveal>ADVENT OF CYBER 2024</h1>
+        <p class="post-meta monospace" data-reveal>
+          Beginner-friendly festive challenges — selected days and answers
+        </p>
+        <div class="hero-ctas" data-reveal>
+          <a class="btn btn-primary" href="https://tryhackme.com/r/room/adventofcyber2024" target="_blank" rel="noopener">> Room Link</a>
+          <a class="btn btn-ghost" href="tryhackme.html">> Back to THM</a>
         </div>
-    </div>
-    
-    <!-- Task Data Section -->
-    <div class="task-section">
-           <!-- Back to Top Button -->
-            <a href="../tryhackme.html" class="back-button">Back</a>
-        <!-- Task 1 -->
-    <div class="flag-container">
-        <h2>Day 1: Maybe SOC-mas music, he thought, doesn't come from a store?</h2>
-        <span class=task-banner><img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/5fc2847e1bbebc03aa89fbf2-1730193392309.svg" alt="" srcset=""></span >
-        <div class="flag"><strong>Looks like the song.mp3 file is not what we expected! Run "exiftool song.mp3" in your terminal to find out the author of the song. Who is the author? </strong> <br><br> <b>Answer</b><br> <br> Tyler Ramsbey</div>
-        <div class="flag"><strong>The malicious PowerShell script sends stolen info to a C2 server. What is the URL of this C2 server?</strong> <br><br><b>Answer</b><br><br>http://papash3ll.thm/data</div>
-        <div class="flag"><strong>Who is M.M? Maybe his Github profile page would provide clues?</strong> <br><br> <b>Answer</b><br> <br>Mayor Malware</div>
-        <div class="flag"><strong>What is the number of commits on the GitHub repo where the issue was raised?</strong> <br><br> <b>Answer</b><br> <br>1</div>
-    </div>
+      </div>
+    </section>
 
-    <!-- Task 2 -->
-    <div class="flag-container">
-        
-        <h2>Day 2: One man's false positive is another man's potpourri.</h2>
-        <span class=task-banner><img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/5dbea226085ab6182a2ee0f7-1730369227263.png" alt="" srcset=""></span >
-        <div class="flag"><strong>What is the name of the account causing all the failed login attempts?</strong> <br><br> <b>Answer</b><br> <br> </div>
-        <div class="flag"><strong>How many failed logon attempts were observed?</strong> <br><br>Answer<br><br></div>
-        <div class="flag"><strong>What is the IP address of Glitch?</strong> <br><br> <b>Answer</b><br> <br></div>
-        <div class="flag"><strong>When did Glitch successfully logon to ADM-01? Format: MMM D, YYYY HH:MM:SS.SSS</strong> <br><br> <b>Answer</b><br> <br></div>
-        <div class="flag"><strong>What is the decoded command executed by Glitch to fix the systems of Wareville?</strong> <br><br> <b>Answer</b><br> <br></div>
-        <div class="flag"><strong>If you enjoyed this task, feel free to check out the Investigating with ELK 101 room.</strong> <br><br> <b>Answer</b><br> <br> </div>
-    </div>
+    <!-- Cover banner -->
+    <section class="post-section">
+      <div class="container">
+        <article class="card banner-card" data-reveal>
+          <div class="thumb">
+            <img
+              src="https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/62c435d1f4d84a005f5df811-1729071862101.png"
+              alt="Advent of Cyber 2024 banner" />
+          </div>
+          <div class="card-inner">
+            <div class="room-meta">
+              <span class="chip monospace">Easy</span>
+              <span class="chip monospace">~1440 min</span>
+            </div>
+          </div>
+        </article>
 
-    <!-- Task 8 -->
-    <div class="flag-container">
-        <h2>Day 3: Even if I wanted to go, their vulnerabilities wouldn't allow it.</h2>
-        <span class=task-banner><img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/5de96d9ca744773ea7ef8c00-1731420330182.png" alt="" srcset=""></span >
-        <div class="flag"><strong>BLUE: Where was the web shell uploaded to?</strong><br><br>Answer<br><br>/media/images/rooms/shell.php</div>
-        <div class="flag"><strong>BLUE: What is the IP address that accessed the web shell?</strong><br><br>Answer<br><br>10.11.83.34</div>
-        <div class="flag"><strong>RED: What is the contents of the flag.txt?</strong> <br><br>Answer<br><br>THM{Gl1tch_Was_H3r3}</div>
-    </div>
+        <!-- Day 1 -->
+        <article class="card tilt day-card" data-reveal>
+          <div class="card-inner">
+            <h2 class="section-title">Day 1 — Maybe SOC-mas music, he thought, doesn't come from a store?</h2>
+            <figure class="media task-banner">
+              <img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/5fc2847e1bbebc03aa89fbf2-1730193392309.svg" alt="Day 1" />
+            </figure>
 
-    <!-- Task 9 -->
-    <div class="flag-container">
-        <h2>Day 4: I’m all atomic inside!</h2>
-        <span class=task-banner><img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/5fc2847e1bbebc03aa89fbf2-1730709355879.png" alt="" srcset=""></span >
-        <div class="flag"><strong>What was the flag found in the .txt file that is found in the same directory as the PhishingAttachment.xslm artefact?</strong><br><br>Answer<br><br>THM{GlitchTestingForSpearphishing}</div>
-        <div class="flag"><strong>What ATT&CK technique ID would be our point of interest?</strong><br><br>Answer<br><br>THM{GlitchTestingForSpearphishing}</div>
-        <div class="flag"><strong>What ATT&CK subtechnique ID focuses on the Windows Command Shell?</strong><br><br>Answer<br><br>T1059.003</div>
-        <div class="flag"><strong>What is the name of the Atomic Test to be simulated?</strong><br><br>Answer<br><br>Simulate BlackByte Ransomware Print Bombing</div>
-        <div class="flag"><strong>What is the name of the file used in the test?</strong><br><br>Answer<br><br>Wareville_Ransomware.txt</div>
-        <div class="flag"><strong>What is the flag found from this Atomic Test?</strong><br><br>Answer<br><br>THM{R2xpdGNoIGlzIG5vdCB0aGUgZW5lbXk=}</div>
+            <div class="qa-block">
+              <div class="q monospace">Q1</div>
+              <blockquote class="question">Run "exiftool song.mp3" to find the author. Who is the author?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="d1q1" class="flag monospace">Tyler Ramsbey</code>
+                <button class="copy-btn monospace" type="button" data-copy="#d1q1">Copy</button>
+              </div>
+            </div>
 
-    </div>
+            <div class="qa-block">
+              <div class="q monospace">Q2</div>
+              <blockquote class="question">What is the URL of the C2 server?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="d1q2" class="flag monospace">http://papash3ll.thm/data</code>
+                <button class="copy-btn monospace" type="button" data-copy="#d1q2">Copy</button>
+              </div>
+            </div>
 
-    <!-- Task 10 -->
-    <!-- <div class="flag-container">
-        <h2>Task 10: Phishing Investigation</h2>
-        <div class="flag"><strong>Flag:</strong> THM{GlitchTestingForSpearphishing}</div>
-        <div class="flag"><strong>ATT&CK Technique ID:</strong> T1059</div>
-        <div class="flag"><strong>ATT&CK Subtechnique ID:</strong> T1059.003</div>
-        <div class="flag"><strong>Atomic Test Name:</strong> Simulate BlackByte Ransomware Print Bombing</div>
-        <div class="flag"><strong>Test File Name:</strong> Wareville_Ransomware.txt</div>
-        <div class="flag"><strong>Flag from Test:</strong> THM{R2xpdGNoIGlzIG5vdCB0aGUgZW5lbXk=}</div>
-    </div> -->
-    <!-- Back to Top Button -->
-    <a href="#" class="back-button">Back to Top</a>
+            <div class="qa-block">
+              <div class="q monospace">Q3</div>
+              <blockquote class="question">Who is M.M? (Check the GitHub profile.)</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="d1q3" class="flag monospace">Mayor Malware</code>
+                <button class="copy-btn monospace" type="button" data-copy="#d1q3">Copy</button>
+              </div>
+            </div>
+
+            <div class="qa-block">
+              <div class="q monospace">Q4</div>
+              <blockquote class="question">Number of commits on the repo with the issue?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="d1q4" class="flag monospace">1</code>
+                <button class="copy-btn monospace" type="button" data-copy="#d1q4">Copy</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Day 2 -->
+        <article class="card tilt day-card" data-reveal>
+          <div class="card-inner">
+            <h2 class="section-title">Day 2 — One man's false positive is another man's potpourri.</h2>
+            <figure class="media task-banner">
+              <img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/5dbea226085ab6182a2ee0f7/room-content/5dbea226085ab6182a2ee0f7-1730369227263.png" alt="Day 2" />
+            </figure>
+
+            <div class="qa-block">
+              <div class="q monospace">Q1</div>
+              <blockquote class="question">Name of the account causing all failed login attempts?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="d2q1" class="flag monospace"></code>
+                <button class="copy-btn monospace" type="button" data-copy="#d2q1">Copy</button>
+              </div>
+            </div>
+
+            <div class="qa-block">
+              <div class="q monospace">Q2</div>
+              <blockquote class="question">How many failed logon attempts were observed?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="d2q2" class="flag monospace"></code>
+                <button class="copy-btn monospace" type="button" data-copy="#d2q2">Copy</button>
+              </div>
+            </div>
+
+            <div class="qa-block">
+              <div class="q monospace">Q3</div>
+              <blockquote class="question">What is the IP address of Glitch?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="d2q3" class="flag monospace"></code>
+                <button class="copy-btn monospace" type="button" data-copy="#d2q3">Copy</button>
+              </div>
+            </div>
+
+            <div class="qa-block">
+              <div class="q monospace">Q4</div>
+              <blockquote class="question">When did Glitch successfully logon to ADM-01? (MMM D, YYYY HH:MM:SS.SSS)</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="d2q4" class="flag monospace"></code>
+                <button class="copy-btn monospace" type="button" data-copy="#d2q4">Copy</button>
+              </div>
+            </div>
+
+            <div class="qa-block">
+              <div class="q monospace">Q5</div>
+              <blockquote class="question">Decoded command executed by Glitch to fix systems of Wareville?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="d2q5" class="flag monospace"></code>
+                <button class="copy-btn monospace" type="button" data-copy="#d2q5">Copy</button>
+              </div>
+            </div>
+
+            <div class="qa-block">
+              <div class="q monospace">Q6</div>
+              <blockquote class="question">Optional reference room: Investigating with ELK 101 — link or hint.</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="d2q6" class="flag monospace"></code>
+                <button class="copy-btn monospace" type="button" data-copy="#d2q6">Copy</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Day 3 -->
+        <article class="card tilt day-card" data-reveal>
+          <div class="card-inner">
+            <h2 class="section-title">Day 3 — Even if I wanted to go, their vulnerabilities wouldn't allow it.</h2>
+            <figure class="media task-banner">
+              <img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/5de96d9ca744773ea7ef8c00/room-content/5de96d9ca744773ea7ef8c00-1731420330182.png" alt="Day 3" />
+            </figure>
+
+            <div class="qa-block">
+              <div class="q monospace">BLUE</div>
+              <blockquote class="question">Where was the web shell uploaded to?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="d3q1" class="flag monospace">/media/images/rooms/shell.php</code>
+                <button class="copy-btn monospace" type="button" data-copy="#d3q1">Copy</button>
+              </div>
+            </div>
+
+            <div class="qa-block">
+              <div class="q monospace">BLUE</div>
+              <blockquote class="question">What is the IP address that accessed the web shell?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="d3q2" class="flag monospace">10.11.83.34</code>
+                <button class="copy-btn monospace" type="button" data-copy="#d3q2">Copy</button>
+              </div>
+            </div>
+
+            <div class="qa-block">
+              <div class="q monospace">RED</div>
+              <blockquote class="question">What is the contents of the flag.txt?</blockquote>
+              <div class="a-title monospace">Flag</div>
+              <div class="flag-wrap">
+                <code id="d3q3" class="flag monospace">THM{Gl1tch_Was_H3r3}</code>
+                <button class="copy-btn monospace" type="button" data-copy="#d3q3">Copy</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Day 4 -->
+        <article class="card tilt day-card" data-reveal>
+          <div class="card-inner">
+            <h2 class="section-title">Day 4 — I’m all atomic inside!</h2>
+            <figure class="media task-banner">
+              <img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/5fc2847e1bbebc03aa89fbf2/room-content/5fc2847e1bbebc03aa89fbf2-1730709355879.png" alt="Day 4" />
+            </figure>
+
+            <div class="qa-block">
+              <div class="q monospace">Q1</div>
+              <blockquote class="question">Flag found in the .txt file in same directory as PhishingAttachment.xlsm?</blockquote>
+              <div class="a-title monospace">Flag</div>
+              <div class="flag-wrap">
+                <code id="d4q1" class="flag monospace">THM{GlitchTestingForSpearphishing}</code>
+                <button class="copy-btn monospace" type="button" data-copy="#d4q1">Copy</button>
+              </div>
+            </div>
+
+            <div class="qa-block">
+              <div class="q monospace">Q2</div>
+              <blockquote class="question">ATT&CK technique ID of interest?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="d4q2" class="flag monospace">T1059</code>
+                <button class="copy-btn monospace" type="button" data-copy="#d4q2">Copy</button>
+              </div>
+            </div>
+
+            <div class="qa-block">
+              <div class="q monospace">Q3</div>
+              <blockquote class="question">ATT&CK subtechnique ID for Windows Command Shell?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="d4q3" class="flag monospace">T1059.003</code>
+                <button class="copy-btn monospace" type="button" data-copy="#d4q3">Copy</button>
+              </div>
+            </div>
+
+            <div class="qa-block">
+              <div class="q monospace">Q4</div>
+              <blockquote class="question">Name of the Atomic Test to simulate?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="d4q4" class="flag monospace">Simulate BlackByte Ransomware Print Bombing</code>
+                <button class="copy-btn monospace" type="button" data-copy="#d4q4">Copy</button>
+              </div>
+            </div>
+
+            <div class="qa-block">
+              <div class="q monospace">Q5</div>
+              <blockquote class="question">Name of the file used in the test?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="d4q5" class="flag monospace">Wareville_Ransomware.txt</code>
+                <button class="copy-btn monospace" type="button" data-copy="#d4q5">Copy</button>
+              </div>
+            </div>
+
+            <div class="qa-block">
+              <div class="q monospace">Q6</div>
+              <blockquote class="question">Flag found from this Atomic Test?</blockquote>
+              <div class="a-title monospace">Flag</div>
+              <div class="flag-wrap">
+                <code id="d4q6" class="flag monospace">THM{R2xpdGNoIGlzIG5vdCB0aGUgZW5lbXk=}</code>
+                <button class="copy-btn monospace" type="button" data-copy="#d4q6">Copy</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Nav -->
+        <div class="post-nav">
+          <a class="btn btn-ghost" href="tryhackme.html">> Back to THM</a>
+          <a class="btn btn-primary" href="blogs.html">> Explore Blogs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Back to top -->
+  <button id="toTop" class="to-top" aria-label="Back to top">↑</button>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="foot-brand">
+          <span class="brand-bracket">[</span>
+          <span class="monospace">RC</span>
+          <span class="brand-bracket">]</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="blogs.html">Blogs</a>
+          <a href="tryhackme.html" aria-current="page">THM</a>
+          <a href="contact us.html">Contact</a>
+          <a href="about us.html">About</a>
+        </nav>
+        <div class="foot-copy monospace">
+          © 2024 Remote Coders — A Community for Hackers and Programmers<br />
+          Developed by Silent Programmer
+        </div>
+      </div>
     </div>
+  </footer>
+
+  <!-- Page: copy buttons + back to top -->
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const sel = btn.getAttribute('data-copy');
+        const el = document.querySelector(sel);
+        if (!el) return;
+        const text = el.innerText || el.textContent || '';
+        try {
+          await navigator.clipboard.writeText(text);
+          const prev = btn.textContent;
+          btn.textContent = 'Copied';
+          setTimeout(() => btn.textContent = 'Copy', 1000);
+        } catch {
+          const prev = btn.textContent;
+          btn.textContent = 'Press Ctrl+C';
+          setTimeout(() => btn.textContent = 'Copy', 1200);
+        }
+      });
+    });
+
+    const toTop = document.getElementById('toTop');
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
 </body>
 </html>
