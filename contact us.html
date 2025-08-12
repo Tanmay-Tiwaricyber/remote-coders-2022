@@ -1,132 +1,205 @@
 <!DOCTYPE html>
-<html lang="en" class="h-100">
+<html lang="en" class="no-js h-100">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.84.0">
-    <title>Remote Coders - Contact Us</title>
-    <link rel="shortcut icon" href="logo.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Tanmay Tiwari" />
+  <meta name="description" content="Contact Remote Coders via WhatsApp or Telegram." />
+  <meta name="theme-color" content="#000000" />
+  <title>Remote Coders — Contact</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/style.css" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="res/web_icon.png" />
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="CSS/style.css" />
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="CSS/contact.css" />
 
-      /* Custom styles */
-      body {
-        /* background-color: #111; */
-        color: #fff;
-        font-family: 'Roboto', sans-serif;
-      }
-
-      .nav-masthead .nav-link {
-        font-size: 1.1rem;
-        color: rgba(255, 255, 255, 0.8);
-        padding: 0.75rem;
-        transition: color 0.3s ease;
-      }
-
-      .nav-masthead .nav-link:hover, .nav-masthead .nav-link.active {
-        color: #fff;
-        border-bottom: 2px solid #00ff99;
-      }
-
-      .cover-container {
-        max-width: 800px;
-      }
-
-      h4 {
-        font-weight: 600;
-        font-size: 2rem;
-        margin-bottom: 20px;
-      }
-
-      .div2 {
-        margin-top: 40px;
-        text-align: left;
-        line-height: 1.8;
-      }
-
-      .div2 a {
-        color: #00ff99;
-        text-decoration: none;
-        transition: color 0.3s ease;
-      }
-
-      .div2 a:hover {
-        color: #fff;
-      }
-
-      img {
-        border-radius: 8px;
-        margin-bottom: 20px;
-      }
-
-      footer {
-        font-size: 0.85rem;
-        margin-top: 40px;
-        color: #aaa;
-      }
-    </style>
-
-    <!-- Custom styles for this template -->
-    <link href="css/cover.css" rel="stylesheet">
+  <!-- Global JS -->
+  <script defer src="index.js"></script>
 </head>
-<body class="d-flex h-100 text-center bg-dark">
+<body class="h-100">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="cursor"></div>
 
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-  <header class="mb-auto">
-    <div class="nav-container">
-        <h3 class="float-md-start mb-0">Contact</h3>
-        <button class="hamburger" onclick="toggleMenu()">&#9776;</button> <!-- Hamburger icon -->
-        <nav class="nav nav-masthead justify-content-center float-md-end" id="navLinks">
-            <a class="nav-link" href="index.html">Home</a>
-            <a class="nav-link" href="blogs.html">Blogs</a>
-            <a class="nav-link" href="tryhackme.html">THM </a>
-            <!-- <a class="nav-link" href="partners.html">Partners</a> -->
-            <!-- <a class="nav-link" href="supporters.html">Supporters</a> -->
-            <a class="nav-link active" aria-current="page" href="contact us.html">Contact Us</a>
-            <a class="nav-link" href="about us.html">About Us</a>
-        </nav>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a class="brand" href="index.html" aria-label="Remote Coders Home">
+        <span class="brand-bracket">[</span>
+        <span class="brand-name glitch" data-text="REMOTE CODERS">REMOTE CODERS</span>
+        <span class="brand-bracket">]</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="blogs.html">Blogs</a></li>
+          <li><a class="nav-link" href="tryhackme.html">THM Walkthroughs</a></li>
+          <li><a class="nav-link active" aria-current="page" href="contact us.html">Contact Us</a></li>
+          <li><a class="nav-link" href="about us.html">About Us</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-controls="menuOverlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    
-</header>
 
-  <div class="div2 text-start">
-    <img src="logo.png" alt="Remote Coders Logo" style="width: 250px;">
-    <h5>Get in Touch:</h5>
-    <p>WhatsApp me: 
-      <a href="https://wa.me/+916306256015" target="_blank">+91 6306256015</a>
-    </p>
-    <!-- <p>WhatsApp Group: 
-       <a href="https://chat.whatsapp.com/IKy4JjNQIvvHZh9VTu5Jxh" target="_blank">Join Here</a> 
-    </p> -->
-    <p>Telegram Group: 
-      <a href="https://t.me/remote_coders" target="_blank">Not Available</a>
-    </p>
-    <br>
-  </div>
+    <!-- Mobile Fullscreen Menu -->
+    <div id="menuOverlay" class="menu-overlay" hidden>
+      <nav class="overlay-nav" aria-label="Mobile">
+        <a class="overlay-link" href="index.html">> Home</a>
+        <a class="overlay-link" href="blogs.html">> Blogs</a>
+        <a class="overlay-link" href="tryhackme.html">> THM Walkthroughs</a>
+        <a class="overlay-link" href="contact us.html" aria-current="page">> Contact Us</a>
+        <a class="overlay-link" href="about us.html">> About Us</a>
+      </nav>
+    </div>
+  </header>
 
-  <footer class="mt-auto">
-    <p>© 2022 Remote Coders (A Community for Hackers and Programmers) <br> by Tanmay Tiwari</p>
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero-min">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="noise" aria-hidden="true"></div>
+      <div class="grid-floor" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <p class="status monospace" data-reveal>
+          <span class="dot"></span> SYS: ONLINE • CONTACT
+        </p>
+        <h1 class="hero-title glitch" data-text="CONTACT" data-reveal>CONTACT</h1>
+        <p class="hero-subtitle monospace" data-reveal>
+          Reach out via WhatsApp. Telegram group status: Not available.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Brand / Logo -->
+          <div class="card tilt contact-card" data-reveal>
+            <div class="thumb">
+              <img src="logo.png" alt="Remote Coders logo" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">Remote Coders</div>
+              <h3 class="title">We’re listening.</h3>
+              <p class="excerpt">
+                Community for hackers and programmers. Ping us if you’ve got ideas,
+                feedback, or collaboration requests.
+              </p>
+              <div class="contact-list monospace">
+                <div class="row">
+                  <span class="k">Timezone</span>
+                  <span class="v">IST (UTC+5:30)</span>
+                </div>
+                <div class="row">
+                  <span class="k">Response</span>
+                  <span class="v">Typically within 24h</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- WhatsApp -->
+          <div class="card tilt contact-card" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Direct Message</div>
+              <h3 class="title">WhatsApp</h3>
+              <p class="excerpt">Message Silent Programmer on WhatsApp.</p>
+
+              <div class="contact-info">
+                <span class="mono-pill">ERROR 404</span>
+                <div class="actions">
+                  <a class="btn btn-primary" href="#" target="_blank" rel="noopener">> Chat</a>
+                  <button id="copyPhone" class="btn btn-ghost" type="button">> Copy</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Telegram -->
+          <div class="card tilt contact-card" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Community</div>
+              <h3 class="title">Telegram Group</h3>
+              <p class="excerpt">Group status is currently not available.</p>
+
+              <div class="contact-info">
+                <span class="mono-pill">t.me/remote_coders</span>
+                <div class="actions">
+                  <a class="btn btn-ghost is-disabled" href="https://t.me/remote_coders" target="_blank" rel="noopener" aria-disabled="true" tabindex="-1">> Open</a>
+                  <span class="note monospace">Soon</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Callout -->
+        <div class="callout mono-center" data-reveal>
+          <div class="callout-inner">
+            <h2 class="glitch" data-text="BUILD WITH US">BUILD WITH US</h2>
+            <p class="hero-subtitle monospace">Want to contribute posts, THM writeups, or tools?</p>
+            <a class="btn btn-primary" href="blogs.html">> Explore Blogs</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="foot-brand">
+          <span class="brand-bracket">[</span>
+          <span class="monospace">RC</span>
+          <span class="brand-bracket">]</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="blogs.html">Blogs</a>
+          <a href="tryhackme.html">THM</a>
+          <a href="contact us.html" aria-current="page">Contact</a>
+          <a href="about us.html">About</a>
+        </nav>
+        <div class="foot-copy monospace">
+          © 2022 Remote Coders — A Community for Hackers and Programmers<br />
+          Developed by Silent Programmer
+        </div>
+      </div>
+    </div>
   </footer>
-</div>
 
-<script src="index.js"></script>
+  <!-- Page script -->
+  <script>
+    document.documentElement.classList.remove('no-js');
+
+    // Copy WhatsApp number
+    (function () {
+      const btn = document.getElementById('copyPhone');
+      if (!btn) return;
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText('+916306256015');
+          const prev = btn.textContent;
+          btn.textContent = '> Copied!';
+          setTimeout(() => btn.textContent = prev, 1200);
+        } catch (e) {
+          const prev = btn.textContent;
+          btn.textContent = '> Press Ctrl+C';
+          setTimeout(() => btn.textContent = prev, 1500);
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
