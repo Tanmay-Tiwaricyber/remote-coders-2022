@@ -1,123 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js h-100">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advent of Cyber '23 Side Quest</title>
-    <style>
-        body {
-            background-color: #101820;
-            color: #c0c0c0;
-            font-family: 'Fira Code', monospace;
-            padding: 20px;
-            text-align: center;
-            background: radial-gradient(circle at 50% 50%, #0a0f1e, #000000 80%);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Remote Coders Community" />
+  <meta name="description" content="TryHackMe — Advent of Cyber '23 Side Quest flags and references." />
+  <meta name="theme-color" content="#000000" />
+  <title>Remote Coders — AOC ’23 Side Quest</title>
 
-        h1 {
-            color: #00f7ff;
-            font-size: 2.8em;
-            margin-top: 0;
-        }
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../res/web_icon.png" />
 
-        .banner {
-            width: 100%;
-            height: 250px;
-            background: url('https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/8d1eef4732f7fc206539fb68abdabc5d.svg') no-repeat center center;
-            background-size: contain;
-            margin-bottom: 30px;
-            border-bottom: 3px solid #00f7ff;
-        }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
 
-        .flag-container {
-            border: 1px solid #2f2f2f;
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 700px;
-            background-color: #1b1b1b;
-            border-radius: 10px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
-        }
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../CSS/style.css" />
+  <!-- Optional shared article styles (if you already added it) -->
+  <link rel="stylesheet" href="../CSS/thm-article.css" />
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="../CSS/aoc-sidequest.css" />
 
-        .flag-container h2 {
-            color: #ff7b00;
-            font-size: 1.8em;
-            margin-bottom: 20px;
-        }
-
-        .flag {
-            font-size: 1.2em;
-            margin: 15px 0;
-            background-color: #111;
-            border-left: 5px solid #00f7ff;
-            padding: 10px 15px;
-            border-radius: 5px;
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
-        }
-
-        .flag strong {
-            color: #ff7b00;
-        }
-
-        .back-button {
-            padding: 12px 25px;
-            color: #fff;
-            background-color: #00f7ff;
-            text-decoration: none;
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 30px;
-            font-size: 1.1em;
-            font-weight: bold;
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .back-button:hover {
-            background-color: #00d6ff;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Add a glowing border to the flag container */
-        .flag-container:hover {
-            border: 1px solid #00f7ff;
-            box-shadow: 0px 0px 20px #00f7ff;
-        }
-    </style>
+  <!-- Global JS -->
+  <script defer src="../index.js"></script>
 </head>
-<body>
-    <!-- Banner -->
-    <div class="banner"></div>
+<body class="h-100">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="cursor"></div>
 
-    <!-- Back Button -->
-    <a href="javascript:history.back()" class="back-button">Back</a>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a class="brand" href="../index.html" aria-label="Remote Coders Home">
+        <span class="brand-bracket">[</span>
+        <span class="brand-name glitch" data-text="REMOTE CODERS">REMOTE CODERS</span>
+        <span class="brand-bracket">]</span>
+      </a>
 
-    <!-- Main Heading -->
-    <h1>Advent of Cyber '23 Side Quest Flags</h1>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="../index.html">Home</a></li>
+          <li><a class="nav-link" href="../blogs.html">Blogs</a></li>
+          <li><a class="nav-link" href="../tryhackme.html" aria-current="page">THM Walkthroughs</a></li>
+          <li><a class="nav-link" href="../contact us.html">Contact Us</a></li>
+          <li><a class="nav-link" href="../about us.html">About Us</a></li>
+        </ul>
+      </nav>
 
-    <!-- Flag Section -->
-    <div class="flag-container">
-        <h2 align="left">Task: 4 Flag Submissions</h2>
-        <div class="flag">
-            <strong>Side Quest Challenge 1 Flag:</strong><br> 
-            1-1f9548f131522e85ea30e801dfd9b1a4e526003f9e83301faad85e6154ef2834
-        </div>
-        <div class="flag">
-            <strong>Side Quest Challenge 2 Flag:</strong><br> 
-            2-K@bWJ5oHFCR8o%whAvK5qw8Sp$5qf!nCqGM3ksaK
-        </div>
-        <div class="flag">
-            <strong>Side Quest Challenge 3 Flag:</strong><br> 
-            3-d2dc6a02db03401177f0511a6c99007e945d9cb9b96b8c6294f8c5a2c8e01f60
-        </div>
-        <div class="flag">
-            <strong>Side Quest Challenge 4 Flag:</strong><br> 
-            4-3f$FEBwD6AoqnyLjJ!!Hk4tc*V6w$UuK#evLWkBp
-        </div>
-        <h4 align="right">Written by - Silent Programmer</h4>
+      <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-controls="menuOverlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
 
-    
+    <!-- Mobile Fullscreen Menu -->
+    <div id="menuOverlay" class="menu-overlay" hidden>
+      <nav class="overlay-nav" aria-label="Mobile">
+        <a class="overlay-link" href="../index.html">> Home</a>
+        <a class="overlay-link" href="../blogs.html">> Blogs</a>
+        <a class="overlay-link" href="../tryhackme.html">> THM Walkthroughs</a>
+        <a class="overlay-link" href="../contact us.html">> Contact Us</a>
+        <a class="overlay-link" href="../about us.html">> About Us</a>
+      </nav>
+    </div>
+  </header>
 
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero-min">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="noise" aria-hidden="true"></div>
+      <div class="grid-floor" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <nav class="breadcrumbs monospace" aria-label="Breadcrumb" data-reveal>
+          <a href="../index.html">Home</a> /
+          <a href="../tryhackme.html">THM</a> /
+          <span aria-current="page">AOC ’23 Side Quest</span>
+        </nav>
+        <h1 class="hero-title glitch" data-text="AOC ’23 SIDE QUEST" data-reveal>AOC ’23 SIDE QUEST</h1>
+        <p class="post-meta monospace" data-reveal>Selected flags • Quick reference</p>
+        <div class="hero-ctas" data-reveal>
+          <a class="btn btn-ghost" href="../tryhackme.html">> Back to THM</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Banner -->
+    <section class="post-section">
+      <div class="container">
+        <article class="card banner-card" data-reveal>
+          <div class="thumb">
+            <img
+              src="https://tryhackme-images.s3.amazonaws.com/user-uploads/6093e17fa004d20049b6933e/room-content/8d1eef4732f7fc206539fb68abdabc5d.svg"
+              alt="AOC '23 Side Quest banner" />
+          </div>
+        </article>
+
+        <!-- Flags -->
+        <article class="card tilt flags-card" data-reveal>
+          <div class="card-inner">
+            <div class="meta monospace">Task: 4 Flag Submissions</div>
+
+            <div class="flag-row">
+              <div class="label monospace">Side Quest Challenge 1 Flag</div>
+              <div class="flag-wrap">
+                <code id="sq1" class="flag monospace">1-1f9548f131522e85ea30e801dfd9b1a4e526003f9e83301faad85e6154ef2834</code>
+                <button class="copy-btn monospace" type="button" data-copy="#sq1">Copy</button>
+              </div>
+            </div>
+
+            <div class="flag-row">
+              <div class="label monospace">Side Quest Challenge 2 Flag</div>
+              <div class="flag-wrap">
+                <code id="sq2" class="flag monospace">2-K@bWJ5oHFCR8o%whAvK5qw8Sp$5qf!nCqGM3ksaK</code>
+                <button class="copy-btn monospace" type="button" data-copy="#sq2">Copy</button>
+              </div>
+            </div>
+
+            <div class="flag-row">
+              <div class="label monospace">Side Quest Challenge 3 Flag</div>
+              <div class="flag-wrap">
+                <code id="sq3" class="flag monospace">3-d2dc6a02db03401177f0511a6c99007e945d9cb9b96b8c6294f8c5a2c8e01f60</code>
+                <button class="copy-btn monospace" type="button" data-copy="#sq3">Copy</button>
+              </div>
+            </div>
+
+            <div class="flag-row">
+              <div class="label monospace">Side Quest Challenge 4 Flag</div>
+              <div class="flag-wrap">
+                <code id="sq4" class="flag monospace">4-3f$FEBwD6AoqnyLjJ!!Hk4tc*V6w$UuK#evLWkBp</code>
+                <button class="copy-btn monospace" type="button" data-copy="#sq4">Copy</button>
+              </div>
+            </div>
+
+            <div class="right monospace author">Written by — Silent Programmer</div>
+          </div>
+        </article>
+
+        <!-- Nav -->
+        <div class="post-nav">
+          <a class="btn btn-ghost" href="../tryhackme.html">> Back to THM</a>
+          <a class="btn btn-primary" href="../blogs.html">> Explore Blogs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="foot-brand">
+          <span class="brand-bracket">[</span>
+          <span class="monospace">RC</span>
+          <span class="brand-bracket">]</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="../blogs.html">Blogs</a>
+          <a href="../tryhackme.html" aria-current="page">THM</a>
+          <a href="../contact us.html">Contact</a>
+          <a href="../about us.html">About</a>
+        </nav>
+        <div class="foot-copy monospace">
+          © 2023 Remote Coders — A Community for Hackers and Programmers<br />
+          Developed by Silent Programmer
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page: copy buttons -->
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const sel = btn.getAttribute('data-copy');
+        const el = document.querySelector(sel);
+        if (!el) return;
+        const text = el.innerText || el.textContent || '';
+        try {
+          await navigator.clipboard.writeText(text);
+          const prev = btn.textContent;
+          btn.textContent = 'Copied';
+          setTimeout(() => btn.textContent = 'Copy', 1000);
+        } catch {
+          const prev = btn.textContent;
+          btn.textContent = 'Press Ctrl+C';
+          setTimeout(() => btn.textContent = 'Copy', 1200);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
