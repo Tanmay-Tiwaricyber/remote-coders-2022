@@ -1,266 +1,255 @@
 <!DOCTYPE html>
-<html lang="en" class="h-100">
+<html lang="en" class="no-js h-100">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Remote Coders Community">
-    <meta name="generator" content="Hugo 0.84.0">
-    <title>Remote Coders</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Remote Coders Community" />
+  <meta name="description" content="TryHackMe Advent of Cyber 2023 — selected days walkthroughs with Q/A and flags." />
+  <meta name="theme-color" content="#000000" />
+  <title>Remote Coders — AOC 2023</title>
 
-    <link rel="shortcut icon" href="res/web_icon.png">
-    <link href="CSS/style.css" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="res/web_icon.png" />
 
-    <style>
-        /* General Styles */
-        body {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            font-family: 'Poppins', sans-serif;
-        }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
 
-        .cover-container {
-            max-width: 100%;
-            padding: 20px;
-        }
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="CSS/style.css" />
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="CSS/thm-article.css" />
 
-        /* Navbar */
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        h3 {
-            color: #BB86FC;
-        }
-
-        .nav-link {
-            color: #BB86FC;
-            font-size: 1.1rem;
-            padding: 10px 15px;
-            text-transform: uppercase;
-        }
-
-        .nav-link:hover {
-            color: #03DAC6;
-            transition: 0.3s ease;
-        }
-
-        .hamburger {
-            background-color: transparent;
-            color: #BB86FC;
-            font-size: 2rem;
-            border: none;
-            cursor: pointer;
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-            }
-
-            .nav {
-                display: none;
-                flex-direction: column;
-                text-align: left;
-            }
-
-            .nav-link {
-                display: block;
-                padding: 10px 0;
-            }
-
-            .nav.show {
-                display: flex;
-            }
-        }
-
-        /* Buttons */
-        .glow-on-hover {
-            background-color: #BB86FC;
-            border: none;
-            padding: 15px 25px;
-            font-size: 1.1rem;
-            color: #fff;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: box-shadow 0.3s ease, transform 0.2s;
-        }
-
-        .glow-on-hover:hover {
-            box-shadow: 0 0 15px #BB86FC, 0 0 25px #03DAC6;
-            transform: scale(1.05);
-        }
-
-        /* Blockquotes */
-        blockquote {
-            background-color: #333;
-            border-left: 5px solid #BB86FC;
-            padding: 15px;
-            color: #E0E0E0;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-
-        /* Typography */
-        h1, h2, h3 {
-            color: #03DAC6;
-            font-weight: bold;
-        }
-
-        h5 {
-            color: #FF6F61;
-        }
-
-        h1.section-title {
-            color: black;
-            background-color: #03DAC6;
-            padding: 15px;
-            border-radius: 10px;
-        }
-
-        img {
-            border-radius: 10px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-            margin-bottom: 20px;
-        }
-
-        /* Footer */
-        footer {
-            margin-top: 40px;
-            color: #aaaaaa;
-            font-size: 0.9rem;
-            text-align: center;
-            padding: 20px;
-        }
-
-        footer a {
-            color: #BB86FC;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            color: #03DAC6;
-        }
-    </style>
+  <!-- Global JS -->
+  <script defer src="index.js"></script>
 </head>
-<body class="d-flex h-100 text-center text-white bg-dark">
+<body class="h-100">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="cursor"></div>
 
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <header class="mb-auto">
-        <div class="nav-container">
-            <h3 class="float-md-start mb-0">Remote Coders</h3>
-            <button class="hamburger" onclick="toggleMenu()">&#9776;</button> <!-- Hamburger icon -->
-            <nav class="nav nav-masthead justify-content-center float-md-end" id="navLinks">
-                <a class="nav-link" href="index.html">Home</a>
-                <a class="nav-link" href="blogs.html">Blogs</a>
-                <a class="nav-link active" aria-current="page" href="tryhackme.html">THM Walkthroughs</a>
-                <a class="nav-link" href="contact us.html">Contact Us</a>
-                <a class="nav-link" href="about us.html">About Us</a>
-            </nav>
-        </div>
-    </header>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a class="brand" href="index.html" aria-label="Remote Coders Home">
+        <span class="brand-bracket">[</span>
+        <span class="brand-name glitch" data-text="REMOTE CODERS">REMOTE CODERS</span>
+        <span class="brand-bracket">]</span>
+      </a>
 
-    <br>
-    <button class="glow-on-hover" type="button" onclick='window.location.href ="tryhackme.html"'>
-        <span style="color: blueviolet;">Go Back</span>
-    </button>
-    <br>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="blogs.html">Blogs</a></li>
+          <li><a class="nav-link" href="tryhackme.html" aria-current="page">THM Walkthroughs</a></li>
+          <li><a class="nav-link" href="contact us.html">Contact Us</a></li>
+          <li><a class="nav-link" href="about us.html">About Us</a></li>
+        </ul>
+      </nav>
 
-    <h2 style="color: #f58484;">TRYHACKME Advent of Cyber 2023 WALKTHROUGHS</h2>
-    <h5 align="left"> Written by Silent Programmer</h5>
-    <img src="res/aoc2023.png" alt="Advent of Cyber 2023" width="95%">
-    
-    <h <h3>Answer 1:</h3>
-        <blockquote>t.mcgreedy@antarcticrafts.thm</blockquote>
-
-        <h3>Question 2:</h3>
-        <blockquote>What is the password for the IT server room door?</blockquote>
-        <h3>Answer 2:</h3>
-        <blockquote>BtY2S02</blockquote>
-
-        <h3>Question 3:</h3>
-        <blockquote>What is the name of McGreedy's secret project?</blockquote>
-        <h3>Answer 3:</h3>
-        <blockquote>Purple Snow</blockquote>
+      <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-controls="menuOverlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
 
-    <h1 class="section-title">Day 1 Completed</h1>
-    <hr><br>
-
-    <h1 class="section-title">[Day 2] O Data, All Ye Faithful</h1>
-    <img src="res/aoc2023day2-header.png" alt="Day 2 Banner" width="95%">1 class="section-title">[Day 1] Chatbot, tell me, if you're really safe?</h1>
-    <img src="res/aoc2023day1-header.png" alt="Day 1 Banner" width="95%">
-
-    <div>
-        <div>
-            <h3>Question 1- </h3>
-            <blockquote style="background-color: grey;"> How many packets were captured (looking at the PacketNumber)?</blockquote>
-            <h3>Answer 1-</h3>
-            <blockquote style="background-color: grey;"> 100 </blockquote>
-            <h3>Question 2-</h3>
-            <blockquote style="background-color: grey;">
-                What IP address sent the most amount of traffic during the packet capture?</blockquote>
-            <h3>Answer 2-</h3>
-            <blockquote style="background-color: grey;"> 10.10.1.4 </blockquote>
-            <h3>Question 3-</h3>
-            <blockquote style="background-color: grey;">
-                What was the most frequent protocol?</blockquote>
-            <h3>Answer 3-</h3>
-            <blockquote style="background-color: grey;"> ICMP </blockquote>
-            
-
-            <h1 style="color:black; background-color: cadetblue;">Day 2 Completed </h1> <br>
-        <br><hr><br>
-        <h1 style="color:black; background-color: cadetblue;">[Day 3] Hydra is Coming to Town</h1>
-    <img style="margin: 2%; padding: 5px;" width="95%"  src="res/aoc2023day3-header.png"><br>
-
-    <div>
-        <div>
-            <h3>Question 1- </h3>
-            <blockquote style="background-color: grey;"> 
-Using crunch and hydra, find the PIN code to access the control system and unlock the door. What is the flag?</blockquote>
-            <h3>Answer 1-</h3>
-            <blockquote style="background-color: grey;"> THM{pin-code-brute-force} </blockquote>
-        
-            <h1 style="color:black; background-color: cadetblue;">Day 3 Completed </h1> <br>
-        </div>
+    <!-- Mobile Fullscreen Menu -->
+    <div id="menuOverlay" class="menu-overlay" hidden>
+      <nav class="overlay-nav" aria-label="Mobile">
+        <a class="overlay-link" href="index.html">> Home</a>
+        <a class="overlay-link" href="blogs.html">> Blogs</a>
+        <a class="overlay-link" href="tryhackme.html">> THM Walkthroughs</a>
+        <a class="overlay-link" href="contact us.html">> Contact Us</a>
+        <a class="overlay-link" href="about us.html">> About Us</a>
+      </nav>
     </div>
+  </header>
 
-    <br><hr><br>
-        <h1 style="color:black; background-color: cadetblue;">[Day 4] Baby, it's CeWLd outside</h1>
-    <img style="margin: 2%; padding: 5px;" width="95%"  src="res/aoc2023day4-header.png"><br>
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero-min">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="noise" aria-hidden="true"></div>
+      <div class="grid-floor" aria-hidden="true"></div>
 
-    <div>
-        <div>
-            <h3>Question 1- </h3>
-            <blockquote style="background-color: grey;"> What is the correct username and password combination? Format username:password
-</blockquote>
-            <h3>Answer 1-</h3>
-            <blockquote style="background-color: grey;"> isaias:Happiness </blockquote>
-            <h3>Question 2-</h3>
-            <blockquote style="background-color: grey;">
-                What is the flag?</blockquote>
-            <h3>Answer 2-</h3>
-            <blockquote style="background-color: grey;"> THM{m3rrY4nt4rct1crAft$} </blockquote><br>
-            <h1 style="color:black; background-color: cadetblue;">Day 4 Completed </h1> <br>
-        <br><hr><br>
+      <div class="container hero-inner">
+        <nav class="breadcrumbs monospace" aria-label="Breadcrumb" data-reveal>
+          <a href="index.html">Home</a> /
+          <a href="tryhackme.html">THM</a> /
+          <span aria-current="page">AOC 2023</span>
+        </nav>
+        <h1 class="hero-title glitch" data-text="ADVENT OF CYBER 2023" data-reveal>ADVENT OF CYBER 2023</h1>
+        <p class="post-meta monospace" data-reveal>Written by Silent Programmer • Selected Days (1–4)</p>
+        <div class="hero-ctas" data-reveal>
+          <a class="btn btn-ghost" href="tryhackme.html">> Back to THM</a>
+        </div>
+      </div>
+    </section>
 
-<script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-<div class="elfsight-app-d407e955-e9f1-4799-afc9-9dabdf326686" data-elfsight-app-lazy></div>
-         <!-- <a href="Download center.html"><button class="glow-on-hover" type="button">Download Center</button></a> -->
-      <br>
-      <!-- <a href="Download center.html" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Download Center</a> -->
+    <!-- Post -->
+    <section class="post-section">
+      <div class="container">
+        <article class="card tilt post-card" data-reveal>
+          <div class="card-inner">
+            <!-- Cover -->
+            <figure class="media">
+              <img src="res/aoc2023.png" alt="Advent of Cyber 2023" />
+            </figure>
 
-      <footer class="mt-auto text-white-50">
-          
-        © 2022 Remote Coders(A Community for Hackers and Programmars) <br> by - Tanmay Tiwari
-        <br>
-      </footer>
-</div>
-<script src=index.js></script>
+            <!-- Day 1 -->
+            <h2 class="section-title">[Day 1] Chatbot, tell me, if you're really safe?</h2>
+            <figure class="media">
+              <img src="res/aoc2023day1-header.png" alt="Day 1 Banner" />
+            </figure>
+
+            <div class="qa-block">
+              <div class="q monospace">Question 1</div>
+              <blockquote class="question">Email address used by McGreedy</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <blockquote class="answer">t.mcgreedy@antarcticrafts.thm</blockquote>
+            </div>
+
+            <div class="qa-block">
+              <div class="q monospace">Question 2</div>
+              <blockquote class="question">What is the password for the IT server room door?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <blockquote class="answer"><code class="monospace">BtY2S02</code></blockquote>
+            </div>
+
+            <div class="qa-block">
+              <div class="q monospace">Question 3</div>
+              <blockquote class="question">What is the name of McGreedy's secret project?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <blockquote class="answer">Purple Snow</blockquote>
+            </div>
+
+            <h3 class="section-subtitle">Day 1 Completed</h3>
+            <hr />
+
+            <!-- Day 2 -->
+            <h2 class="section-title">[Day 2] O Data, All Ye Faithful</h2>
+            <figure class="media">
+              <img src="res/aoc2023day2-header.png" alt="Day 2 Banner" />
+            </figure>
+
+            <div class="qa-block">
+              <div class="q monospace">Question 1</div>
+              <blockquote class="question">How many packets were captured (PacketNumber)?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <blockquote class="answer">100</blockquote>
+            </div>
+
+            <div class="qa-block">
+              <div class="q monospace">Question 2</div>
+              <blockquote class="question">What IP address sent the most traffic?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <blockquote class="answer"><code class="monospace">10.10.1.4</code></blockquote>
+            </div>
+
+            <div class="qa-block">
+              <div class="q monospace">Question 3</div>
+              <blockquote class="question">What was the most frequent protocol?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <blockquote class="answer">ICMP</blockquote>
+            </div>
+
+            <h3 class="section-subtitle">Day 2 Completed</h3>
+            <hr />
+
+            <!-- Day 3 -->
+            <h2 class="section-title">[Day 3] Hydra is Coming to Town</h2>
+            <figure class="media">
+              <img src="res/aoc2023day3-header.png" alt="Day 3 Banner" />
+            </figure>
+
+            <div class="qa-block">
+              <div class="q monospace">Question</div>
+              <blockquote class="question">Using crunch and hydra, find the PIN to unlock the door. What is the flag?</blockquote>
+              <div class="a-title monospace">Flag</div>
+              <div class="flag-wrap">
+                <code id="flagD3" class="flag monospace">THM{pin-code-brute-force}</code>
+                <button class="copy-btn monospace" type="button" data-copy="#flagD3">Copy</button>
+              </div>
+            </div>
+
+            <h3 class="section-subtitle">Day 3 Completed</h3>
+            <hr />
+
+            <!-- Day 4 -->
+            <h2 class="section-title">[Day 4] Baby, it's CeWLd outside</h2>
+            <figure class="media">
+              <img src="res/aoc2023day4-header.png" alt="Day 4 Banner" />
+            </figure>
+
+            <div class="qa-block">
+              <div class="q monospace">Question 1</div>
+              <blockquote class="question">What is the correct username and password combination? (username:password)</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <blockquote class="answer"><code class="monospace">isaias:Happiness</code></blockquote>
+            </div>
+
+            <div class="qa-block">
+              <div class="q monospace">Question 2</div>
+              <blockquote class="question">What is the flag?</blockquote>
+              <div class="a-title monospace">Flag</div>
+              <div class="flag-wrap">
+                <code id="flagD4" class="flag monospace">THM{m3rrY4nt4rct1crAft$}</code>
+                <button class="copy-btn monospace" type="button" data-copy="#flagD4">Copy</button>
+              </div>
+            </div>
+
+            <h3 class="section-subtitle">Day 4 Completed</h3>
+
+            <!-- Nav -->
+            <div class="post-nav">
+              <a class="btn btn-ghost" href="tryhackme.html">> Back to THM</a>
+              <a class="btn btn-primary" href="blogs.html">> Explore Blogs</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="foot-brand">
+          <span class="brand-bracket">[</span>
+          <span class="monospace">RC</span>
+          <span class="brand-bracket">]</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="blogs.html">Blogs</a>
+          <a href="tryhackme.html" aria-current="page">THM</a>
+          <a href="contact us.html">Contact</a>
+          <a href="about us.html">About</a>
+        </nav>
+        <div class="foot-copy monospace">
+          © 2023 Remote Coders — A Community for Hackers and Programmers<br />
+          Developed by Silent Programmer
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page: copy buttons -->
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const sel = btn.getAttribute('data-copy');
+        const el = document.querySelector(sel);
+        if (!el) return;
+        const text = el.innerText || el.textContent || '';
+        try {
+          await navigator.clipboard.writeText(text);
+          const prev = btn.textContent;
+          btn.textContent = 'Copied';
+          setTimeout(() => btn.textContent = 'Copy', 1000);
+        } catch {
+          const prev = btn.textContent;
+          btn.textContent = 'Press Ctrl+C';
+          setTimeout(() => btn.textContent = 'Copy', 1200);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
