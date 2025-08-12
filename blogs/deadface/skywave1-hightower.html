@@ -1,74 +1,242 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js h-100">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SkyWave 1: High Tower - DEADFACE CTF SQL Challenge on identifying the correct tower_id.">
-    <title>SkyWave 1: High Tower Challenge | DEADFACE CTF</title>
-    <link rel="stylesheet" href="SkyWave1-hightower.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Tanmay Tiwari" />
+  <meta name="description" content="DEADFACE CTF 2024 — SkyWave 1: High Tower challenge write-up. Find tower_id near 220 ft elevation using SQL." />
+  <meta name="theme-color" content="#000000" />
+  <title>Remote Coders — SkyWave 1: High Tower | DEADFACE CTF</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../../res/web_icon.png" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../../CSS/style.css" />
+  <!-- Page CSS (reused) -->
+  <link rel="stylesheet" href="../../CSS/challenge.css" />
+
+  <!-- Global JS -->
+  <script defer src="../../index.js"></script>
 </head>
-<body>
-    <div class="container">
-        <header class="header">
-            <h1 class="main-title">📡 SkyWave 1: High Tower Challenge</h1>
-            <!-- Banner Image for the CTF Challenge -->
-            <div class="banner">
-                <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/challenges/sql/sql03/sql03.jpg" alt="CTF Challenge Banner">
+<body class="h-100">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="cursor"></div>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a class="brand" href="../../index.html" aria-label="Remote Coders Home">
+        <span class="brand-bracket">[</span>
+        <span class="brand-name glitch" data-text="REMOTE CODERS">REMOTE CODERS</span>
+        <span class="brand-bracket">]</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="../../index.html">Home</a></li>
+          <li><a class="nav-link" href="../../blogs.html">Blogs</a></li>
+          <li><a class="nav-link" href="../../tryhackme.html">THM Walkthroughs</a></li>
+          <li><a class="nav-link" href="../../contact us.html">Contact Us</a></li>
+          <li><a class="nav-link" href="../../about us.html">About Us</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-controls="menuOverlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Fullscreen Menu -->
+    <div id="menuOverlay" class="menu-overlay" hidden>
+      <nav class="overlay-nav" aria-label="Mobile">
+        <a class="overlay-link" href="../../index.html">> Home</a>
+        <a class="overlay-link" href="../../blogs.html">> Blogs</a>
+        <a class="overlay-link" href="../../tryhackme.html">> THM Walkthroughs</a>
+        <a class="overlay-link" href="../../contact us.html">> Contact Us</a>
+        <a class="overlay-link" href="../../about us.html">> About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero-min">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="noise" aria-hidden="true"></div>
+      <div class="grid-floor" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <nav class="breadcrumbs monospace" aria-label="Breadcrumb" data-reveal>
+          <a href="../../index.html">Home</a> /
+          <a href="../../blogs.html">Blogs</a> /
+          <a href="../deadfacectf2024.html">DEADFACE CTF 2024</a> /
+          <span aria-current="page">SkyWave 1: High Tower</span>
+        </nav>
+        <h1 class="hero-title glitch" data-text="SKYWAVE 1: HIGH TOWER" data-reveal>SKYWAVE 1: HIGH TOWER</h1>
+        <p class="post-meta monospace" data-reveal>SQL • Enumeration • 5 pts</p>
+      </div>
+    </section>
+
+    <!-- Challenge -->
+    <section class="challenge-section">
+      <div class="container">
+        <div class="challenge-grid">
+
+          <!-- Banner -->
+          <figure class="card banner-card" data-reveal>
+            <div class="thumb">
+              <img loading="lazy"
+                   src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/challenges/sql/sql03/sql03.jpg"
+                   alt="SkyWave challenge banner" />
             </div>
-        </header>
+          </figure>
 
-        <section class="overview glass">
-            <h2>Overview</h2>
-            <p>The "SkyWave 1: High Tower" challenge, created by <span class="highlight">syyntax</span>, requires the participant to identify the <span class="highlight">tower_id</span> of a cell tower with a specific elevation using SQL queries. This challenge tests basic SQL knowledge and data filtering techniques.</p>
-        </section>
+          <!-- Overview -->
+          <article class="card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Overview</div>
+              <p class="excerpt">
+                “SkyWave 1: High Tower” by <strong>syyntax</strong> asks for the <code>tower_id</code> of a tower
+                at roughly 220 ft elevation. Use basic SQL exploration and a simple range filter to find it.
+              </p>
+            </div>
+          </article>
 
-        <section class="challenge-details glass">
-            <h2>Challenge Details</h2>
-            <ul>
-                <li><strong>Points:</strong> 5</li>
-                <li><strong>Creator:</strong> syyntax</li>
-                <li><strong>Objective:</strong> Use SQL commands to find the tower_id for the tower that sits at an approximate elevation of 220 ft.</li>
-                <li><strong>Submission Format:</strong> flag{tower_id}</li>
-            </ul>
-        </section>
+          <!-- Details -->
+          <aside class="card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Challenge Details</div>
+              <div class="kv">
+                <div class="row"><span class="k">Points</span><span class="v">5</span></div>
+                <div class="row"><span class="k">Creator</span><span class="v">syyntax</span></div>
+                <div class="row"><span class="k">Objective</span><span class="v">Find tower_id near 220 ft elevation</span></div>
+                <div class="row"><span class="k">Submit</span><span class="v">flag{tower_id}</span></div>
+              </div>
+            </div>
+          </aside>
 
-        <section class="provided-info glass">
-            <h2>Provided Information</h2>
-            <p>Database Access: <code>ssh skywave@skywave.deadface.io</code></p>
-            <p><strong>Username:</strong> skywave</p>
-            <p><strong>Password:</strong> d34df4c3</p>
-        </section>
+          <!-- Provided -->
+          <article class="card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Provided Access</div>
+              <div class="provided">
+                <div class="row">
+                  <span class="k">SSH</span>
+                  <span class="v monospace">ssh skywave@skywave.deadface.io</span>
+                </div>
+                <div class="row">
+                  <span class="k">User</span>
+                  <span class="v monospace">skywave</span>
+                </div>
+                <div class="row">
+                  <span class="k">Pass</span>
+                  <span class="v monospace">d34df4c3</span>
+                </div>
+              </div>
+            </div>
+          </article>
 
-        <section class="solution-process glass">
-            <h2>Solution Process</h2>
-            <h3>Step-by-Step Query Process</h3>
-            <p>The goal is to find the tower with an elevation close to 220 feet. The steps to solve the challenge were:</p>
-            <div class="code-block">
-                <pre><code>1. Connect to the SQL database via SSH:
+          <!-- Solution steps -->
+          <article class="card code-card" data-reveal>
+            <div class="card-inner">
+              <div class="code-head">
+                <div class="meta monospace">SQL exploration → range filter</div>
+                <button class="copy-btn monospace" type="button" data-copy="#code1">Copy</button>
+              </div>
+<pre id="code1" class="code-pre"><code class="language-sql">-- 1) Connect (per instructions)
 ssh skywave@skywave.deadface.io
 
-2. List all the tables in the database:
+-- 2) Show tables
 SHOW TABLES;
 
-3. Describe the structure of the Towers table to understand its columns:
+-- 3) Inspect the Towers table structure
 DESCRIBE Towers;
 
-4. Query the tower with an elevation close to 220 feet:
-SELECT tower_id FROM Towers WHERE elevation BETWEEN 219.5 AND 220.5;</code></pre>
+-- 4) Filter for elevation around ~220 ft
+SELECT tower_id
+FROM Towers
+WHERE elevation BETWEEN 219.5 AND 220.5;</code></pre>
             </div>
+          </article>
 
-            <h3>Identified Tower ID</h3>
-            <p>Based on the SQL query result, the <strong>tower_id</strong> with the specified elevation was <span class="highlight">215</span>.</p>
-        </section>
+          <!-- Result -->
+          <article class="card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Result</div>
+              <p class="excerpt">
+                The query returns <code>tower_id = 215</code> for an elevation near 220 ft.
+              </p>
+            </div>
+          </article>
 
-        <section class="flag glass">
-            <h2>Flag</h2>
-            <p>The flag is: <span class="flag">flag{215}</span></p>
-        </section>
+          <!-- Flag -->
+          <article class="card flag-card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Flag</div>
+              <div class="flag-wrap">
+                <code id="flagText" class="flag monospace">flag{215}</code>
+                <button class="copy-btn monospace" type="button" data-copy="#flagText">Copy</button>
+              </div>
+            </div>
+          </article>
 
-        <footer class="mt-auto text-white-50">
-            © 2022 Remote Coders - A Community for Hackers and Programmers <br> Developed by Tanmay Tiwari
-        </footer>
+        </div>
+
+        <!-- Back -->
+        <div class="post-nav">
+          <a class="btn btn-ghost" href="../deadfacectf2024.html">> Back to DEADFACE</a>
+          <a class="btn btn-primary" href="../../blogs.html">> Explore Blogs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="foot-brand">
+          <span class="brand-bracket">[</span>
+          <span class="monospace">RC</span>
+          <span class="brand-bracket">]</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="../../blogs.html">Blogs</a>
+          <a href="../../tryhackme.html">THM</a>
+          <a href="../../contact us.html">Contact</a>
+          <a href="../../about us.html">About</a>
+        </nav>
+        <div class="foot-copy monospace">
+          © 2024 Remote Coders — A Community for Hackers and Programmers<br />
+          Developed by Silent Programmer
+        </div>
+      </div>
     </div>
+  </footer>
+
+  <!-- Page: copy buttons -->
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const sel = btn.getAttribute('data-copy');
+        const el = document.querySelector(sel);
+        if (!el) return;
+        const text = el.innerText || el.textContent || '';
+        try {
+          await navigator.clipboard.writeText(text);
+          const prev = btn.textContent;
+          btn.textContent = 'Copied';
+          setTimeout(() => btn.textContent = 'Copy', 1000);
+        } catch {
+          const prev = btn.textContent;
+          btn.textContent = 'Press Ctrl+C';
+          setTimeout(() => btn.textContent = 'Copy', 1200);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
