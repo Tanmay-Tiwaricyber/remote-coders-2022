@@ -1,123 +1,228 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js h-100">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shortnote CS</title>
-    
-    <style>
-        /* General Styling */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Tanmay Tiwari" />
+  <meta name="description" content="Concise CS short notes: functions, file handling, stacks, and computer networks." />
+  <meta name="theme-color" content="#000000" />
+  <title>Remote Coders — CS Short Notes</title>
 
-/* Body and Container */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #121212; /* Dark background */
-    color: #e0e0e0; /* Light text color */
-    padding: 20px;
-    background-image: url('background.jpg'); /* Optional: Add your own background image */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../res/web_icon.png" />
 
-/* Container to hold the content */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 10px;
-}
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
 
-/* Header Styling */
-h1 {
-    font-size: 2rem;
-    color: #81C784; /* Light green color for headings */
-    margin-bottom: 10px;
-    text-align: center;
-}
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../CSS/style.css" />
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="../CSS/shortnotes.css" />
 
-/* Section Styling with Glass Effect */
-.content {
-    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow around the sections */
-    backdrop-filter: blur(10px); /* Glass effect (blurring the background) */
-    -webkit-backdrop-filter: blur(10px); /* For Safari */
-    color: #e0e0e0; /* Light text on dark background */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
-    text-align: center;
-}
-
-/* Image styling */
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow around the images */
-    margin-top: 10px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 1.5rem;
-    }
-
-    .content {
-        padding: 15px;
-    }
-
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 1.2rem;
-    }
-
-    .content {
-        padding: 10px;
-    }
-
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-}
-
-    </style>
+  <!-- Global JS -->
+  <script defer src="../index.js"></script>
 </head>
-<body>
-    <div class="container">
-        <section class="content">
-            <h1>Function</h1>
-            <img src="function.png" alt="Function">
-        </section>
-        <section class="content">
-            <h1>File Handling in Python</h1>
-            <img src="File Handling in Python.png" alt="File Handling in Python">
-        </section>
-        <section class="content">
-            <h1>Stacks</h1>
-            <img src="stacks.png" alt="Stacks">
-        </section>
-        <section class="content">
-            <h1>Computer Network 1</h1>
-            <img src="Computer Network 1.png" alt="Computer Network 1">
-        </section>
-        <section class="content">
-            <h1>Computer Network 2</h1>
-            <img src="Computer Network 2.png" alt="Computer Network 2">
-        </section>
+<body class="h-100">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="cursor"></div>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a class="brand" href="../index.html" aria-label="Remote Coders Home">
+        <span class="brand-bracket">[</span>
+        <span class="brand-name glitch" data-text="REMOTE CODERS">REMOTE CODERS</span>
+        <span class="brand-bracket">]</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="../index.html">Home</a></li>
+          <li><a class="nav-link" href="../blogs.html">Blogs</a></li>
+          <li><a class="nav-link" href="../tryhackme.html">THM Walkthroughs</a></li>
+          <li><a class="nav-link" href="../contact us.html">Contact Us</a></li>
+          <li><a class="nav-link" href="../about us.html">About Us</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-controls="menuOverlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+
+    <!-- Mobile Fullscreen Menu -->
+    <div id="menuOverlay" class="menu-overlay" hidden>
+      <nav class="overlay-nav" aria-label="Mobile">
+        <a class="overlay-link" href="../index.html">> Home</a>
+        <a class="overlay-link" href="../blogs.html">> Blogs</a>
+        <a class="overlay-link" href="../tryhackme.html">> THM Walkthroughs</a>
+        <a class="overlay-link" href="../contact us.html">> Contact Us</a>
+        <a class="overlay-link" href="../about us.html">> About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero-min">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="noise" aria-hidden="true"></div>
+      <div class="grid-floor" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <!-- <p class="status monospace" data-reveal>
+          <span class="dot"></span> SYS: ONLINE • CS SHORT NOTES
+        </p> -->
+        <h1 class="hero-title glitch" data-text="CS SHORT NOTES" data-reveal>CS SHORT NOTES</h1>
+        <p class="hero-subtitle monospace" data-reveal>Quick visual summaries for fast revision.</p>
+      </div>
+    </section>
+
+    <!-- Notes Grid -->
+    <section class="notes-section">
+      <div class="container">
+        <div class="notes-grid">
+          <!-- 1 -->
+          <article class="card tilt note-card" data-reveal>
+            <div class="thumb">
+              <img src="function.png" alt="Function" loading="lazy" data-title="Function" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">Topic</div>
+              <h3 class="title">Function</h3>
+              <div class="actions">
+                <button class="btn btn-ghost view-btn" type="button" data-src="function.png" data-title="Function">> View</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2 -->
+          <article class="card tilt note-card" data-reveal>
+            <div class="thumb">
+              <img src="File Handling in Python.png" alt="File Handling in Python" loading="lazy" data-title="File Handling in Python" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">Topic</div>
+              <h3 class="title">File Handling in Python</h3>
+              <div class="actions">
+                <button class="btn btn-ghost view-btn" type="button" data-src="File Handling in Python.png" data-title="File Handling in Python">> View</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3 -->
+          <article class="card tilt note-card" data-reveal>
+            <div class="thumb">
+              <img src="stacks.png" alt="Stacks" loading="lazy" data-title="Stacks" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">Topic</div>
+              <h3 class="title">Stacks</h3>
+              <div class="actions">
+                <button class="btn btn-ghost view-btn" type="button" data-src="stacks.png" data-title="Stacks">> View</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4 -->
+          <article class="card tilt note-card" data-reveal>
+            <div class="thumb">
+              <img src="Computer Network 1.png" alt="Computer Network 1" loading="lazy" data-title="Computer Network 1" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">Topic</div>
+              <h3 class="title">Computer Network 1</h3>
+              <div class="actions">
+                <button class="btn btn-ghost view-btn" type="button" data-src="Computer Network 1.png" data-title="Computer Network 1">> View</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5 -->
+          <article class="card tilt note-card" data-reveal>
+            <div class="thumb">
+              <img src="Computer Network 2.png" alt="Computer Network 2" loading="lazy" data-title="Computer Network 2" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">Topic</div>
+              <h3 class="title">Computer Network 2</h3>
+              <div class="actions">
+                <button class="btn btn-ghost view-btn" type="button" data-src="Computer Network 2.png" data-title="Computer Network 2">> View</button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Back -->
+        <div class="post-nav">
+          <a class="btn btn-ghost" href="../blogs.html">> Back to Blogs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" hidden>
+    <button class="lb-close monospace" type="button" aria-label="Close">×</button>
+    <figure class="lb-media">
+      <img id="lbImg" alt="" />
+      <figcaption id="lbCap" class="monospace"></figcaption>
+    </figure>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="foot-brand">
+          <span class="brand-bracket">[</span>
+          <span class="monospace">RC</span>
+          <span class="brand-bracket">]</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="../blogs.html">Blogs</a>
+          <a href="../tryhackme.html">THM</a>
+          <a href="../contact us.html">Contact</a>
+          <a href="../about us.html">About</a>
+        </nav>
+        <div class="foot-copy monospace">
+          © 2024 Remote Coders — A Community for Hackers and Programmers<br />
+          Developed by Silent Programmer
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page lightbox script -->
+  <script>
+    (function () {
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lbImg');
+      const lbCap = document.getElementById('lbCap');
+      const closeBtn = lb.querySelector('.lb-close');
+
+      function openLB(src, title) {
+        lbImg.src = src;
+        lbImg.alt = title || '';
+        lbCap.textContent = title || '';
+        lb.hidden = false;
+        requestAnimationFrame(() => lb.classList.add('open'));
+      }
+      function closeLB() {
+        lb.classList.remove('open');
+        setTimeout(() => { lb.hidden = true; lbImg.src = ''; }, 180);
+      }
+
+      document.querySelectorAll('.view-btn, .note-card .thumb img').forEach(el => {
+        el.addEventListener('click', () => {
+          const src = el.dataset.src || el.getAttribute('src');
+          const title = el.dataset.title || el.getAttribute('alt') || 'Note';
+          openLB(src, title);
+        });
+      });
+      closeBtn.addEventListener('click', closeLB);
+      lb.addEventListener('click', (e) => { if (e.target === lb) closeLB(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) closeLB(); });
+    })();
+  </script>
 </body>
 </html>
