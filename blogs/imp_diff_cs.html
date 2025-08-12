@@ -1,401 +1,540 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js h-100">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMP Differences</title>
-    <style>
-        :root {
-            --bg-color: #fdf6e3;
-            --text-color: #333;
-            --border-color: #ffcc00;
-            --highlight-color: #ff9900;
-            --table-bg: #fff5cc;
-            --table-alt-bg: #ffeb99;
-            --table-hover-bg: #ffd966;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Tanmay Tiwari" />
+  <meta name="description" content="Important CS differences: Python functions, files, DB methods, and networking terms." />
+  <meta name="theme-color" content="#000000" />
+  <title>Remote Coders — Important Differences (CS 12)</title>
 
-        body.dark-mode {
-            --bg-color: #1e1e1e;
-            --text-color: #f5f5f5;
-            --border-color: #ffa500;
-            --highlight-color: #ffcc00;
-            --table-bg: #333;
-            --table-alt-bg: #444;
-            --table-hover-bg: #555;
-        }
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../res/web_icon.png" />
 
-        body {
-            font-family: "Comic Sans MS", cursive, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-            transition: background-color 0.3s, color 0.3s;
-        }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
 
-        h1 {
-            color: var(--highlight-color);
-            font-size: 2rem;
-            display: inline-block;
-            border: 3px dashed var(--border-color);
-            padding: 10px;
-            border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../CSS/style.css" />
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="../CSS/imp-diff.css" />
 
-        table {
-            width: 95%;
-            max-width: 1000px;
-            margin: 20px auto;
-            border-collapse: collapse;
-            background-color: var(--table-bg);
-            color: var(--text-color);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
-            border: 3px dashed var(--border-color);
-        }
-
-        th, td {
-            border: 2px dashed var(--border-color);
-            padding: 12px;
-            text-align: center;
-        }
-        th {
-            background-color: var(--highlight-color);
-            color: white;
-        }
-        td {
-            background-color: var(--table-bg);
-        }
-        table tr:nth-child(even) td {
-            background-color: var(--table-alt-bg);
-        }
-        table tr:hover td {
-            background-color: var(--table-hover-bg);
-        }
-
-        .toggle-container {
-            text-align: right;
-            padding: 10px;
-        }
-
-        .toggle-button {
-            cursor: pointer;
-            background-color: var(--highlight-color);
-            border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
-            border-radius: 5px;
-            color: white;
-            font-weight: bold;
-            transition: background 0.3s, color 0.3s;
-        }
-        .toggle-button:hover {
-            background-color: var(--border-color);
-        }
-    </style>
+  <!-- Global JS -->
+  <script defer src="../index.js"></script>
 </head>
-<body>
-    <div class="toggle-container">
-        <button class="toggle-button" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+<body class="h-100">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="cursor"></div>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a class="brand" href="../index.html" aria-label="Remote Coders Home">
+        <span class="brand-bracket">[</span>
+        <span class="brand-name glitch" data-text="REMOTE CODERS">REMOTE CODERS</span>
+        <span class="brand-bracket">]</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="../index.html">Home</a></li>
+          <li><a class="nav-link" href="../blogs.html">Blogs</a></li>
+          <li><a class="nav-link" href="../tryhackme.html">THM Walkthroughs</a></li>
+          <li><a class="nav-link" href="../contact us.html">Contact Us</a></li>
+          <li><a class="nav-link" href="../about us.html">About Us</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-controls="menuOverlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <h1>Difference Between random(), randint(), and randrange()</h1>
-    <table>
-        <tr>
-            <th>Function</th><th>What it does</th><th>Example</th><th>Output Example</th>
-        </tr>
-        <tr>
-            <td><code>random()</code></td><td>Returns a random decimal (float) between 0 and 1.</td><td><code>random.random()</code></td><td>0.6723</td>
-        </tr>
-        <tr>
-            <td><code>randint(a, b)</code></td><td>Returns a random integer between <code>a</code> and <code>b</code> (inclusive).</td><td><code>random.randint(1, 10)</code></td><td>7</td>
-        </tr>
-        <tr>
-            <td><code>randrange(start, stop, step)</code></td><td>Returns a random integer from a range.</td><td><code>random.randrange(1, 10, 2)</code></td><td>3</td>
-        </tr>
-    </table>
-    <br>
-    <hr>
 
-    <h1>Difference Between sort() and sorted()</h1>
-    <table>
-        <tr>
-            <th>Function</th>
-            <th>What it does</th>
-            <th>Example</th>
-            <th>Output Example</th>
-        </tr>
-        <tr>
-            <td><code>sort()</code></td>
-            <td>Sorts the list in place (modifies the original list) and returns <code>None</code>.</td>
-            <td><code>my_list = [3, 1, 4]; my_list.sort()</code></td>
-            <td><code>[1, 3, 4]</code></td>
-        </tr>
-        <tr>
-            <td><code>sorted()</code></td>
-            <td>Returns a new sorted list without modifying the original list.</td>
-            <td><code>new_list = sorted([3, 1, 4])</code></td>
-            <td><code>[1, 3, 4]</code></td>
-        </tr>
-    </table>
-    <br>
-    <hr>
-    <h1>Difference Between lstrip(), rstrip(), and strip()</h1>
-    <table>
-        <tr>
-            <th>Function</th>
-            <th>What it does</th>
-            <th>Example</th>
-            <th>Output Example</th>
-        </tr>
-        <tr>
-            <td><code>lstrip()</code></td>
-            <td>Removes leading (left-side) whitespace from a string.</td>
-            <td><code>"  hello  ".lstrip()</code></td>
-            <td><code>"hello  "</code></td>
-        </tr>
-        <tr>
-            <td><code>rstrip()</code></td>
-            <td>Removes trailing (right-side) whitespace from a string.</td>
-            <td><code>"  hello  ".rstrip()</code></td>
-            <td><code>"  hello"</code></td>
-        </tr>
-        <tr>
-            <td><code>strip()</code></td>
-            <td>Removes both leading and trailing whitespace from a string.</td>
-            <td><code>"  hello  ".strip()</code></td>
-            <td><code>"hello"</code></td>
-        </tr>
-    </table>
-    <br>
-    <hr>
-    <h1>Difference Between LAN, CAN, PAN, MAN, WAN</h1>
-    <table>
-        <tr>
-            <th>Network Type</th>
-            <th>Full Form</th>
-            <th>Coverage Area</th>
-            <th>Example</th>
-        </tr>
-        <tr>
-            <td><code>LAN</code></td>
-            <td>Local Area Network</td>
-            <td>Small area like a home, office, or school</td>
-            <td>Wi-Fi in an office or home</td>
-        </tr>
-        <tr>
-            <td><code>CAN</code></td>
-            <td>Campus Area Network</td>
-            <td>University campus or a group of buildings</td>
-            <td>Network in a college campus</td>
-        </tr>
-        <tr>
-            <td><code>PAN</code></td>
-            <td>Personal Area Network</td>
-            <td>Very small area, usually a few meters</td>
-            <td>Bluetooth devices, smartwatches</td>
-        </tr>
-        <tr>
-            <td><code>MAN</code></td>
-            <td>Metropolitan Area Network</td>
-            <td>City-wide network</td>
-            <td>City-wide Wi-Fi, cable TV networks</td>
-        </tr>
-        <tr>
-            <td><code>WAN</code></td>
-            <td>Wide Area Network</td>
-            <td>Large geographic area, even worldwide</td>
-            <td>Internet, telecom networks</td>
-        </tr>
-    </table>
-    <br>
-    <hr>
-    <h1>Difference Between seek() and tell()</h1>
-    <table>
-        <tr>
-            <th>Function</th>
-            <th>What it does</th>
-            <th>Example</th>
-            <th>Output Example</th>
-        </tr>
-        <tr>
-            <td><code>seek()</code></td>
-            <td>Moves the file cursor to a specific position.</td>
-            <td><code>file.seek(5)</code></td>
-            <td>Cursor moves to position 5 in the file.</td>
-        </tr>
-        <tr>
-            <td><code>tell()</code></td>
-            <td>Returns the current position of the file cursor.</td>
-            <td><code>pos = file.tell()</code></td>
-            <td>Returns current cursor position, e.g., 5.</td>
-        </tr>
-    </table>
-    <br>
-    <hr>
-    <h1>Difference Between read(), readline(), and readlines()</h1>
-    <table>
-        <tr>
-            <th>Function</th>
-            <th>What it does</th>
-            <th>Example</th>
-            <th>Output Example</th>
-        </tr>
-        <tr>
-            <td><code>read()</code></td>
-            <td>Reads the entire file or a specific number of characters.</td>
-            <td><code>file.read()</code></td>
-            <td>Returns whole file content as a string.</td>
-        </tr>
-        <tr>
-            <td><code>readline()</code></td>
-            <td>Reads a single line from the file.</td>
-            <td><code>file.readline()</code></td>
-            <td>Returns one line as a string.</td>
-        </tr>
-        <tr>
-            <td><code>readlines()</code></td>
-            <td>Reads all lines and returns a list of strings.</td>
-            <td><code>file.readlines()</code></td>
-            <td>Returns list: <code>["Line 1", "Line 2"]</code></td>
-        </tr>
-    </table>
-    <br>
-    <hr>
-    <h1>Difference Between write() and writelines()</h1>
-    <table>
-        <tr>
-            <th>Function</th>
-            <th>What it does</th>
-            <th>Example</th>
-            <th>Output Example</th>
-        </tr>
-        <tr>
-            <td><code>write()</code></td>
-            <td>Writes a single string to a file.</td>
-            <td><code>file.write("Hello World")</code></td>
-            <td>Writes "Hello World" to the file.</td>
-        </tr>
-        <tr>
-            <td><code>writelines()</code></td>
-            <td>Writes a list of strings to a file.</td>
-            <td><code>file.writelines(["Line 1\n", "Line 2\n"])</code></td>
-            <td>Writes multiple lines to the file.</td>
-        </tr>
-    </table>
-    <br>
-    <hr>
-    <h1>Difference Between dump() and load()</h1>
-    <table>
-        <tr>
-            <th>Function</th>
-            <th>What it does</th>
-            <th>Example</th>
-            <th>Output Example</th>
-        </tr>
-        <tr>
-            <td><code>dump()</code></td>
-            <td>Serializes Python objects and writes them to a file.</td>
-            <td><code>json.dump(data, file)</code></td>
-            <td>Stores JSON data in a file.</td>
-        </tr>
-        <tr>
-            <td><code>load()</code></td>
-            <td>Reads JSON data from a file and deserializes it into a Python object.</td>
-            <td><code>data = json.load(file)</code></td>
-            <td>Loads JSON data into a Python dictionary.</td>
-        </tr>
-    </table>
-    <br>
-    <hr>
-    <h1>Difference Between MBps and Mbps</h1>
-    <table>
-        <tr>
-            <th>Term</th>
-            <th>Full Form</th>
-            <th>Measurement</th>
-            <th>Common Use</th>
-        </tr>
-        <tr>
-            <td><code>MBps</code></td>
-            <td>Megabytes per second</td>
-            <td>Measures data transfer speed in megabytes</td>
-            <td>Used for file sizes, downloads, and storage</td>
-        </tr>
-        <tr>
-            <td><code>Mbps</code></td>
-            <td>Megabits per second</td>
-            <td>Measures data transfer speed in megabits</td>
-            <td>Used for internet speed and bandwidth</td>
-        </tr>
-    </table>
-    <br>
-    <hr>
-    <h1>Difference Between fetchone() and fetchall()</h1>
-    <table>
-        <tr>
-            <th>Function</th>
-            <th>What it does</th>
-            <th>Example</th>
-            <th>Output Example</th>
-        </tr>
-        <tr>
-            <td><code>fetchone()</code></td>
-            <td>Retrieves the next row from the result set.</td>
-            <td><code>cursor.fetchone()</code></td>
-            <td>Returns a single row as a tuple.</td>
-        </tr>
-        <tr>
-            <td><code>fetchall()</code></td>
-            <td>Retrieves all remaining rows from the result set.</td>
-            <td><code>cursor.fetchall()</code></td>
-            <td>Returns a list of tuples containing all rows.</td>
-        </tr>
-    </table> 
-    <br>
-    <hr>
-    <h1>Difference Between execute() and executemany()</h1>
-    <table>
-        <tr>
-            <th>Function</th>
-            <th>What it does</th>
-            <th>Example</th>
-            <th>Output Example</th>
-        </tr>
-        <tr>
-            <td><code>execute()</code></td>
-            <td>Executes a single SQL statement.</td>
-            <td><code>cursor.execute("INSERT INTO table VALUES (?, ?)", (1, "John"))</code></td>
-            <td>Inserts one row into the table.</td>
-        </tr>
-        <tr>
-            <td><code>executemany()</code></td>
-            <td>Executes the same SQL statement multiple times with different parameters.</td>
-            <td><code>cursor.executemany("INSERT INTO table VALUES (?, ?)", [(1, "John"), (2, "Jane")])</code></td>
-            <td>Inserts multiple rows into the table.</td>
-        </tr>
-    </table> <br><br><br>
-    <!-- Elfsight Visitor Counter | Untitled Visitor Counter -->
-<script src="https://static.elfsight.com/platform/platform.js" async></script>
-<div class="elfsight-app-1029e6b7-7acb-4368-86df-3e313f23ae45" data-elfsight-app-lazy></div>
-    <script>
-        function toggleDarkMode() {
-            document.body.classList.toggle("dark-mode");
-            let isDarkMode = document.body.classList.contains("dark-mode");
-            localStorage.setItem("darkMode", isDarkMode);
-            document.querySelector(".toggle-button").textContent = isDarkMode ? "☀️ Toggle Light Mode" : "🌙 Toggle Dark Mode";
-        }
+    <!-- Mobile Fullscreen Menu -->
+    <div id="menuOverlay" class="menu-overlay" hidden>
+      <nav class="overlay-nav" aria-label="Mobile">
+        <a class="overlay-link" href="../index.html">> Home</a>
+        <a class="overlay-link" href="../blogs.html">> Blogs</a>
+        <a class="overlay-link" href="../tryhackme.html">> THM Walkthroughs</a>
+        <a class="overlay-link" href="../contact us.html">> Contact Us</a>
+        <a class="overlay-link" href="../about us.html">> About Us</a>
+      </nav>
+    </div>
+  </header>
 
-        window.onload = function() {
-            let savedMode = localStorage.getItem("darkMode");
-            if (savedMode === "true") {
-                document.body.classList.add("dark-mode");
-                document.querySelector(".toggle-button").textContent = "☀️ Toggle Light Mode";
-            }
-        };
-    </script>
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero-min">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="noise" aria-hidden="true"></div>
+      <div class="grid-floor" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <p class="status monospace" data-reveal>
+          <span class="dot"></span> SYS: ONLINE • IMPORTANT DIFFERENCES
+        </p>
+        <h1 class="hero-title glitch" data-text="IMPORTANT DIFFERENCES (CS 12)" data-reveal>IMPORTANT DIFFERENCES (CS 12)</h1>
+        <p class="post-meta monospace" data-reveal>
+          19 March 2025 • CS • Notes
+        </p>
+      </div>
+    </section>
+
+    <!-- TOC -->
+    <section class="diff-section">
+      <div class="container">
+        <div class="card" data-reveal>
+          <div class="card-inner">
+            <div class="meta monospace">Index</div>
+            <nav class="toc">
+              <a href="#random" class="chip">random vs randint vs randrange</a>
+              <a href="#sort" class="chip">sort vs sorted</a>
+              <a href="#strip" class="chip">lstrip vs rstrip vs strip</a>
+              <a href="#lan" class="chip">LAN vs CAN vs PAN vs MAN vs WAN</a>
+              <a href="#seek" class="chip">seek vs tell</a>
+              <a href="#read" class="chip">read vs readline vs readlines</a>
+              <a href="#write" class="chip">write vs writelines</a>
+              <a href="#dump" class="chip">dump vs load</a>
+              <a href="#mbps" class="chip">MBps vs Mbps</a>
+              <a href="#fetch" class="chip">fetchone vs fetchall</a>
+              <a href="#execute" class="chip">execute vs executemany</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tables -->
+    <section class="diff-section">
+      <div class="container">
+
+        <!-- random/randint/randrange -->
+        <article id="random" class="card" data-reveal>
+          <div class="card-inner">
+            <h2 class="title">Difference: random(), randint(), randrange()</h2>
+            <div class="table-wrap">
+              <table class="diff-table" aria-label="random vs randint vs randrange">
+                <thead>
+                  <tr>
+                    <th>Function</th>
+                    <th>What it does</th>
+                    <th>Example</th>
+                    <th>Output example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>random()</code></td>
+                    <td>Returns a float in [0.0, 1.0).</td>
+                    <td><code>random.random()</code></td>
+                    <td><code>0.6723</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>randint(a, b)</code></td>
+                    <td>Returns an int in [a, b] (inclusive).</td>
+                    <td><code>random.randint(1, 10)</code></td>
+                    <td><code>7</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>randrange(start, stop, step)</code></td>
+                    <td>Returns an int from range(start, stop, step).</td>
+                    <td><code>random.randrange(1, 10, 2)</code></td>
+                    <td><code>3</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <!-- sort/sorted -->
+        <article id="sort" class="card" data-reveal>
+          <div class="card-inner">
+            <h2 class="title">Difference: sort() vs sorted()</h2>
+            <div class="table-wrap">
+              <table class="diff-table" aria-label="sort vs sorted">
+                <thead>
+                  <tr>
+                    <th>Function</th>
+                    <th>What it does</th>
+                    <th>Example</th>
+                    <th>Output example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>sort()</code></td>
+                    <td>Sorts list in place, returns <code>None</code>.</td>
+                    <td><code>lst=[3,1,4]; lst.sort()</code></td>
+                    <td><code>[1, 3, 4]</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>sorted()</code></td>
+                    <td>Returns a new sorted list.</td>
+                    <td><code>new_list = sorted([3,1,4])</code></td>
+                    <td><code>[1, 3, 4]</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <!-- lstrip/rstrip/strip -->
+        <article id="strip" class="card" data-reveal>
+          <div class="card-inner">
+            <h2 class="title">Difference: lstrip() vs rstrip() vs strip()</h2>
+            <div class="table-wrap">
+              <table class="diff-table" aria-label="lstrip vs rstrip vs strip">
+                <thead>
+                  <tr>
+                    <th>Function</th>
+                    <th>What it does</th>
+                    <th>Example</th>
+                    <th>Output example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>lstrip()</code></td>
+                    <td>Removes leading whitespace.</td>
+                    <td><code>"  hi  ".lstrip()</code></td>
+                    <td><code>"hi  "</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>rstrip()</code></td>
+                    <td>Removes trailing whitespace.</td>
+                    <td><code>"  hi  ".rstrip()</code></td>
+                    <td><code>"  hi"</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>strip()</code></td>
+                    <td>Removes both leading and trailing whitespace.</td>
+                    <td><code>"  hi  ".strip()</code></td>
+                    <td><code>"hi"</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <!-- LAN/CAN/PAN/MAN/WAN -->
+        <article id="lan" class="card" data-reveal>
+          <div class="card-inner">
+            <h2 class="title">Difference: LAN, CAN, PAN, MAN, WAN</h2>
+            <div class="table-wrap">
+              <table class="diff-table" aria-label="LAN CAN PAN MAN WAN">
+                <thead>
+                  <tr>
+                    <th>Network Type</th>
+                    <th>Full form</th>
+                    <th>Coverage area</th>
+                    <th>Example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>LAN</code></td>
+                    <td>Local Area Network</td>
+                    <td>Small area: home, office, school</td>
+                    <td>Office/home Wi‑Fi</td>
+                  </tr>
+                  <tr>
+                    <td><code>CAN</code></td>
+                    <td>Campus Area Network</td>
+                    <td>Campus or group of buildings</td>
+                    <td>College campus network</td>
+                  </tr>
+                  <tr>
+                    <td><code>PAN</code></td>
+                    <td>Personal Area Network</td>
+                    <td>Very small, a few meters</td>
+                    <td>Bluetooth, wearables</td>
+                  </tr>
+                  <tr>
+                    <td><code>MAN</code></td>
+                    <td>Metropolitan Area Network</td>
+                    <td>City‑wide</td>
+                    <td>City Wi‑Fi, cable TV</td>
+                  </tr>
+                  <tr>
+                    <td><code>WAN</code></td>
+                    <td>Wide Area Network</td>
+                    <td>Large / global</td>
+                    <td>Internet, telecom backbones</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <!-- seek/tell -->
+        <article id="seek" class="card" data-reveal>
+          <div class="card-inner">
+            <h2 class="title">Difference: seek() vs tell()</h2>
+            <div class="table-wrap">
+              <table class="diff-table" aria-label="seek vs tell">
+                <thead>
+                  <tr>
+                    <th>Function</th>
+                    <th>What it does</th>
+                    <th>Example</th>
+                    <th>Output example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>seek()</code></td>
+                    <td>Moves file cursor to a position.</td>
+                    <td><code>f.seek(5)</code></td>
+                    <td>Cursor at pos 5</td>
+                  </tr>
+                  <tr>
+                    <td><code>tell()</code></td>
+                    <td>Returns current cursor position.</td>
+                    <td><code>pos = f.tell()</code></td>
+                    <td><code>5</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <!-- read/readline/readlines -->
+        <article id="read" class="card" data-reveal>
+          <div class="card-inner">
+            <h2 class="title">Difference: read() vs readline() vs readlines()</h2>
+            <div class="table-wrap">
+              <table class="diff-table" aria-label="read readline readlines">
+                <thead>
+                  <tr>
+                    <th>Function</th>
+                    <th>What it does</th>
+                    <th>Example</th>
+                    <th>Output example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>read()</code></td>
+                    <td>Reads entire file or N chars.</td>
+                    <td><code>f.read()</code></td>
+                    <td>Whole file as string</td>
+                  </tr>
+                  <tr>
+                    <td><code>readline()</code></td>
+                    <td>Reads one line.</td>
+                    <td><code>f.readline()</code></td>
+                    <td>Single line string</td>
+                  </tr>
+                  <tr>
+                    <td><code>readlines()</code></td>
+                    <td>Reads all lines to list.</td>
+                    <td><code>f.readlines()</code></td>
+                    <td><code>["L1", "L2"]</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <!-- write/writelines -->
+        <article id="write" class="card" data-reveal>
+          <div class="card-inner">
+            <h2 class="title">Difference: write() vs writelines()</h2>
+            <div class="table-wrap">
+              <table class="diff-table" aria-label="write vs writelines">
+                <thead>
+                  <tr>
+                    <th>Function</th>
+                    <th>What it does</th>
+                    <th>Example</th>
+                    <th>Output example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>write()</code></td>
+                    <td>Writes a single string.</td>
+                    <td><code>f.write("Hello")</code></td>
+                    <td>Writes “Hello”</td>
+                  </tr>
+                  <tr>
+                    <td><code>writelines()</code></td>
+                    <td>Writes list of strings.</td>
+                    <td><code>f.writelines(["L1\n","L2\n"])</code></td>
+                    <td>Writes multiple lines</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <!-- dump/load -->
+        <article id="dump" class="card" data-reveal>
+          <div class="card-inner">
+            <h2 class="title">Difference: dump() vs load()</h2>
+            <div class="table-wrap">
+              <table class="diff-table" aria-label="dump vs load">
+                <thead>
+                  <tr>
+                    <th>Function</th>
+                    <th>What it does</th>
+                    <th>Example</th>
+                    <th>Output example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>dump()</code></td>
+                    <td>Serialize object to file (JSON).</td>
+                    <td><code>json.dump(data, f)</code></td>
+                    <td>Writes JSON</td>
+                  </tr>
+                  <tr>
+                    <td><code>load()</code></td>
+                    <td>Read JSON and deserialize.</td>
+                    <td><code>data = json.load(f)</code></td>
+                    <td>Python dict</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <!-- MBps/Mbps -->
+        <article id="mbps" class="card" data-reveal>
+          <div class="card-inner">
+            <h2 class="title">Difference: MBps vs Mbps</h2>
+            <div class="table-wrap">
+              <table class="diff-table" aria-label="MBps vs Mbps">
+                <thead>
+                  <tr>
+                    <th>Term</th>
+                    <th>Full form</th>
+                    <th>Measurement</th>
+                    <th>Common use</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>MBps</code></td>
+                    <td>Megabytes per second</td>
+                    <td>Data speed in megabytes</td>
+                    <td>File sizes, downloads</td>
+                  </tr>
+                  <tr>
+                    <td><code>Mbps</code></td>
+                    <td>Megabits per second</td>
+                    <td>Data speed in megabits</td>
+                    <td>Internet speed, bandwidth</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <!-- fetchone/fetchall -->
+        <article id="fetch" class="card" data-reveal>
+          <div class="card-inner">
+            <h2 class="title">Difference: fetchone() vs fetchall()</h2>
+            <div class="table-wrap">
+              <table class="diff-table" aria-label="fetchone vs fetchall">
+                <thead>
+                  <tr>
+                    <th>Function</th>
+                    <th>What it does</th>
+                    <th>Example</th>
+                    <th>Output example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>fetchone()</code></td>
+                    <td>Gets next row from result.</td>
+                    <td><code>cur.fetchone()</code></td>
+                    <td>Single tuple</td>
+                  </tr>
+                  <tr>
+                    <td><code>fetchall()</code></td>
+                    <td>Gets all remaining rows.</td>
+                    <td><code>cur.fetchall()</code></td>
+                    <td>List of tuples</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <!-- execute/executemany -->
+        <article id="execute" class="card" data-reveal>
+          <div class="card-inner">
+            <h2 class="title">Difference: execute() vs executemany()</h2>
+            <div class="table-wrap">
+              <table class="diff-table" aria-label="execute vs executemany">
+                <thead>
+                  <tr>
+                    <th>Function</th>
+                    <th>What it does</th>
+                    <th>Example</th>
+                    <th>Output example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>execute()</code></td>
+                    <td>Executes single SQL statement.</td>
+                    <td><code>cur.execute("INSERT ...", (1,"John"))</code></td>
+                    <td>Inserts one row</td>
+                  </tr>
+                  <tr>
+                    <td><code>executemany()</code></td>
+                    <td>Executes same SQL for multiple params.</td>
+                    <td><code>cur.executemany("INSERT ...", [(1,"J"),(2,"K")])</code></td>
+                    <td>Inserts multiple rows</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <!-- Back -->
+        <div class="post-nav">
+          <a class="btn btn-ghost" href="../blogs.html">> Back to Blogs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="foot-brand">
+          <span class="brand-bracket">[</span>
+          <span class="monospace">RC</span>
+          <span class="brand-bracket">]</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="../blogs.html">Blogs</a>
+          <a href="../tryhackme.html">THM</a>
+          <a href="../contact us.html">Contact</a>
+          <a href="../about us.html">About</a>
+        </nav>
+        <div class="foot-copy monospace">
+          © 2025 Remote Coders — A Community for Hackers and Programmers<br />
+          Developed by Silent Programmer
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
