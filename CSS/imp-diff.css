@@ -1,0 +1,87 @@
+/* Important Differences (black & white cyberpunk) */
+/* Link after CSS/style.css */
+
+.hero.hero-min { min-height: 42vh; }
+
+/* Sections */
+.diff-section { padding: clamp(2rem, 5vw, 3rem) 0 clamp(3rem, 6vw, 4rem); }
+
+/* TOC */
+.toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: .4rem;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: .35rem .6rem;
+  border-radius: 999px;
+  border: var(--border-w, 1px) solid var(--line, rgba(255,255,255,0.12));
+  background: var(--glass, rgba(255,255,255,0.04));
+  color: var(--fg, #fff);
+  font-size: .86rem;
+  text-decoration: none;
+}
+.chip:hover { background: rgba(255,255,255,0.08); }
+
+/* Tables */
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+  border: var(--border-w, 1px) solid var(--line, rgba(255,255,255,0.12));
+  background: rgba(255,255,255,0.03);
+}
+.diff-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .98rem;
+  min-width: 640px;
+}
+.diff-table thead th {
+  text-align: left;
+  font-weight: 700;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  font-size: .82rem;
+  color: var(--muted, rgba(255,255,255,0.7));
+  border-bottom: var(--border-w, 1px) solid var(--line, rgba(255,255,255,0.12));
+  background: rgba(255,255,255,0.04);
+}
+.diff-table th,
+.diff-table td {
+  padding: .8rem .9rem;
+  vertical-align: top;
+  border-bottom: var(--border-w, 1px) solid var(--line, rgba(255,255,255,0.08));
+}
+.diff-table tbody tr:nth-child(even) td {
+  background: rgba(255,255,255,0.03);
+}
+.diff-table tbody tr:hover td {
+  background: rgba(255,255,255,0.06);
+}
+
+/* Headings in cards */
+.card .title {
+  margin: .2rem 0 .7rem;
+  font-size: 1.15rem;
+  line-height: 1.25;
+}
+
+/* Inline code */
+code {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .92rem;
+  background: rgba(255,255,255,0.06);
+  border: var(--border-w, 1px) solid var(--line, rgba(255,255,255,0.12));
+  border-radius: 6px;
+  padding: 0 .3rem;
+}
+
+/* Back nav */
+.post-nav {
+  display: flex; gap: .5rem; margin-top: 1.2rem; justify-content: flex-end;
+}
+@media (max-width: 600px) { .post-nav { justify-content: flex-start; } }

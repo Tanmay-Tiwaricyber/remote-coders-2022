@@ -1,0 +1,52 @@
+/* AOC ’23 Side Quest (black & white cyberpunk) */
+/* Link after CSS/style.css (and optional CSS/thm-article.css) */
+
+.hero.hero-min { min-height: 42vh; }
+
+/* Banner */
+.banner-card .thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 12px;
+  border: var(--border-w, 1px) solid var(--line, rgba(255,255,255,0.12));
+  background: rgba(255,255,255,0.03);
+}
+.banner-card img {
+  width: 100%; height: 100%; object-fit: contain;
+  filter: grayscale(1) contrast(1.05) brightness(0.95);
+}
+
+/* Flags card */
+.flags-card .card-inner { padding: 1rem 1rem 1.1rem; }
+.flag-row { display: grid; gap: .35rem; margin: .6rem 0; }
+.label { color: var(--muted-weak, rgba(255,255,255,0.6)); font-size: .88rem; }
+.flag-wrap { display: inline-flex; gap: .5rem; align-items: center; flex-wrap: wrap; }
+.flag {
+  display: inline-flex;
+  padding: .35rem .6rem;
+  border-radius: 8px;
+  border: var(--border-w, 1px) solid var(--line, rgba(255,255,255,0.12));
+  background: var(--glass, rgba(255,255,255,0.04));
+  color: var(--fg, #fff);
+  user-select: all;
+  word-break: break-word;
+}
+.copy-btn {
+  appearance: none;
+  border: var(--border-w, 1px) solid var(--line, rgba(255,255,255,0.12));
+  background: var(--glass, rgba(255,255,255,0.04));
+  color: var(--fg, #fff);
+  border-radius: 8px; padding: .35rem .6rem; cursor: pointer;
+}
+.copy-btn:hover { background: rgba(255,255,255,0.08); }
+
+.right { text-align: right; }
+.author { margin-top: .6rem; color: var(--muted-weak, rgba(255,255,255,0.6)); }
+
+/* Post section spacing */
+.post-section { padding: clamp(2rem, 5vw, 3rem) 0 clamp(3rem, 6vw, 4rem); }
+
+/* Post nav */
+.post-nav { display: flex; gap: .5rem; margin-top: 1rem; justify-content: flex-end; }
+@media (max-width: 600px) { .post-nav { justify-content: flex-start; } }

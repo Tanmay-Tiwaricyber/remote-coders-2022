@@ -1,0 +1,138 @@
+/* GfG page styles (black & white cyberpunk) */
+/* Link after CSS/style.css */
+
+.hero.hero-min { min-height: 48vh; }
+
+/* Toolbar */
+.gfg-toolbar {
+  position: sticky;
+  top: 64px; /* adjust if your header height differs */
+  z-index: 5;
+  background: rgba(255,255,255,0.02);
+  border-top: var(--border-w, 1px) solid var(--line, rgba(255,255,255,0.12));
+  border-bottom: var(--border-w, 1px) solid var(--line, rgba(255,255,255,0.12));
+  backdrop-filter: blur(4px);
+}
+.gfg-toolbar .container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  padding: 1rem 0;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  background: var(--glass, rgba(255,255,255,0.04));
+  color: var(--fg, #fff);
+  border: var(--border-w, 1px) solid var(--line, rgba(255,255,255,0.12));
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  outline: none;
+  transition: box-shadow 200ms ease, background 200ms ease, border-color 200ms ease;
+}
+.search-input::placeholder { color: var(--muted-weak, rgba(255,255,255,0.52)); }
+.search-input:focus {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.22);
+  box-shadow: 0 0 0 8px rgba(255,255,255,0.06);
+}
+
+.tags { display: flex; flex-wrap: wrap; gap: .5rem; }
+.tag {
+  cursor: pointer;
+  padding: .5rem .7rem;
+  border-radius: 999px;
+  border: var(--border-w, 1px) solid var(--line, rgba(255,255,255,0.12));
+  color: var(--muted, rgba(255,255,255,0.7));
+  background: var(--glass, rgba(255,255,255,0.04));
+  transition: background 200ms ease, color 200ms ease, border-color 200ms ease, transform 150ms ease;
+  user-select: none;
+}
+.tag:hover { transform: translateY(-1px); background: rgba(255,255,255,0.06); color: var(--fg, #fff); }
+.tag:focus-visible { outline: 2px dashed var(--fg, #fff); outline-offset: 3px; }
+.tag[aria-pressed="true"] { color: var(--fg, #fff); border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.08); }
+
+/* Section spacing */
+.gfg-section { padding: clamp(2rem, 5vw, 3rem) 0 clamp(3rem, 6vw, 4rem); }
+
+/* Grid */
+.gfg-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 1.4rem);
+}
+@media (max-width: 1100px) { .gfg-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 780px)  { 
+  .gfg-toolbar .container { grid-template-columns: 1fr; gap: .75rem; }
+  .gfg-grid { grid-template-columns: 1fr; }
+}
+
+/* Cards */
+.gfg-card { display: grid; grid-template-rows: auto 1fr; text-decoration: none; }
+
+/* Thumbnail */
+.thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-bottom: var(--border-w, 1px) solid var(--line, rgba(255,255,255,0.12));
+  background: rgba(255,255,255,0.03);
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(1) contrast(1.05) brightness(0.9);
+  transform: scale(1.01);
+  transition: transform 260ms ease, filter 260ms ease, opacity 260ms ease;
+  opacity: 0.92;
+  padding: .6rem;
+}
+.gfg-card:hover .thumb img {
+  transform: scale(1.03);
+  filter: grayscale(1) contrast(1.15) brightness(1);
+  opacity: 1;
+}
+
+/* Content */
+.card-inner { padding: 1rem 1rem 1.1rem; }
+.meta {
+  color: var(--muted-weak, rgba(255,255,255,0.52));
+  font-size: .88rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.title {
+  margin: .35rem 0 .3rem;
+  font-size: 1.15rem;
+  line-height: 1.25;
+  color: var(--fg, #fff);
+}
+.excerpt {
+  margin: .15rem 0 .6rem;
+  color: var(--muted, rgba(255,255,255,0.7));
+  font-size: .98rem;
+}
+
+/* Badges */
+.thm-badges { display: flex; flex-wrap: wrap; gap: .4rem; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: .25rem .55rem;
+  border-radius: 999px;
+  border: var(--border-w, 1px) solid var(--line, rgba(255,255,255,0.12));
+  background: var(--glass, rgba(255,255,255,0.04));
+  color: var(--muted, rgba(255,255,255,0.75));
+  font-size: .78rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.chip--easy   { border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.06); color: #fff; }
+.chip--med    { border-color: rgba(255,255,255,0.28); background: rgba(255,255,255,0.08); color: #fff; }
+.chip--hard   { border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.10); color: #fff; }
+
+/* Arrow hover */
+.card .arrow { margin-top: .2rem; display: inline-block; transition: transform 200ms ease; }
+.gfg-card:hover .arrow { transform: translateX(4px); }

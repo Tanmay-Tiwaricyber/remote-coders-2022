@@ -1,0 +1,96 @@
+/* Contact page styles (black & white cyberpunk) */
+/* Link after CSS/style.css */
+
+.hero.hero-min { min-height: 48vh; }
+
+/* Section spacing */
+.contact-section { padding: clamp(2rem, 5vw, 3rem) 0 clamp(3rem, 6vw, 4rem); }
+
+/* Grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 1.4rem);
+}
+@media (max-width: 1100px) { .contact-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 780px)  { .contact-grid { grid-template-columns: 1fr; } }
+
+/* Cards */
+.contact-card { text-decoration: none; }
+.thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-bottom: var(--border-w, 1px) solid var(--line, rgba(255,255,255,0.12));
+  background: rgba(255,255,255,0.03);
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(1) contrast(1.05) brightness(0.9);
+  transform: scale(1.01);
+  transition: transform 260ms ease, filter 260ms ease, opacity 260ms ease;
+  opacity: 0.92;
+  padding: .6rem;
+}
+.contact-card:hover .thumb img {
+  transform: scale(1.03);
+  filter: grayscale(1) contrast(1.15) brightness(1);
+  opacity: 1;
+}
+
+/* Content */
+.card-inner { padding: 1rem 1rem 1.1rem; }
+.meta {
+  color: var(--muted-weak, rgba(255,255,255,0.52));
+  font-size: .88rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.title {
+  margin: .35rem 0 .3rem;
+  font-size: 1.15rem;
+  line-height: 1.25;
+  color: var(--fg, #fff);
+}
+.excerpt {
+  margin: .15rem 0 .6rem;
+  color: var(--muted, rgba(255,255,255,0.7));
+  font-size: .98rem;
+}
+
+/* Info rows */
+.contact-list { display: grid; gap: .4rem; margin-top: .2rem; }
+.contact-list .row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: .75rem;
+}
+.contact-list .k { color: var(--muted-weak, rgba(255,255,255,0.52)); }
+.contact-list .v { color: var(--fg, #fff); }
+
+/* Contact info actions */
+.contact-info { display: grid; gap: .6rem; }
+.mono-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: .35rem .6rem;
+  border-radius: 8px;
+  border: var(--border-w, 1px) solid var(--line, rgba(255,255,255,0.12));
+  background: var(--glass, rgba(255,255,255,0.04));
+  color: var(--fg, #fff);
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .92rem;
+}
+.actions { display: flex; gap: .5rem; align-items: center; }
+.note { color: var(--muted-weak, rgba(255,255,255,0.52)); font-size: .9rem; }
+
+/* Disabled button state */
+.is-disabled {
+  opacity: .55;
+  pointer-events: none;
+}
+
+/* Centered callout text tweak */
+.mono-center { text-align: center; }

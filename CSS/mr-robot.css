@@ -1,0 +1,19 @@
+/* Mr. Robot page tweaks (black & white cyberpunk) */
+/* Link after CSS/style.css, CSS/thm-article.css, CSS/challenge.css */
+
+.hero.hero-min { min-height: 42vh; }
+
+/* Hint text under answers */
+.hint {
+  margin-top: .35rem;
+  color: var(--muted-weak, rgba(255,255,255,0.6));
+  font-style: italic;
+  font-size: .95rem;
+}
+
+/* Ensure banner fits nicely */
+.banner-card .thumb { aspect-ratio: 16 / 9; }
+.banner-card img { object-fit: cover; }
+
+/* Spacing harmonization */
+.post-section { padding: clamp(2rem, 5vw, 3rem) 0 clamp(3rem, 6vw, 4rem); }
