@@ -1,78 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js h-100">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Missing Pieces Challenge - DEADFACE CTF on cryptography and XOR encryption.">
-    <title>Missing Pieces Challenge | DEADFACE CTF</title>
-    <link rel="stylesheet" href="Missing Pieces.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Tanmay Tiwari" />
+  <meta name="description" content="DEADFACE CTF 2024 — Missing Pieces challenge write-up using XOR decryption over hex data." />
+  <meta name="theme-color" content="#000000" />
+  <title>Remote Coders — Missing Pieces | DEADFACE CTF</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../../res/web_icon.png" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../../CSS/style.css" />
+  <!-- Page CSS (reused) -->
+  <link rel="stylesheet" href="../../CSS/challenge.css" />
+
+  <!-- Global JS -->
+  <script defer src="../../index.js"></script>
 </head>
-<body>
-    <div class="container">
-        <header class="header">
-            <h1 class="main-title">🧩 Missing Pieces Challenge</h1>
-            <!-- Banner Image for the CTF Challenge -->
-            <div class="banner">
-                <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/misc/missingpieces.jpg" alt="CTF Challenge Banner">
+<body class="h-100">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="cursor"></div>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a class="brand" href="../../index.html" aria-label="Remote Coders Home">
+        <span class="brand-bracket">[</span>
+        <span class="brand-name glitch" data-text="REMOTE CODERS">REMOTE CODERS</span>
+        <span class="brand-bracket">]</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="../../index.html">Home</a></li>
+          <li><a class="nav-link" href="../../blogs.html">Blogs</a></li>
+          <li><a class="nav-link" href="../../tryhackme.html">THM Walkthroughs</a></li>
+          <li><a class="nav-link" href="../../contact us.html">Contact Us</a></li>
+          <li><a class="nav-link" href="../../about us.html">About Us</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-controls="menuOverlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Fullscreen Menu -->
+    <div id="menuOverlay" class="menu-overlay" hidden>
+      <nav class="overlay-nav" aria-label="Mobile">
+        <a class="overlay-link" href="../../index.html">> Home</a>
+        <a class="overlay-link" href="../../blogs.html">> Blogs</a>
+        <a class="overlay-link" href="../../tryhackme.html">> THM Walkthroughs</a>
+        <a class="overlay-link" href="../../contact us.html">> Contact Us</a>
+        <a class="overlay-link" href="../../about us.html">> About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero-min">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="noise" aria-hidden="true"></div>
+      <div class="grid-floor" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <nav class="breadcrumbs monospace" aria-label="Breadcrumb" data-reveal>
+          <a href="../../index.html">Home</a> /
+          <a href="../../blogs.html">Blogs</a> /
+          <a href="../deadfacectf2024.html">DEADFACE CTF 2024</a> /
+          <span aria-current="page">Missing Pieces</span>
+        </nav>
+        <h1 class="hero-title glitch" data-text="MISSING PIECES" data-reveal>MISSING PIECES</h1>
+        <p class="post-meta monospace" data-reveal>Misc • Crypto • XOR</p>
+      </div>
+    </section>
+
+    <!-- Challenge -->
+    <section class="challenge-section">
+      <div class="container">
+        <div class="challenge-grid">
+
+          <!-- Banner -->
+          <figure class="card banner-card" data-reveal>
+            <div class="thumb">
+              <img loading="lazy"
+                   src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/misc/missingpieces.jpg"
+                   alt="Missing Pieces challenge banner" />
             </div>
-        </header>
+          </figure>
 
-        <section class="overview glass">
-            <h2>Overview</h2>
-            <p>The "Missing Pieces" challenge, created by <span class="highlight">syyntax</span>, revolves around cryptography involving XOR encryption. The code provided contains a hidden flag that is encrypted, and the objective is to fix the missing pieces to uncover the flag.</p>
-        </section>
+          <!-- Overview -->
+          <article class="card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Overview</div>
+              <p class="excerpt">
+                “Missing Pieces” by <strong>syyntax</strong> hides a flag behind a hex string XOR’d with a short key.
+                Fix the incomplete C program, convert hex → bytes, XOR with the key, and print the result.
+              </p>
+            </div>
+          </article>
 
-        <section class="challenge-details glass">
-            <h2>Challenge Details</h2>
-            <ul>
-                <li><strong>Points:</strong> 100</li>
-                <li><strong>Creator:</strong> syyntax</li>
-                <li><strong>Objective:</strong> Solve the missing code and reveal the hidden flag.</li>
-                <li><strong>Submission Format:</strong> flag{flag_text}</li>
-            </ul>
-        </section>
+          <!-- Details -->
+          <aside class="card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Challenge Details</div>
+              <div class="kv">
+                <div class="row"><span class="k">Points</span><span class="v">100</span></div>
+                <div class="row"><span class="k">Creator</span><span class="v">syyntax</span></div>
+                <div class="row"><span class="k">Objective</span><span class="v">Repair XOR program to reveal flag</span></div>
+                <div class="row"><span class="k">Submit</span><span class="v">flag{...}</span></div>
+              </div>
+            </div>
+          </aside>
 
-        <section class="provided-info glass">
-            <h2>Provided Information</h2>
-            <p>File Download: <a href="link_to_download" class="download-link">Download File (4KB)</a></p>
-            <p>SHA1: <span class="highlight">895ca32d397db50ee2fe3ad7021a63efc5dc7582</span></p>
-        </section>
+          <!-- Provided -->
+          <article class="card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Provided Information</div>
+              <div class="provided">
+                <div class="row">
+                  <span class="k">File</span>
+                  <span class="v">
+                    <a class="btn btn-primary" href="link_to_download" target="_blank" rel="noopener">> Download (4 KB)</a>
+                  </span>
+                </div>
+                <div class="row">
+                  <span class="k">SHA1</span>
+                  <span class="v monospace">895ca32d397db50ee2fe3ad7021a63efc5dc7582</span>
+                </div>
+              </div>
+              <!-- <p class="hint monospace">Replace “link_to_download” with the real challenge file URL.</p> -->
+            </div>
+          </article>
 
-        <section class="solution-process glass">
-            <h2>Solution Process</h2>
-            <h3>Problem Description</h3>
-            <p>We are provided with a program that uses XOR encryption to hide a flag. The hexadecimal string and key are given, but the program is incomplete. We need to fix the missing parts of the code and retrieve the hidden flag.</p>
+          <!-- XOR primer -->
+          <article class="card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">XOR primer</div>
+              <p class="excerpt">
+                Convert the hex-encoded ciphertext to bytes, convert the ASCII key to bytes, then XOR:
+                <code>plain[i] = cipher[i] ^ key[i % len(key)]</code>. Print as characters to reveal the flag.
+              </p>
+            </div>
+          </article>
 
-            <h3>Provided Code</h3>
-            <div class="code-block">
-                <pre><code># include &lt;stdio.h&gt;
-# include &lt;string.h&gt;
+          <!-- Code -->
+          <article class="card code-card" data-reveal>
+            <div class="card-inner">
+              <div class="code-head">
+                <div class="meta monospace">C — fix and run to decode</div>
+                <button class="copy-btn monospace" type="button" data-copy="#code1">Copy</button>
+              </div>
+<pre id="code1" class="code-pre"><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
 
-const char *hex_string = "b52195a4a82bc5ade23e9c9c8725c79cb07d90f0ae";  // The hex string for the flag
+const char *hex_string = "b52195a4a82bc5ade23e9c9c8725c79cb07d90f0ae";
 const char *key = "d34df4c3";
 
 int hex_char_to_int(char c) {
-    if (c >= '0' && c <= '9') return c - '0';
-    if (c >= 'a' && c <= 'f') return c - 'a' + 10;
+    if (c &gt;= '0' &amp;&amp; c &lt;= '9') return c - '0';
+    if (c &gt;= 'a' &amp;&amp; c &lt;= 'f') return c - 'a' + 10;
+    if (c &gt;= 'A' &amp;&amp; c &lt;= 'F') return c - 'A' + 10;
     return -1;
 }
 
 void hex_string_to_bytes(const char *hex, unsigned char *bytes, size_t length) {
-    for (size_t i = 0; i < length; ++i) {
-        bytes[i] = (hex_char_to_int(hex[i * 2]) << 4) | hex_char_to_int(hex[i * 2 + 1]);
+    for (size_t i = 0; i &lt; length; ++i) {
+        int hi = hex_char_to_int(hex[i * 2]);
+        int lo = hex_char_to_int(hex[i * 2 + 1]);
+        bytes[i] = (unsigned char)((hi &lt;&lt; 4) | lo);
     }
 }
 
 void xor_bytes(unsigned char *data, size_t data_length, const unsigned char *key, size_t key_length) {
-    for (size_t i = 0; i < data_length; ++i) {
+    for (size_t i = 0; i &lt; data_length; ++i) {
         data[i] ^= key[i % key_length];
     }
 }
 
-int main() {
+int main(void) {
     size_t flag_length = strlen(hex_string) / 2;
-    unsigned char flag[flag_length];
-    unsigned char key_bytes[4];
+    unsigned char flag[256] = {0};
+    unsigned char key_bytes[4] = {0};
 
     hex_string_to_bytes(hex_string, flag, flag_length);
     hex_string_to_bytes(key, key_bytes, 4);
@@ -80,22 +195,80 @@ int main() {
     xor_bytes(flag, flag_length, key_bytes, 4);
 
     printf("Resulting string: ");
-    for (size_t i = 0; i < flag_length; ++i) {
+    for (size_t i = 0; i &lt; flag_length; ++i) {
         printf("%c", flag[i]);
     }
-    printf("\n");
+    printf("\\n");
 
     return 0;
-</code></pre>
+}</code></pre>
             </div>
+          </article>
 
-            <h3>Decoded Flag</h3>
-            <p>After running the fixed program, we obtained the flag: <span class="flag">flag{f1n1sh_Th3_c0d3}</span></p>
-        </section>
+          <!-- Flag -->
+          <article class="card flag-card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Flag</div>
+              <div class="flag-wrap">
+                <code id="flagText" class="flag monospace">flag{f1n1sh_Th3_c0d3}</code>
+                <button class="copy-btn monospace" type="button" data-copy="#flagText">Copy</button>
+              </div>
+            </div>
+          </article>
 
-        <footer class="mt-auto text-white-50">
-            © 2022 Remote Coders - A Community for Hackers and Programmers <br> Developed by Tanmay Tiwari
-        </footer>
+        </div>
+
+        <!-- Back -->
+        <div class="post-nav">
+          <a class="btn btn-ghost" href="../deadfacectf2024.html">> Back to DEADFACE</a>
+          <a class="btn btn-primary" href="../../blogs.html">> Explore Blogs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="foot-brand">
+          <span class="brand-bracket">[</span>
+          <span class="monospace">RC</span>
+          <span class="brand-bracket">]</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="../../blogs.html">Blogs</a>
+          <a href="../../tryhackme.html">THM</a>
+          <a href="../../contact us.html">Contact</a>
+          <a href="../../about us.html">About</a>
+        </nav>
+        <div class="foot-copy monospace">
+          © 2024 Remote Coders — A Community for Hackers and Programmers<br />
+          Developed by Silent Programmer
+        </div>
+      </div>
     </div>
+  </footer>
+
+  <!-- Page: copy buttons -->
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const sel = btn.getAttribute('data-copy');
+        const el = document.querySelector(sel);
+        if (!el) return;
+        const text = el.innerText || el.textContent || '';
+        try {
+          await navigator.clipboard.writeText(text);
+          const prev = btn.textContent;
+          btn.textContent = 'Copied';
+          setTimeout(() => btn.textContent = 'Copy', 1000);
+        } catch {
+          const prev = btn.textContent;
+          btn.textContent = 'Press Ctrl+C';
+          setTimeout(() => btn.textContent = 'Copy', 1200);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
