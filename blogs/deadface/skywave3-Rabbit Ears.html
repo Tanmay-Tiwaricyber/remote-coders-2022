@@ -1,50 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js h-100">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SkyWave 3: Rabbit Ears - DEADFACE CTF SQL Challenge on finding the most common antenna type managed by Florian Olyff.">
-    <title>SkyWave 3: Rabbit Ears Challenge | DEADFACE CTF</title>
-    <link rel="stylesheet" href="SkyWave3-RabbitEars.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Tanmay Tiwari" />
+  <meta name="description" content="DEADFACE CTF 2024 — SkyWave 3: Rabbit Ears write-up. Find the most common antenna type managed by Florian Olyff using SQL." />
+  <meta name="theme-color" content="#000000" />
+  <title>Remote Coders — SkyWave 3: Rabbit Ears | DEADFACE CTF</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../../res/web_icon.png" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../../CSS/style.css" />
+  <!-- Page CSS (reused) -->
+  <link rel="stylesheet" href="../../CSS/challenge.css" />
+
+  <!-- Global JS -->
+  <script defer src="../../index.js"></script>
 </head>
-<body>
-    <div class="container">
-        <header class="header">
-            <h1 class="main-title">📡 SkyWave 3: Rabbit Ears Challenge</h1>
-            <!-- Banner Image for the CTF Challenge -->
-            <div class="banner">
-                <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/challenges/sql/sql03/sql03.jpg" alt="CTF Challenge Banner">
+<body class="h-100">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="cursor"></div>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a class="brand" href="../../index.html" aria-label="Remote Coders Home">
+        <span class="brand-bracket">[</span>
+        <span class="brand-name glitch" data-text="REMOTE CODERS">REMOTE CODERS</span>
+        <span class="brand-bracket">]</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="../../index.html">Home</a></li>
+          <li><a class="nav-link" href="../../blogs.html">Blogs</a></li>
+          <li><a class="nav-link" href="../../tryhackme.html">THM Walkthroughs</a></li>
+          <li><a class="nav-link" href="../../contact us.html">Contact Us</a></li>
+          <li><a class="nav-link" href="../../about us.html">About Us</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-controls="menuOverlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Fullscreen Menu -->
+    <div id="menuOverlay" class="menu-overlay" hidden>
+      <nav class="overlay-nav" aria-label="Mobile">
+        <a class="overlay-link" href="../../index.html">> Home</a>
+        <a class="overlay-link" href="../../blogs.html">> Blogs</a>
+        <a class="overlay-link" href="../../tryhackme.html">> THM Walkthroughs</a>
+        <a class="overlay-link" href="../../contact us.html">> Contact Us</a>
+        <a class="overlay-link" href="../../about us.html">> About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero-min">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="noise" aria-hidden="true"></div>
+      <div class="grid-floor" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <nav class="breadcrumbs monospace" aria-label="Breadcrumb" data-reveal>
+          <a href="../../index.html">Home</a> /
+          <a href="../../blogs.html">Blogs</a> /
+          <a href="../deadfacectf2024.html">DEADFACE CTF 2024</a> /
+          <span aria-current="page">SkyWave 3: Rabbit Ears</span>
+        </nav>
+        <h1 class="hero-title glitch" data-text="SKYWAVE 3: RABBIT EARS" data-reveal>SKYWAVE 3: RABBIT EARS</h1>
+        <p class="post-meta monospace" data-reveal>SQL • Aggregation/Joins • 80 pts</p>
+      </div>
+    </section>
+
+    <!-- Challenge -->
+    <section class="challenge-section">
+      <div class="container">
+        <div class="challenge-grid">
+
+          <!-- Banner -->
+          <figure class="card banner-card" data-reveal>
+            <div class="thumb">
+              <img loading="lazy"
+                   src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/challenges/sql/sql03/sql03.jpg"
+                   alt="SkyWave challenge banner" />
             </div>
-        </header>
+          </figure>
 
-        <section class="overview glass">
-            <h2>Overview</h2>
-            <p>The "SkyWave 3: Rabbit Ears" challenge, created by <span class="highlight">syyntax</span>, asks participants to determine the most commonly used antenna type managed by <span class="highlight">Florian Olyff</span>. This challenge requires SQL knowledge and the ability to use joins across multiple tables.</p>
-        </section>
+          <!-- Overview -->
+          <article class="card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Overview</div>
+              <p class="excerpt">
+                “SkyWave 3: Rabbit Ears” by <strong>syyntax</strong> asks for the most frequent antenna type used on towers
+                managed by <strong>Florian Olyff</strong>. This requires joins and a grouped count.
+              </p>
+            </div>
+          </article>
 
-        <section class="challenge-details glass">
-            <h2>Challenge Details</h2>
-            <ul>
-                <li><strong>Points:</strong> 80</li>
-                <li><strong>Creator:</strong> syyntax</li>
-                <li><strong>Objective:</strong> Identify the most frequently used antenna type on the towers managed by Florian Olyff.</li>
-                <li><strong>Submission Format:</strong> flag{antenna_name number}</li>
-            </ul>
-        </section>
+          <!-- Details -->
+          <aside class="card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Challenge Details</div>
+              <div class="kv">
+                <div class="row"><span class="k">Points</span><span class="v">80</span></div>
+                <div class="row"><span class="k">Creator</span><span class="v">syyntax</span></div>
+                <div class="row"><span class="k">Objective</span><span class="v">Find most common antenna type for Olyff</span></div>
+                <div class="row"><span class="k">Submit</span><span class="v">flag{antenna_name number}</span></div>
+              </div>
+            </div>
+          </aside>
 
-        <section class="provided-info glass">
-            <h2>Provided Information</h2>
-            <p>Database Access: Continue using the same SSH connection from the previous challenge (<strong>High Tower</strong>).</p>
-            <p><strong>Username:</strong> skywave</p>
-            <p><strong>Password:</strong> d34df4c3</p>
-        </section>
+          <!-- Provided -->
+          <article class="card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Provided Access</div>
+              <div class="provided">
+                <div class="row">
+                  <span class="k">SSH</span>
+                  <span class="v monospace">ssh skywave@skywave.deadface.io</span>
+                </div>
+                <div class="row">
+                  <span class="k">User</span>
+                  <span class="v monospace">skywave</span>
+                </div>
+                <div class="row">
+                  <span class="k">Pass</span>
+                  <span class="v monospace">d34df4c3</span>
+                </div>
+                <p class="hint monospace">Continue from previous SkyWave challenges.</p>
+              </div>
+            </div>
+          </article>
 
-        <section class="solution-process glass">
-            <h2>Solution Process</h2>
-            <h3>SQL Query Breakdown</h3>
-            <p>To find the most commonly used antenna type on towers managed by Florian Olyff, we used the following SQL query:</p>
-            <div class="code-block">
-                <pre><code>SELECT a.antenna_name, COUNT(*) AS antenna_count
+          <!-- Query -->
+          <article class="card code-card" data-reveal>
+            <div class="card-inner">
+              <div class="code-head">
+                <div class="meta monospace">SQL — most common antenna type for Olyff</div>
+                <button class="copy-btn monospace" type="button" data-copy="#code1">Copy</button>
+              </div>
+<pre id="code1" class="code-pre"><code class="language-sql">SELECT a.antenna_name, COUNT(*) AS antenna_count
 FROM Towers t
 JOIN Tower_Sectors ts ON t.tower_id = ts.tower_id
 JOIN Antennas a ON ts.antenna_id = a.antenna_id
@@ -53,21 +157,82 @@ GROUP BY a.antenna_name
 ORDER BY antenna_count DESC
 LIMIT 1;</code></pre>
             </div>
+          </article>
 
-            <p>This query joins the <strong>Towers</strong>, <strong>Tower_Sectors</strong>, and <strong>Antennas</strong> tables, filtering by Florian Olyff’s operator ID (<code>operator_id = 4</code>), and groups the results by <code>antenna_name</code> to find the most frequent antenna type.</p>
+          <!-- Result -->
+          <article class="card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Result</div>
+              <p class="excerpt">
+                The most common antenna is <strong>Multiple Input Multiple Output (MIMO)</strong> with a count of <strong>3</strong>.
+              </p>
+            </div>
+          </article>
 
-            <h3>Result</h3>
-            <p>The most commonly used antenna type is <span class="highlight">Multiple Input Multiple Output (MIMO)</span>, with a count of <span class="highlight">3</span>.</p>
-        </section>
+          <!-- Flag -->
+          <article class="card flag-card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Flag</div>
+              <div class="flag-wrap">
+                <code id="flagText" class="flag monospace">flag{Multiple Input Multiple Output (MIMO) 3}</code>
+                <button class="copy-btn monospace" type="button" data-copy="#flagText">Copy</button>
+              </div>
+            </div>
+          </article>
 
-        <section class="flag glass">
-            <h2>Flag</h2>
-            <p>The flag is: <span class="flag">flag{Multiple Input Multiple Output (MIMO) 3}</span></p>
-        </section>
+        </div>
 
-        <footer class="footer">
-            © 2024 DEADFACE CTF - Developed by your CyberSecurity Team
-        </footer>
+        <!-- Back -->
+        <div class="post-nav">
+          <a class="btn btn-ghost" href="../deadfacectf2024.html">> Back to DEADFACE</a>
+          <a class="btn btn-primary" href="../../blogs.html">> Explore Blogs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="foot-brand">
+          <span class="brand-bracket">[</span>
+          <span class="monospace">RC</span>
+          <span class="brand-bracket">]</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="../../blogs.html">Blogs</a>
+          <a href="../../tryhackme.html">THM</a>
+          <a href="../../contact us.html">Contact</a>
+          <a href="../../about us.html">About</a>
+        </nav>
+        <div class="foot-copy monospace">
+          © 2024 Remote Coders — A Community for Hackers and Programmers<br />
+          Developed by Silent Programmer
+        </div>
+      </div>
     </div>
+  </footer>
+
+  <!-- Page: copy buttons -->
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const sel = btn.getAttribute('data-copy');
+        const el = document.querySelector(sel);
+        if (!el) return;
+        const text = el.innerText || el.textContent || '';
+        try {
+          await navigator.clipboard.writeText(text);
+          const prev = btn.textContent;
+          btn.textContent = 'Copied';
+          setTimeout(() => btn.textContent = 'Copy', 1000);
+        } catch {
+          const prev = btn.textContent;
+          btn.textContent = 'Press Ctrl+C';
+          setTimeout(() => btn.textContent = 'Copy', 1200);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
