@@ -1,142 +1,202 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js h-100">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retro</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #c0c0c0;
-            font-family: 'Fira Code', monospace;
-            padding: 20px;
-            text-align: center;
-            background: radial-gradient(circle at 50% 50%, #0a0f1e, #000000 80%);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Remote Coders" />
+  <meta name="description" content="TryHackMe — Retro (boot2root) quick walkthrough: hidden directory and flags." />
+  <meta name="theme-color" content="#000000" />
+  <title>Remote Coders — Retro (THM)</title>
 
-        h1 {
-            color: #00f7ff;
-            font-size: 2.8em;
-            margin-bottom: 20px;
-        }
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../res/web_icon.png" />
 
-        .banner {
-            width: 100%;
-            height: 250px;
-            background: url('../res/retro-banner.png') no-repeat center center;
-            background-size: contain;
-            margin-bottom: 30px;
-            border-bottom: 3px solid #00f7ff;
-        }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
 
-        .content-container {
-            border: 1px solid #2f2f2f;
-            padding: 30px;
-            margin: 20px auto;
-            max-width: 800px;
-            background-color: #1b1b1b;
-            border-radius: 10px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
-        }
+  <!-- Global + page styles -->
+  <link rel="stylesheet" href="../CSS/style.css" />
+  <link rel="stylesheet" href="../CSS/thm-article.css" />
+  <link rel="stylesheet" href="../CSS/challenge.css" />
 
-        .content-container h2 {
-            color: #ff7b00;
-            font-size: 1.8em;
-            margin-bottom: 20px;
-        }
-
-        .section {
-            margin: 15px 0;
-            background-color: #111;
-            border-left: 5px solid #00f7ff;
-            padding: 15px 20px;
-            border-radius: 5px;
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
-            text-align: left;
-        }
-
-        .section strong {
-            color: #ff7b00;
-        }
-
-        .answer {
-            background-color: #0a0f1e;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 1.2em;
-        }
-
-        .back-button {
-            padding: 12px 25px;
-            color: #fff;
-            background-color: #00f7ff;
-            text-decoration: none;
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 30px;
-            font-size: 1.1em;
-            font-weight: bold;
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .back-button:hover {
-            background-color: #00d6ff;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Add a glowing border to the container */
-        .content-container:hover {
-            border: 1px solid #00f7ff;
-            box-shadow: 0px 0px 20px #00f7ff;
-        }
-    </style>
+  <!-- JS -->
+  <script defer src="../index.js"></script>
 </head>
-<body>
+<body class="h-100">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="cursor"></div>
 
-    <!-- Banner -->
-    <div class="banner"></div>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a class="brand" href="../index.html" aria-label="Remote Coders Home">
+        <span class="brand-bracket">[</span>
+        <span class="brand-name glitch" data-text="REMOTE CODERS">REMOTE CODERS</span>
+        <span class="brand-bracket">]</span>
+      </a>
 
-    <!-- Back Button -->
-    <a href="javascript:history.back()" class="back-button">Back</a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="../index.html">Home</a></li>
+          <li><a class="nav-link" href="../blogs.html">Blogs</a></li>
+          <li><a class="nav-link" href="../tryhackme.html" aria-current="page">THM Walkthroughs</a></li>
+          <li><a class="nav-link" href="../contact us.html">Contact Us</a></li>
+          <li><a class="nav-link" href="../about us.html">About Us</a></li>
+        </ul>
+      </nav>
 
-    <!-- Main Heading -->
-    <h1>Retro</h1>
-
-    <!-- Content Section -->
-    <div class="content-container">
-        <h2 align="left">Task 1 Pwn</h2>
-
-        <div class="section">
-            <strong>Task:</strong> Start Machine<br><br>
-            Can you time travel? If not, you might want to think about the next best thing.<br>
-            Please note that this machine does not respond to ping (ICMP) and may take a few minutes to boot up.
-        </div>
-
-        <div class="section">
-            <strong>There are two distinct paths that can be taken on Retro:</strong><br><br>
-            One requires significantly less trial and error, however, both will work. Please check writeups if you are curious regarding the two paths. An alternative version of this room is available in its remixed version <em>Blaster</em>.
-        </div>
-
-        <div class="section">
-            <strong>A web server is running on the target. What is the hidden directory which the website lives on?</strong><br><br>
-            <div class="answer">/retro</div>
-        </div>
-
-        <div class="section">
-            <strong>user.txt</strong><br><br>
-            <div class="answer">3b99fbdc6d430bfb51c72c651a261927</div>
-            
-        </div>
-
-        <div class="section">
-            <strong>root.txt</strong><br><br>
-            <div class="answer">7958b569565d7bd88d10c6f22d1c4063</div>
-            
-        </div>
-        <h4 align="right">Written by - Silent Programmer</h4>
+      <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-controls="menuOverlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
 
+    <!-- Mobile menu -->
+    <div id="menuOverlay" class="menu-overlay" hidden>
+      <nav class="overlay-nav" aria-label="Mobile">
+        <a class="overlay-link" href="../index.html">> Home</a>
+        <a class="overlay-link" href="../blogs.html">> Blogs</a>
+        <a class="overlay-link" href="../tryhackme.html" aria-current="page">> THM Walkthroughs</a>
+        <a class="overlay-link" href="../contact us.html">> Contact Us</a>
+        <a class="overlay-link" href="../about us.html">> About Us</a>
+      </nav>
+    </div>
+  </header>
 
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero-min">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="noise" aria-hidden="true"></div>
+      <div class="grid-floor" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <nav class="breadcrumbs monospace" aria-label="Breadcrumb" data-reveal>
+          <a href="../index.html">Home</a> /
+          <a href="../tryhackme.html">THM</a> /
+          <span aria-current="page">Retro</span>
+        </nav>
+        <h1 class="hero-title glitch" data-text="RETRO" data-reveal>RETRO</h1>
+        <p class="post-meta monospace" data-reveal>Boot2Root • Windows • Quick notes</p>
+        <div class="hero-ctas" data-reveal>
+          <a class="btn btn-ghost" href="../tryhackme.html">> Back to THM</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Room content -->
+    <section class="post-section">
+      <div class="container">
+        <!-- Banner -->
+        <article class="card banner-card" data-reveal>
+          <div class="thumb">
+            <img src="../res/retro-banner.png" alt="Retro room banner" />
+          </div>
+        </article>
+
+        <!-- Overview / Notes -->
+        <article class="card tilt" data-reveal>
+          <div class="card-inner">
+            <div class="meta monospace">Notes</div>
+            <p class="excerpt">
+              This room has two distinct paths. One requires less trial and error; both work. A remixed version exists as
+              <em>Blaster</em>. The target may take a few minutes to boot and does not respond to ICMP (ping).
+            </p>
+          </div>
+        </article>
+
+        <!-- Hidden directory -->
+        <article class="card tilt" data-reveal>
+          <div class="card-inner">
+            <div class="meta monospace">Enumeration</div>
+            <h2 class="section-title">Hidden web directory</h2>
+            <div class="qa-block">
+              <div class="q monospace">Question</div>
+              <blockquote class="question">A web server is running. What is the hidden directory where the website lives?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="a-hidden" class="flag monospace">/retro</code>
+                <button class="copy-btn monospace" type="button" data-copy="#a-hidden">Copy</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Flags -->
+        <article class="card tilt" data-reveal>
+          <div class="card-inner">
+            <div class="meta monospace">Flags</div>
+
+            <div class="qa-block">
+              <div class="q monospace">user.txt</div>
+              <div class="flag-wrap">
+                <code id="a-user" class="flag monospace">3b99fbdc6d430bfb51c72c651a261927</code>
+                <button class="copy-btn monospace" type="button" data-copy="#a-user">Copy</button>
+              </div>
+            </div>
+
+            <div class="qa-block">
+              <div class="q monospace">root.txt</div>
+              <div class="flag-wrap">
+                <code id="a-root" class="flag monospace">7958b569565d7bd88d10c6f22d1c4063</code>
+                <button class="copy-btn monospace" type="button" data-copy="#a-root">Copy</button>
+              </div>
+            </div>
+
+            <div class="right monospace" style="margin-top:.4rem;">Written by — Silent Programmer</div>
+          </div>
+        </article>
+
+        <!-- Nav -->
+        <div class="post-nav">
+          <a class="btn btn-ghost" href="../tryhackme.html">> Back to THM</a>
+          <a class="btn btn-primary" href="../blogs.html">> Explore Blogs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="foot-brand">
+          <span class="brand-bracket">[</span>
+          <span class="monospace">RC</span>
+          <span class="brand-bracket">]</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="../blogs.html">Blogs</a>
+          <a href="../tryhackme.html" aria-current="page">THM</a>
+          <a href="../contact us.html">Contact</a>
+          <a href="../about us.html">About</a>
+        </nav>
+        <div class="foot-copy monospace">
+          © 2024 Remote Coders — A Community for Hackers and Programmers<br />
+          Developed by Silent Programmer
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page: copy buttons -->
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const sel = btn.getAttribute('data-copy');
+        const el = document.querySelector(sel);
+        if (!el) return;
+        const text = el.innerText || el.textContent || '';
+        try {
+          await navigator.clipboard.writeText(text);
+          const prev = btn.textContent;
+          btn.textContent = 'Copied';
+          setTimeout(() => btn.textContent = 'Copy', 1000);
+        } catch {
+          const prev = btn.textContent;
+          btn.textContent = 'Press Ctrl+C';
+          setTimeout(() => btn.textContent = 'Copy', 1200);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
