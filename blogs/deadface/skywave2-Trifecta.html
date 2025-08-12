@@ -1,69 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js h-100">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SkyWave 2: Trifecta - DEADFACE CTF SQL Challenge on counting devices by type.">
-    <title>SkyWave 2: Trifecta Challenge | DEADFACE CTF</title>
-    <link rel="stylesheet" href="SkyWave2-Trifecta.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Tanmay Tiwari" />
+  <meta name="description" content="DEADFACE CTF 2024 — SkyWave 2: Trifecta challenge write-up. Count devices of selected types using SQL." />
+  <meta name="theme-color" content="#000000" />
+  <title>Remote Coders — SkyWave 2: Trifecta | DEADFACE CTF</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../../res/web_icon.png" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../../CSS/style.css" />
+  <!-- Page CSS (reused) -->
+  <link rel="stylesheet" href="../../CSS/challenge.css" />
+
+  <!-- Global JS -->
+  <script defer src="../../index.js"></script>
 </head>
-<body>
-    <div class="container">
-        <header class="header">
-            <h1 class="main-title">📲 SkyWave 2: Trifecta Challenge</h1>
-            <!-- Banner Image for the CTF Challenge -->
-            <div class="banner">
-                <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/challenges/sql/sql03/sql03.jpg" alt="CTF Challenge Banner">
+<body class="h-100">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="cursor"></div>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a class="brand" href="../../index.html" aria-label="Remote Coders Home">
+        <span class="brand-bracket">[</span>
+        <span class="brand-name glitch" data-text="REMOTE CODERS">REMOTE CODERS</span>
+        <span class="brand-bracket">]</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="../../index.html">Home</a></li>
+          <li><a class="nav-link" href="../../blogs.html">Blogs</a></li>
+          <li><a class="nav-link" href="../../tryhackme.html">THM Walkthroughs</a></li>
+          <li><a class="nav-link" href="../../contact us.html">Contact Us</a></li>
+          <li><a class="nav-link" href="../../about us.html">About Us</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-controls="menuOverlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Fullscreen Menu -->
+    <div id="menuOverlay" class="menu-overlay" hidden>
+      <nav class="overlay-nav" aria-label="Mobile">
+        <a class="overlay-link" href="../../index.html">> Home</a>
+        <a class="overlay-link" href="../../blogs.html">> Blogs</a>
+        <a class="overlay-link" href="../../tryhackme.html">> THM Walkthroughs</a>
+        <a class="overlay-link" href="../../contact us.html">> Contact Us</a>
+        <a class="overlay-link" href="../../about us.html">> About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero-min">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="noise" aria-hidden="true"></div>
+      <div class="grid-floor" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <nav class="breadcrumbs monospace" aria-label="Breadcrumb" data-reveal>
+          <a href="../../index.html">Home</a> /
+          <a href="../../blogs.html">Blogs</a> /
+          <a href="../deadfacectf2024.html">DEADFACE CTF 2024</a> /
+          <span aria-current="page">SkyWave 2: Trifecta</span>
+        </nav>
+        <h1 class="hero-title glitch" data-text="SKYWAVE 2: TRIFECTA" data-reveal>SKYWAVE 2: TRIFECTA</h1>
+        <p class="post-meta monospace" data-reveal>SQL • Joins/Filter • 15 pts</p>
+      </div>
+    </section>
+
+    <!-- Challenge -->
+    <section class="challenge-section">
+      <div class="container">
+        <div class="challenge-grid">
+
+          <!-- Banner -->
+          <figure class="card banner-card" data-reveal>
+            <div class="thumb">
+              <img loading="lazy"
+                   src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/challenges/sql/sql03/sql03.jpg"
+                   alt="SkyWave challenge banner" />
             </div>
-        </header>
+          </figure>
 
-        <section class="overview glass">
-            <h2>Overview</h2>
-            <p>The "SkyWave 2: Trifecta" challenge, created by <span class="highlight">syyntax</span>, requires participants to determine how many devices in the database are categorized as either a <span class="highlight">smartphone</span>, <span class="highlight">computer</span>, or <span class="highlight">tablet</span>. This challenge tests your ability to join tables and filter data based on specific conditions.</p>
-        </section>
+          <!-- Overview -->
+          <article class="card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Overview</div>
+              <p class="excerpt">
+                “SkyWave 2: Trifecta” by <strong>syyntax</strong> asks for a count of devices whose type is
+                <code>smartphone</code>, <code>computer</code>, or <code>tablet</code>. Use a simple join and an IN filter.
+              </p>
+            </div>
+          </article>
 
-        <section class="challenge-details glass">
-            <h2>Challenge Details</h2>
-            <ul>
-                <li><strong>Points:</strong> 15</li>
-                <li><strong>Creator:</strong> syyntax</li>
-                <li><strong>Objective:</strong> Count the number of devices that are either a smartphone, computer, or tablet in the database.</li>
-                <li><strong>Submission Format:</strong> flag{number}</li>
-            </ul>
-        </section>
+          <!-- Details -->
+          <aside class="card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Challenge Details</div>
+              <div class="kv">
+                <div class="row"><span class="k">Points</span><span class="v">15</span></div>
+                <div class="row"><span class="k">Creator</span><span class="v">syyntax</span></div>
+                <div class="row"><span class="k">Objective</span><span class="v">Count devices of selected types</span></div>
+                <div class="row"><span class="k">Submit</span><span class="v">flag{number}</span></div>
+              </div>
+            </div>
+          </aside>
 
-        <section class="provided-info glass">
-            <h2>Provided Information</h2>
-            <p>Database Access: Continue using the same SSH connection from the previous challenge (<strong>High Tower</strong>).</p>
-            <p><strong>Username:</strong> skywave</p>
-            <p><strong>Password:</strong> d34df4c3</p>
-        </section>
+          <!-- Provided -->
+          <article class="card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Provided Access</div>
+              <div class="provided">
+                <div class="row">
+                  <span class="k">SSH</span>
+                  <span class="v monospace">ssh skywave@skywave.deadface.io</span>
+                </div>
+                <div class="row">
+                  <span class="k">User</span>
+                  <span class="v monospace">skywave</span>
+                </div>
+                <div class="row">
+                  <span class="k">Pass</span>
+                  <span class="v monospace">d34df4c3</span>
+                </div>
+                <p class="hint monospace">Continue from High Tower session.</p>
+              </div>
+            </div>
+          </article>
 
-        <section class="solution-process glass">
-            <h2>Solution Process</h2>
-            <h3>SQL Query Breakdown</h3>
-            <p>To find the number of devices in the database that are smartphones, computers, or tablets, we used the following SQL query:</p>
-            <div class="code-block">
-                <pre><code>SELECT COUNT(*)
+          <!-- Query -->
+          <article class="card code-card" data-reveal>
+            <div class="card-inner">
+              <div class="code-head">
+                <div class="meta monospace">SQL — count device types via join</div>
+                <button class="copy-btn monospace" type="button" data-copy="#code1">Copy</button>
+              </div>
+<pre id="code1" class="code-pre"><code class="language-sql">SELECT COUNT(*)
 FROM Devices d
 JOIN Device_Types dt ON d.device_type_id = dt.device_type_id
 WHERE dt.device_type_name IN ('smartphone', 'computer', 'tablet');</code></pre>
             </div>
+          </article>
 
-            <p>The SQL query joins the <strong>Devices</strong> and <strong>Device_Types</strong> tables based on the <code>device_type_id</code>, then filters the results for devices categorized as <code>smartphone</code>, <code>computer</code>, or <code>tablet</code>.</p>
+          <!-- Result -->
+          <article class="card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Result</div>
+              <p class="excerpt">
+                The query returns a total of <strong>714</strong> matching devices.
+              </p>
+            </div>
+          </article>
 
-            <h3>Result</h3>
-            <p>The query returned <span class="highlight">714</span> devices matching the criteria.</p>
-        </section>
+          <!-- Flag -->
+          <article class="card flag-card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Flag</div>
+              <div class="flag-wrap">
+                <code id="flagText" class="flag monospace">flag{714}</code>
+                <button class="copy-btn monospace" type="button" data-copy="#flagText">Copy</button>
+              </div>
+            </div>
+          </article>
 
-        <section class="flag glass">
-            <h2>Flag</h2>
-            <p>The flag is: <span class="flag">flag{714}</span></p>
-        </section>
+        </div>
 
-        <footer class="mt-auto text-white-50">
-            © 2022 Remote Coders - A Community for Hackers and Programmers <br> Developed by Tanmay Tiwari
-        </footer>
+        <!-- Back -->
+        <div class="post-nav">
+          <a class="btn btn-ghost" href="../deadfacectf2024.html">> Back to DEADFACE</a>
+          <a class="btn btn-primary" href="../../blogs.html">> Explore Blogs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="foot-brand">
+          <span class="brand-bracket">[</span>
+          <span class="monospace">RC</span>
+          <span class="brand-bracket">]</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="../../blogs.html">Blogs</a>
+          <a href="../../tryhackme.html">THM</a>
+          <a href="../../contact us.html">Contact</a>
+          <a href="../../about us.html">About</a>
+        </nav>
+        <div class="foot-copy monospace">
+          © 2024 Remote Coders — A Community for Hackers and Programmers<br />
+          Developed by Silent Programmer
+        </div>
+      </div>
     </div>
+  </footer>
+
+  <!-- Page: copy buttons -->
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const sel = btn.getAttribute('data-copy');
+        const el = document.querySelector(sel);
+        if (!el) return;
+        const text = el.innerText || el.textContent || '';
+        try {
+          await navigator.clipboard.writeText(text);
+          const prev = btn.textContent;
+          btn.textContent = 'Copied';
+          setTimeout(() => btn.textContent = 'Copy', 1000);
+        } catch {
+          const prev = btn.textContent;
+          btn.textContent = 'Press Ctrl+C';
+          setTimeout(() => btn.textContent = 'Copy', 1200);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
