@@ -1,223 +1,245 @@
 <!DOCTYPE html>
-<html lang="en" class="h-100">
-
+<html lang="en" class="no-js h-100">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Remote Coders - Blogs">
-    <meta name="author" content="Tanmay Tiwari">
-    <title>Remote Coders</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Tanmay Tiwari" />
+  <meta name="description" content="DEADFACE CTF 2024 write-ups: misc challenges and SkyWave SQL series." />
+  <meta name="theme-color" content="#000000" />
+  <title>Remote Coders — DEADFACE CTF 2024</title>
 
-    <link rel="stylesheet" href="../CSS/style.css">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../res/web_icon.png" />
 
-    <!-- Custom styles -->
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            /* height: 100%; */
-            font-family: 'Roboto', sans-serif;
-            scroll-behavior: smooth;
-            box-sizing: border-box;
-        }
-        /* Responsive Blog Card Layout */
-        .blog-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            padding: 20px;
-        }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
 
-        /* Blog card styling */
-        .blog-slider__item {
-            width: 100%;
-            max-width: 350px;
-            background: #1a1e2b;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            /* background-image: url(res/Picture1.png); */
-        }
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../CSS/style.css" />
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="../CSS/deadface.css" />
 
-        .blog-slider__item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
-        }
-
-        .blog-slider__img {
-            overflow: hidden;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .blog-slider__img img {
-            width: 100%;
-            /* height: auto; */
-            transition: transform 0.3s ease;
-        }
-
-        .blog-slider__item:hover .blog-slider__img img {
-            transform: scale(1.1);
-        }
-
-        .blog-slider__content {
-            color: #fff;
-            text-align: left;
-        }
-
-        .blog-slider__code {
-            color: #00ccff;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .blog-slider__title {
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            font-weight: bold;
-            color: #ff8800;
-        }
-
-        .blog-slider__text {
-            font-size: 1em;
-            margin-bottom: 20px;
-        }
-
-        .blog-slider__button {
-            padding: 10px 20px;
-            background: #00ccff;
-            color: #fff;
-            border-radius: 5px;
-            text-transform: uppercase;
-            font-weight: bold;
-            font-size: 0.9em;
-            transition: background 0.3s ease;
-        }
-
-        .blog-slider__button:hover {
-            background: #ff8800;
-            color: #fff;
-        }
-
-    </style>
+  <!-- Global JS -->
+  <script defer src="../index.js"></script>
 </head>
+<body class="h-100">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="cursor"></div>
 
-<body class="d-flex h-100 text-white bg-dark">
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a class="brand" href="../index.html" aria-label="Remote Coders Home">
+        <span class="brand-bracket">[</span>
+        <span class="brand-name glitch" data-text="REMOTE CODERS">REMOTE CODERS</span>
+        <span class="brand-bracket">]</span>
+      </a>
 
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <header class="mb-auto">
-            <div class="nav-container">
-                <h3 class="float-md-start mb-0">RC / D34DF4C3-CTF</h3>
-                <button class="hamburger" onclick="toggleMenu()">&#9776;</button> <!-- Hamburger icon -->
-                <nav class="nav nav-masthead justify-content-center float-md-end" id="navLinks">
-                    <a class="nav-link" href="../index.html">Home</a>
-                    <a class="nav-link active" aria-current="page"  href="../blogs.html">Blogs</a>
-                    <a class="nav-link" href="../tryhackme.html">THM Walkthroughs</a>
-                    <!-- <a class="nav-link" href="partners.html">Partners</a> -->
-                    <!-- <a class="nav-link" href="supporters.html">Supporters</a> -->
-                    <a class="nav-link" href="../contact us.html">Contact Us</a>
-                    <a class="nav-link" href="../about us.html">About Us</a>
-                </nav>
-            </div>
-            
-        </header>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="../index.html">Home</a></li>
+          <li><a class="nav-link active" href="../blogs.html" aria-current="page">Blogs</a></li>
+          <li><a class="nav-link" href="../tryhackme.html">THM Walkthroughs</a></li>
+          <li><a class="nav-link" href="../contact us.html">Contact Us</a></li>
+          <li><a class="nav-link" href="../about us.html">About Us</a></li>
+        </ul>
+      </nav>
 
-        <!-- Blog Cards Container -->
-        <div class="blog-container">
-            <div class="blog-slider__item">
-                <div class="blog-slider__img">
-                    <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/misc/sleepingmarblebeauty.jpg" alt="Blog Image">
-                </div>
-                <div class="blog-slider__content">
-                    <span class="blog-slider__code">21 October 2024</span>
-                    <div class="blog-slider__title">Sleeping (Marble) Beauty</div>
-                    <!-- <div class="blog-slider__text">How to Hide Folder or Files from Windows?</div> -->
-                    <a href="deadface/Sleeping (Marble) Beauty.html" class="blog-slider__button">Write-up</a>
-                </div>
-            </div>
-
-            <div class="blog-slider__item">
-                <div class="blog-slider__img">
-                    <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/misc/winningfactors.jpg" alt="Blog Image">
-                </div>
-                <div class="blog-slider__content">
-                    <span class="blog-slider__code">21 October 2024</span>
-                    <div class="blog-slider__title">Winning Factors</div>
-                    <!-- <div class="blog-slider__text">[Solved] python was not found; run without arguments to install from the Microsoft store, or...</div> -->
-                    <a href="deadface/Winning Factors.html" class="blog-slider__button">Write-up</a>
-                </div>
-            </div>
-
-            <div class="blog-slider__item">
-                <div class="blog-slider__img">
-                    <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/misc/missingpieces.jpg" alt="Blog Image">
-                </div>
-                <div class="blog-slider__content">
-                    <span class="blog-slider__code">21 October 2024</span>
-                    <div class="blog-slider__title">Missing Pieces</div>
-                    <!-- <div class="blog-slider__text">check it out</div> -->
-                    <a href="deadface/Missing Pieces.html" class="blog-slider__button">Write-up</a>
-                </div>
-            </div>
-
-            <div class="blog-slider__item">
-                <div class="blog-slider__img">
-                    <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/challenges/sql/sql03/sql03.jpg" height="87.5px" width="350px" alt="Blog Image">
-                </div>
-                <div class="blog-slider__content">
-                    <span class="blog-slider__code">22 October 2024</span>
-                    <div class="blog-slider__title">SkyWave 1: High Tower</div>
-                    <!-- <div class="blog-slider__text">check it out</div> -->
-                    <a href="deadface/skywave1-hightower.html" class="blog-slider__button">Write-up</a>
-                </div>
-            </div>
-
-            <div class="blog-slider__item">
-                <div class="blog-slider__img">
-                    <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/challenges/sql/sql03/sql03.jpg" height="87.5px" width="350px" alt="Blog Image">
-                </div>
-                <div class="blog-slider__content">
-                    <span class="blog-slider__code">22 October 2024</span>
-                    <div class="blog-slider__title">SkyWave 2: Trifecta</div>
-                    <!-- <div class="blog-slider__text">check it out</div> -->
-                    <a href="deadface/skywave2-Trifecta.html" class="blog-slider__button">Write-up</a>
-                </div>
-            </div>
-
-            <div class="blog-slider__item">
-                <div class="blog-slider__img">
-                    <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/challenges/sql/sql03/sql03.jpg" height="87.5px" width="350px" alt="Blog Image">
-                </div>
-                <div class="blog-slider__content">
-                    <span class="blog-slider__code">22 October 2024</span>
-                    <div class="blog-slider__title">SkyWave 3: Rabbit Ears</div>
-                    <!-- <div class="blog-slider__text">check it out</div> -->
-                    <a href="deadface/skywave3-Rabbit Ears.html" class="blog-slider__button">Write-up</a>
-                </div>
-            </div>
-
-        </div>
-
-        <footer class="mt-auto text-white-50">
-            © 2022 Remote Coders - A Community for Hackers and Programmers <br> Developed by Tanmay Tiwari
-        </footer>
+      <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-controls="menuOverlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
 
-    <script>
-        // Toggle the hamburger menu
-        function toggleMenu() {
-            const nav = document.getElementById("navLinks");
-            if (nav.style.display === "flex") {
-                nav.style.display = "none";
-            } else {
-                nav.style.display = "flex";
-            }
-        }
-    </script>
+    <!-- Mobile Fullscreen Menu -->
+    <div id="menuOverlay" class="menu-overlay" hidden>
+      <nav class="overlay-nav" aria-label="Mobile">
+        <a class="overlay-link" href="../index.html">> Home</a>
+        <a class="overlay-link" href="../blogs.html">> Blogs</a>
+        <a class="overlay-link" href="../tryhackme.html">> THM Walkthroughs</a>
+        <a class="overlay-link" href="../contact us.html">> Contact Us</a>
+        <a class="overlay-link" href="../about us.html">> About Us</a>
+      </nav>
+    </div>
+  </header>
 
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero-min">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="noise" aria-hidden="true"></div>
+      <div class="grid-floor" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <!-- <p class="status monospace" data-reveal>
+          <span class="dot"></span> SYS: ONLINE • DEADFACE CTF 2024
+        </p> -->
+        <h1 class="hero-title glitch" data-text="DEADFACE CTF 2024" data-reveal>DEADFACE CTF 2024</h1>
+        <p class="hero-subtitle monospace" data-reveal>
+          Misc puzzles and the SkyWave SQL series — clean write-ups and methodology.
+        </p>
+      </div>
+    </section>
+
+    <!-- Toolbar (reuses blog-toolbar for global filter script) -->
+    <section class="blog-toolbar">
+      <div class="container">
+        <input id="search" class="search-input monospace" type="search" placeholder="Search challenges, tags..." aria-label="Search challenges" />
+        <div class="tags" role="toolbar" aria-label="Filter by tag">
+          <button class="tag monospace" data-tag="misc" aria-pressed="false">#misc</button>
+          <button class="tag monospace" data-tag="sql" aria-pressed="false">#sql</button>
+          <button class="tag monospace" data-tag="deadface" aria-pressed="false">#deadface</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTF Grid (reuses blog-card for global filter script) -->
+    <section class="ctf-section">
+      <div class="container">
+        <div id="ctfGrid" class="blog-grid">
+          <!-- Sleeping (Marble) Beauty -->
+          <a href="deadface/Sleeping (Marble) Beauty.html" class="card tilt blog-card" data-reveal
+             data-tags="misc deadface" data-title="Sleeping (Marble) Beauty" data-date="2024-10-21">
+            <div class="thumb">
+              <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/misc/sleepingmarblebeauty.jpg" alt="Sleeping (Marble) Beauty" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">21 October 2024 • Misc</div>
+              <h3 class="title">Sleeping (Marble) Beauty</h3>
+              <p class="excerpt">Image-based riddle — decode the hint and extract the flag.</p>
+              <div class="thm-badges">
+                <span class="chip monospace">#misc</span>
+                <span class="chip monospace">#deadface</span>
+              </div>
+              <span class="arrow monospace">></span>
+            </div>
+          </a>
+
+          <!-- Winning Factors -->
+          <a href="deadface/Winning Factors.html" class="card tilt blog-card" data-reveal
+             data-tags="misc deadface" data-title="Winning Factors" data-date="2024-10-21">
+            <div class="thumb">
+              <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/misc/winningfactors.jpg" alt="Winning Factors" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">21 October 2024 • Misc</div>
+              <h3 class="title">Winning Factors</h3>
+              <p class="excerpt">Spot the hidden message, then transform it to the correct format.</p>
+              <div class="thm-badges">
+                <span class="chip monospace">#misc</span>
+                <span class="chip monospace">#deadface</span>
+              </div>
+              <span class="arrow monospace">></span>
+            </div>
+          </a>
+
+          <!-- Missing Pieces -->
+          <a href="deadface/Missing Pieces.html" class="card tilt blog-card" data-reveal
+             data-tags="misc deadface" data-title="Missing Pieces" data-date="2024-10-21">
+            <div class="thumb">
+              <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/misc/missingpieces.jpg" alt="Missing Pieces" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">21 October 2024 • Misc</div>
+              <h3 class="title">Missing Pieces</h3>
+              <p class="excerpt">Reconstruct and analyze — find what doesn’t belong.</p>
+              <div class="thm-badges">
+                <span class="chip monospace">#misc</span>
+                <span class="chip monospace">#deadface</span>
+              </div>
+              <span class="arrow monospace">></span>
+            </div>
+          </a>
+
+          <!-- SkyWave 1: High Tower -->
+          <a href="deadface/skywave1-hightower.html" class="card tilt blog-card" data-reveal
+             data-tags="sql deadface skywave" data-title="SkyWave 1: High Tower" data-date="2024-10-22">
+            <div class="thumb">
+              <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/challenges/sql/sql03/sql03.jpg" alt="SkyWave 1: High Tower" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">22 October 2024 • SQL</div>
+              <h3 class="title">SkyWave 1: High Tower</h3>
+              <p class="excerpt">Initial foothold: enumerate endpoints and validate SQLi vector.</p>
+              <div class="thm-badges">
+                <span class="chip monospace">#sql</span>
+                <span class="chip monospace">#skywave</span>
+              </div>
+              <span class="arrow monospace">></span>
+            </div>
+          </a>
+
+          <!-- SkyWave 2: Trifecta -->
+          <a href="deadface/skywave2-Trifecta.html" class="card tilt blog-card" data-reveal
+             data-tags="sql deadface skywave" data-title="SkyWave 2: Trifecta" data-date="2024-10-22">
+            <div class="thumb">
+              <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/challenges/sql/sql03/sql03.jpg" alt="SkyWave 2: Trifecta" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">22 October 2024 • SQL</div>
+              <h3 class="title">SkyWave 2: Trifecta</h3>
+              <p class="excerpt">Refine injection payloads and pivot to extract critical data.</p>
+              <div class="thm-badges">
+                <span class="chip monospace">#sql</span>
+                <span class="chip monospace">#skywave</span>
+              </div>
+              <span class="arrow monospace">></span>
+            </div>
+          </a>
+
+          <!-- SkyWave 3: Rabbit Ears -->
+          <a href="deadface/skywave3-Rabbit Ears.html" class="card tilt blog-card" data-reveal
+             data-tags="sql deadface skywave" data-title="SkyWave 3: Rabbit Ears" data-date="2024-10-22">
+            <div class="thumb">
+              <img src="https://cyberhacktics.sfo2.digitaloceanspaces.com/DEADFACECTF2024/challenges/sql/sql03/sql03.jpg" alt="SkyWave 3: Rabbit Ears" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">22 October 2024 • SQL</div>
+              <h3 class="title">SkyWave 3: Rabbit Ears</h3>
+              <p class="excerpt">Escalate: automate enumeration and piece together the final flag.</p>
+              <div class="thm-badges">
+                <span class="chip monospace">#sql</span>
+                <span class="chip monospace">#skywave</span>
+              </div>
+              <span class="arrow monospace">></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Callout -->
+    <section class="callout" data-reveal>
+      <div class="container">
+        <div class="callout-inner">
+          <h2 class="glitch" data-text="MORE CTF WRITEUPS">MORE CTF WRITEUPS</h2>
+          <a class="btn btn-primary" href="../blogs.html">> Explore Blogs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="foot-brand">
+          <span class="brand-bracket">[</span>
+          <span class="monospace">RC</span>
+          <span class="brand-bracket">]</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="../blogs.html" aria-current="page">Blogs</a>
+          <a href="../tryhackme.html">THM</a>
+          <a href="../contact us.html">Contact</a>
+          <a href="../about us.html">About</a>
+        </nav>
+        <div class="foot-copy monospace">
+          © 2022 Remote Coders — A Community for Hackers and Programmers<br />
+          Developed by Silent Programmer
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.documentElement.classList.remove('no-js');</script>
 </body>
-
 </html>
