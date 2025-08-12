@@ -1,138 +1,195 @@
 <!DOCTYPE html>
-<html lang="en" class="h-100">
+<html lang="en" class="no-js h-100">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Remote Coders Team">
-    <title>Remote Coders - THM Walkthroughs</title>
-    <link rel="shortcut icon" href="res/web_icon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Remote Coders Team" />
+  <meta name="description" content="TryHackMe Advent of Cyber 2022 — Day 1 walkthrough with images, Q/A, and flag." />
+  <meta name="theme-color" content="#000000" />
+  <title>Remote Coders — AOC 2022</title>
 
-    <!-- Custom styles -->
-    <link href="css/style.css" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="res/web_icon.png" />
 
-    <style>
-        .cover-container {
-            max-width: 100%;
-        }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
 
-        h4 {
-            color: #BB86FC;
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="CSS/style.css" />
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="CSS/thm-article.css" />
 
-        .nav-link {
-            color: #BB86FC;
-            padding: 10px 15px;
-            font-size: 1.1rem;
-        }
-
-        .nav-link:hover {
-            color: #03DAC6;
-            text-decoration: none;
-        }
-
-        .glow-on-hover {
-            background-color: #BB86FC;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: box-shadow 0.3s ease;
-        }
-
-        .glow-on-hover:hover {
-            box-shadow: 0 0 20px #BB86FC, 0 0 30px #03DAC6;
-        }
-
-        img {
-            border-radius: 8px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-            margin-bottom: 20px;
-        }
-
-        blockquote {
-            padding: 10px 15px;
-            background-color: #333333;
-            border-left: 5px solid #BB86FC;
-            margin-bottom: 20px;
-            color: #E0E0E0;
-        }
-
-        h1, h2 {
-            color: #03DAC6;
-        }
-
-        h3 {
-            color: #BB86FC;
-        }
-
-    </style>
+  <!-- Global JS -->
+  <script defer src="index.js"></script>
 </head>
+<body class="h-100">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="cursor"></div>
 
-<body class="d-flex h-100 text-center text-white bg-dark">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <header class="mb-auto">
-        <div class="nav-container">
-            <h3 class="float-md-start mb-0">Remote Coders</h3>
-            <button class="hamburger" onclick="toggleMenu()">&#9776;</button> <!-- Hamburger icon -->
-            <nav class="nav nav-masthead justify-content-center float-md-end" id="navLinks">
-                <a class="nav-link" href="index.html">Home</a>
-                <a class="nav-link" href="blogs.html">Blogs</a>
-                <a class="nav-link active"  aria-current="page" href="tryhackme.html">THM Walkthroughs</a>
-                <!-- <a class="nav-link" href="partners.html">Partners</a> -->
-                <!-- <a class="nav-link" href="supporters.html">Supporters</a> -->
-                <a class="nav-link" href="contact us.html">Contact Us</a>
-                <a class="nav-link" href="about us.html">About Us</a>
-            </nav>
-        </div>
-        
-    </header>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a class="brand" href="index.html" aria-label="Remote Coders Home">
+        <span class="brand-bracket">[</span>
+        <span class="brand-name glitch" data-text="REMOTE CODERS">REMOTE CODERS</span>
+        <span class="brand-bracket">]</span>
+      </a>
 
-        <main>
-            <button class="glow-on-hover" type="button" onclick='window.location.href ="tryhackme.html"'>
-                <span>Go Back</span>
-            </button>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="blogs.html">Blogs</a></li>
+          <li><a class="nav-link" href="tryhackme.html">THM Walkthroughs</a></li>
+          <li><a class="nav-link" href="contact us.html">Contact Us</a></li>
+          <li><a class="nav-link" href="about us.html">About Us</a></li>
+        </ul>
+      </nav>
 
-            <h2>TRYHACKME Advent of Cyber 2022 WALKTHROUGHS</h2>
-            <h5>Written by Silent Programmer</h5>
-
-            <img src="res/aoc2022v2.png" alt="THM Walkthrough Cover Image" width="95%">
-
-            <h1>[Day 1] Frameworks: Someone's coming to town!</h1>
-            <img src="res/aoc1.png" alt="Day 1 Screenshot" width="95%">
-
-            <h3>Question 1:</h3>
-            <blockquote>Who is the adversary that attacked Santa's network this year?</blockquote>
-            <h3>Answer:</h3>
-            <blockquote>The Bandit Yeti!</blockquote>
-
-            <h2>Let's start solving the puzzles:</h2>
-            <img src="res/day1_img1.png" alt="Puzzle 1" width="95%">
-            <img src="res/day1_img2.png" alt="Puzzle 2" width="95%">
-            <img src="res/day1_img3.png" alt="Puzzle 3" width="95%">
-
-            <h2>Here is your flag:</h2>
-            <img src="res/day1_img4.png" alt="Flag" width="95%">
-
-            <h3>Question 2:</h3>
-            <blockquote>What's the flag that they left behind?</blockquote>
-            <h3>Answer:</h3>
-            <blockquote>THM{IT'S A Y3T1 CHR1$TMA$}</blockquote>
-
-            <h1>[Day 1 Completed]</h1>
-        </main>
-
-        <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-        <div class="elfsight-app-b26e821f-085b-40cd-8628-f339c90e883b"></div>
-
-        <footer class="mt-auto">
-            © 2022 Remote Coders (A Community for Hackers and Programmers)<br>by - Tanmay Tiwari
-        </footer>
+      <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-controls="menuOverlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <script src="index.js"></script>
-   
+
+    <!-- Mobile Fullscreen Menu -->
+    <div id="menuOverlay" class="menu-overlay" hidden>
+      <nav class="overlay-nav" aria-label="Mobile">
+        <a class="overlay-link" href="index.html">> Home</a>
+        <a class="overlay-link" href="blogs.html">> Blogs</a>
+        <a class="overlay-link" href="tryhackme.html">> THM Walkthroughs</a>
+        <a class="overlay-link" href="contact us.html">> Contact Us</a>
+        <a class="overlay-link" href="about us.html">> About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero-min">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="noise" aria-hidden="true"></div>
+      <div class="grid-floor" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <nav class="breadcrumbs monospace" aria-label="Breadcrumb" data-reveal>
+          <a href="index.html">Home</a> /
+          <a href="tryhackme.html">THM</a> /
+          <span aria-current="page">AOC 2022</span>
+        </nav>
+        <h1 class="hero-title glitch" data-text="ADVENT OF CYBER 2022" data-reveal>ADVENT OF CYBER 2022</h1>
+        <p class="post-meta monospace" data-reveal>Written by Silent Programmer • Day 1 — Someone’s coming to town!</p>
+        <div class="hero-ctas" data-reveal>
+          <a class="btn btn-ghost" href="tryhackme.html">> Back to THM</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Post -->
+    <section class="post-section">
+      <div class="container">
+        <article class="card tilt post-card" data-reveal>
+          <div class="card-inner">
+            <!-- Cover -->
+            <figure class="media">
+              <img src="res/aoc2022v2.png" alt="AOC 2022 cover" />
+            </figure>
+
+            <!-- Day 1 -->
+            <h2 class="section-title">[Day 1] Frameworks: Someone's coming to town!</h2>
+            <figure class="media">
+              <img src="res/aoc1.png" alt="Day 1 main screenshot" />
+            </figure>
+
+            <!-- Q/A 1 -->
+            <div class="qa-block">
+              <div class="q monospace">Question 1</div>
+              <blockquote class="question">Who is the adversary that attacked Santa's network this year?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <blockquote class="answer">The Bandit Yeti!</blockquote>
+            </div>
+
+            <h3 class="section-subtitle">Let’s start solving the puzzles</h3>
+
+            <!-- Gallery -->
+            <div class="gallery-grid">
+              <figure class="media">
+                <img src="res/day1_img1.png" alt="Puzzle 1" />
+              </figure>
+              <figure class="media">
+                <img src="res/day1_img2.png" alt="Puzzle 2" />
+              </figure>
+              <figure class="media">
+                <img src="res/day1_img3.png" alt="Puzzle 3" />
+              </figure>
+            </div>
+
+            <h3 class="section-subtitle">Here is your flag</h3>
+            <figure class="media">
+              <img src="res/day1_img4.png" alt="Flag screenshot" />
+            </figure>
+
+            <!-- Q/A 2 + flag -->
+            <div class="qa-block">
+              <div class="q monospace">Question 2</div>
+              <blockquote class="question">What's the flag that they left behind?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="flagValue" class="flag monospace">THM{IT'S A Y3T1 CHR1$TMA$}</code>
+                <button class="copy-btn monospace" type="button" data-copy="#flagValue">Copy</button>
+              </div>
+            </div>
+
+            <div class="post-nav">
+              <a class="btn btn-ghost" href="tryhackme.html">> Back to THM</a>
+              <a class="btn btn-primary" href="blogs.html">> Explore Blogs</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="foot-brand">
+          <span class="brand-bracket">[</span>
+          <span class="monospace">RC</span>
+          <span class="brand-bracket">]</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="blogs.html">Blogs</a>
+          <a href="tryhackme.html" aria-current="page">THM</a>
+          <a href="contact us.html">Contact</a>
+          <a href="about us.html">About</a>
+        </nav>
+        <div class="foot-copy monospace">
+          © 2022 Remote Coders — A Community for Hackers and Programmers<br />
+          Developed by Silent Programmer
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page: copy button -->
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const sel = btn.getAttribute('data-copy');
+        const el = document.querySelector(sel);
+        if (!el) return;
+        const text = el.innerText || el.textContent || '';
+        try {
+          await navigator.clipboard.writeText(text);
+          const prev = btn.textContent;
+          btn.textContent = 'Copied';
+          setTimeout(() => btn.textContent = 'Copy', 1000);
+        } catch {
+          const prev = btn.textContent;
+          btn.textContent = 'Press Ctrl+C';
+          setTimeout(() => btn.textContent = 'Copy', 1200);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
