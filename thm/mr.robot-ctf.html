@@ -1,141 +1,214 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js h-100">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mr. Robot CTF</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #e0e0e0;
-            font-family: 'Fira Code', monospace;
-            padding: 20px;
-            text-align: center;
-            background: radial-gradient(circle at 50% 50%, #0a0f1e, #000000 80%);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Remote Coders" />
+  <meta name="description" content="TryHackMe — Mr. Robot CTF quick walkthrough: three keys and notes." />
+  <meta name="theme-color" content="#000000" />
+  <title>Remote Coders — Mr. Robot CTF</title>
 
-        h1 {
-            color: #00ccff;
-            font-size: 2.8em;
-            margin-bottom: 20px;
-        }
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../res/web_icon.png" />
 
-        .banner {
-            width: 100%;
-            height: 250px;
-            background: url('../res/thm-banner.png') no-repeat center center;
-            background-size: cover;
-            margin-bottom: 30px;
-            border-bottom: 3px solid #00ccff;
-        }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
 
-        .content-container {
-            border: 1px solid #2f2f2f;
-            padding: 30px;
-            margin: 20px auto;
-            max-width: 800px;
-            background-color: #1b1b1b;
-            border-radius: 10px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
-        }
+  <!-- Global + shared article styles -->
+  <link rel="stylesheet" href="../CSS/style.css" />
+  <link rel="stylesheet" href="../CSS/thm-article.css" />
+  <link rel="stylesheet" href="../CSS/challenge.css" />
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="../CSS/mr-robot.css" />
 
-        .content-container h2 {
-            color: #ff6600;
-            font-size: 1.8em;
-            margin-bottom: 20px;
-        }
-
-        .section {
-            margin: 15px 0;
-            background-color: #111;
-            border-left: 5px solid #00ccff;
-            padding: 15px 20px;
-            border-radius: 5px;
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
-            text-align: left;
-        }
-
-        .section strong {
-            color: #ff6600;
-        }
-
-        .hint {
-            color: #ffcc00;
-            font-style: italic;
-        }
-
-        .answer {
-            background-color: #0a0f1e;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 1.2em;
-        }
-
-        .back-button {
-            padding: 12px 25px;
-            color: #fff;
-            background-color: #00ccff;
-            text-decoration: none;
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 30px;
-            font-size: 1.1em;
-            font-weight: bold;
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .back-button:hover {
-            background-color: #0099cc;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Add glowing border to content container */
-        .content-container:hover {
-            border: 1px solid #00ccff;
-            box-shadow: 0px 0px 20px #00ccff;
-        }
-    </style>
+  <!-- JS -->
+  <script defer src="../index.js"></script>
 </head>
-<body>
+<body class="h-100">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="cursor"></div>
 
-    <!-- Banner -->
-    <div class="banner"></div>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a class="brand" href="../index.html" aria-label="Remote Coders Home">
+        <span class="brand-bracket">[</span>
+        <span class="brand-name glitch" data-text="REMOTE CODERS">REMOTE CODERS</span>
+        <span class="brand-bracket">]</span>
+      </a>
 
-    <!-- Back Button -->
-    <a href="javascript:history.back()" class="back-button">Back</a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="../index.html">Home</a></li>
+          <li><a class="nav-link" href="../blogs.html">Blogs</a></li>
+          <li><a class="nav-link" href="../tryhackme.html" aria-current="page">THM Walkthroughs</a></li>
+          <li><a class="nav-link" href="../contact us.html">Contact Us</a></li>
+          <li><a class="nav-link" href="../about us.html">About Us</a></li>
+        </ul>
+      </nav>
 
-    <!-- Main Heading -->
-    <h1>Mr. Robot CTF</h1>
-
-    <!-- Content Section -->
-    <div class="content-container">
-        <h2 align="left">Task 2 Hack the Machine</h2>
-
-        <div class="section">
-            Can you root this Mr. Robot-styled machine? This is a virtual machine meant for beginners/intermediate users. There are 3 hidden keys located on the machine, can you find them?<br>
-            <em>Credit to Leon Johnson for creating this machine. This machine is used here with the explicit permission of the creator <3</em>
-        </div>
-
-        <div class="section">
-            <strong>What is key 1?</strong><br><br>
-            <div class="answer">073403c8a58a1f80d943455fb30724b9</div>
-            <div class="hint">Hint: First key is hidden within the initial steps of exploration.</div>
-        </div>
-
-        <div class="section">
-            <strong>What is key 2?</strong><br><br>
-            <div class="answer">822c73956184f694993bede3eb39f959</div>
-            <div class="hint">Hint: Don’t forget to check those web directories.</div>
-        </div>
-
-        <div class="section">
-            <strong>What is key 3?</strong><br><br>
-            <div class="answer">04787ddef27c3dee1ee161b21670b4e4</div>
-            <div class="hint">Hint: The final key is well-hidden within the root of the machine.</div>
-        </div>
-        <h4 align="right">Written with 💌 by - Silent Programmer</h4>
+      <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-controls="menuOverlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
 
+    <!-- Mobile menu -->
+    <div id="menuOverlay" class="menu-overlay" hidden>
+      <nav class="overlay-nav" aria-label="Mobile">
+        <a class="overlay-link" href="../index.html">> Home</a>
+        <a class="overlay-link" href="../blogs.html">> Blogs</a>
+        <a class="overlay-link" href="../tryhackme.html" aria-current="page">> THM Walkthroughs</a>
+        <a class="overlay-link" href="../contact us.html">> Contact Us</a>
+        <a class="overlay-link" href="../about us.html">> About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero-min">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="noise" aria-hidden="true"></div>
+      <div class="grid-floor" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <nav class="breadcrumbs monospace" aria-label="Breadcrumb" data-reveal>
+          <a href="../index.html">Home</a> /
+          <a href="../tryhackme.html">THM</a> /
+          <span aria-current="page">Mr. Robot CTF</span>
+        </nav>
+        <h1 class="hero-title glitch" data-text="MR. ROBOT CTF" data-reveal>MR. ROBOT CTF</h1>
+        <p class="post-meta monospace" data-reveal>Boot2Root • Three keys • Quick notes</p>
+        <div class="hero-ctas" data-reveal>
+          <a class="btn btn-ghost" href="../tryhackme.html">> Back to THM</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="post-section">
+      <div class="container">
+        <!-- Banner -->
+        <article class="card banner-card" data-reveal>
+          <div class="thumb">
+            <img src="../res/thm-banner.png" alt="THM banner" />
+          </div>
+        </article>
+
+        <!-- Intro -->
+        <article class="card tilt" data-reveal>
+          <div class="card-inner">
+            <div class="meta monospace">Task • Hack the Machine</div>
+            <p class="excerpt">
+              Can you root this Mr. Robot‑styled machine? Beginner/intermediate VM with 3 hidden keys.
+              Credit: Leon Johnson. Used with explicit permission.
+            </p>
+          </div>
+        </article>
+
+        <!-- Key 1 -->
+        <article class="card tilt" data-reveal>
+          <div class="card-inner">
+            <div class="meta monospace">Key 1</div>
+            <div class="qa-block">
+              <div class="q monospace">Question</div>
+              <blockquote class="question">What is key 1?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="key1" class="flag monospace">073403c8a58a1f80d943455fb30724b9</code>
+                <button class="copy-btn monospace" type="button" data-copy="#key1">Copy</button>
+              </div>
+              <p class="hint">Hint: Hidden within the initial steps of exploration.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Key 2 -->
+        <article class="card tilt" data-reveal>
+          <div class="card-inner">
+            <div class="meta monospace">Key 2</div>
+            <div class="qa-block">
+              <div class="q monospace">Question</div>
+              <blockquote class="question">What is key 2?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="key2" class="flag monospace">822c73956184f694993bede3eb39f959</code>
+                <button class="copy-btn monospace" type="button" data-copy="#key2">Copy</button>
+              </div>
+              <p class="hint">Hint: Don’t forget to check those web directories.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Key 3 -->
+        <article class="card tilt" data-reveal>
+          <div class="card-inner">
+            <div class="meta monospace">Key 3</div>
+            <div class="qa-block">
+              <div class="q monospace">Question</div>
+              <blockquote class="question">What is key 3?</blockquote>
+              <div class="a-title monospace">Answer</div>
+              <div class="flag-wrap">
+                <code id="key3" class="flag monospace">04787ddef27c3dee1ee161b21670b4e4</code>
+                <button class="copy-btn monospace" type="button" data-copy="#key3">Copy</button>
+              </div>
+              <p class="hint">Hint: The final key is well‑hidden within the root of the machine.</p>
+            </div>
+            <!-- <div class="right monospace" style="margin-top:.4rem;">Written with 💌 — Silent Programmer</div> -->
+          </div>
+        </article>
+
+        <!-- Nav -->
+        <div class="post-nav">
+          <a class="btn btn-ghost" href="../tryhackme.html">> Back to THM</a>
+          <a class="btn btn-primary" href="../blogs.html">> Explore Blogs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="foot-brand">
+          <span class="brand-bracket">[</span>
+          <span class="monospace">RC</span>
+          <span class="brand-bracket">]</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="../blogs.html">Blogs</a>
+          <a href="../tryhackme.html" aria-current="page">THM</a>
+          <a href="../contact us.html">Contact</a>
+          <a href="../about us.html">About</a>
+        </nav>
+        <div class="foot-copy monospace">
+          © 2024 Remote Coders — A Community for Hackers and Programmers<br />
+          Developed by Silent Programmer
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page: copy buttons (local) -->
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const sel = btn.getAttribute('data-copy');
+        const el = document.querySelector(sel);
+        if (!el) return;
+        const text = el.innerText || el.textContent || '';
+        try {
+          await navigator.clipboard.writeText(text);
+          const prev = btn.textContent;
+          btn.textContent = 'Copied';
+          setTimeout(() => btn.textContent = 'Copy', 1000);
+        } catch {
+          const prev = btn.textContent;
+          btn.textContent = 'Press Ctrl+C';
+          setTimeout(() => btn.textContent = 'Copy', 1200);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
