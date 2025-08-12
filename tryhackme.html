@@ -1,230 +1,291 @@
 <!DOCTYPE html>
-<html lang="en" class="h-100">
-
+<html lang="en" class="no-js h-100">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Remote Coders - TryHackMe Walkthroughs">
-    <meta name="author" content="Tanmay Tiwari">
-    <title>Remote Coders - THM Walkthroughs</title>
-    <link rel="shortcut icon" href="res/web_icon.png">
-    <link href="CSS/style.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Tanmay Tiwari" />
+  <meta name="description" content="Remote Coders — TryHackMe Walkthroughs: AOC, CTFs, boot2root rooms." />
+  <meta name="theme-color" content="#000000" />
+  <title>Remote Coders — THM Walkthroughs</title>
 
-    <!-- Custom styles -->
-    <style>
-        /* General styling */
-        body {
-            /* background-color: #1a1e2b; */
-            color: #fff;
-            font-family: 'Arial', sans-serif;
-        }
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="res/web_icon.png" />
 
-        h4 {
-            color: #ff8800;
-            font-weight: bold;
-        }
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
 
-        .nav-link {
-            color: #00ccff !important;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="CSS/style.css" />
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="CSS/tryhackme.css" />
 
-        .nav-link:hover {
-            color: #ff8800 !important;
-        }
-
-        /* Box styling */
-        .box {
-            background: #1f2538;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
-            margin: 20px;
-        }
-
-        .box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
-        }
-
-        .imgBx img {
-            width: 100px;
-            height: auto;
-            border-radius: 10px 10px 0 0;
-            transition: transform 0.3s ease;
-        }
-
-        .box:hover .imgBx img {
-            transform: scale(1.1);
-        }
-
-        .content {
-            padding: 20px;
-            color: #fff;
-        }
-
-        .content h2 {
-            font-size: 1.5em;
-            color: #ff8800;
-            margin-bottom: 15px;
-        }
-
-        .content span {
-            font-size: 1.2em;
-            display: block;
-        }
-
-        .glow-on-hover {
-            padding: 10px 20px;
-            border: none;
-            background-color: #00ccff;
-            color: white;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.3s ease;
-        }
-
-        .glow-on-hover:hover {
-            background-color: #ff8800;
-            color: white;
-        }
-
-        table {
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        td {
-            width: 25%;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        @media (max-width: 768px) {
-            td {
-                width: 100%;
-                display: block;
-                margin-bottom: 20px;
-            }
-
-            table {
-                display: block;
-                margin: 0 auto;
-            }
-        }
-    </style>
+  <!-- Global JS -->
+  <script defer src="index.js"></script>
 </head>
+<body class="h-100">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="cursor"></div>
 
-<body class="d-flex h-100 text-center text-white bg-dark">
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a class="brand" href="index.html" aria-label="Remote Coders Home">
+        <span class="brand-bracket">[</span>
+        <span class="brand-name glitch" data-text="REMOTE CODERS">REMOTE CODERS</span>
+        <span class="brand-bracket">]</span>
+      </a>
 
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <header class="mb-auto">
-            <div class="nav-container">
-                <h3 class="float-md-start mb-0">RC / THM</h3>
-                <button class="hamburger" onclick="toggleMenu()">&#9776;</button> <!-- Hamburger icon -->
-                <nav class="nav nav-masthead justify-content-center float-md-end" id="navLinks">
-                    <a class="nav-link" href="index.html">Home</a>
-                    <a class="nav-link" href="blogs.html">Blogs</a>
-                    <a class="nav-link active" aria-current="page"href="tryhackme.html">THM Walkthroughs</a>
-                    <!-- <a class="nav-link" href="partners.html">Partners</a> -->
-                    <!-- <a class="nav-link" href="supporters.html">Supporters</a> -->
-                    <a class="nav-link" href="contact us.html">Contact Us</a>
-                    <a class="nav-link" href="about us.html">About Us</a>
-                </nav>
-            </div>
-            
-        </header>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="blogs.html">Blogs</a></li>
+          <li><a class="nav-link active" aria-current="page" href="tryhackme.html">THM Walkthroughs</a></li>
+          <li><a class="nav-link" href="contact us.html">Contact Us</a></li>
+          <li><a class="nav-link" href="about us.html">About Us</a></li>
+        </ul>
+      </nav>
 
-        <table>
-            <tr>
-                <td>
-                    <div class="box">
-                        <div class="imgBx">
-                            <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/62c435d1f4d84a005f5df811-1728982657816" alt="THM 2022">
-                        </div>
-                        <div class="content">
-                            <h2>AOC 2022</h2>
-                            <span><a href="aoc2022.html"><button class="glow-on-hover" type="button">SEE NOW</button></a></span>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="box">
-                        <div class="imgBx">
-                            <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/62c435d1f4d84a005f5df811-1728982657816" alt="THM 2023">
-                        </div>
-                        <div class="content">
-                            <h2>AOC 2023</h2>
-                            <span><a href="aoc2023.html"><button class="glow-on-hover" type="button">SEE NOW</button></a></span>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="box">
-                        <div class="imgBx">
-                            <img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/9c33c0b93029579bbba5deeb37356ebc.png"
-                                height="200px" alt="AOC '23 Side Quest">
-                        </div>
-                        <div class="content">
-                            <h2>AOC'23 Side Quest</h2>
-                            <span><a href="thm/aocsidequest2023.html"><button class="glow-on-hover" type="button">SEE NOW</button></a></span>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="box">
-                        <div class="imgBx">
-                            <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/a222ca9fb08b8bdc9e10a0f6ba41ea99.jpeg"
-                                height="200px" alt="Retro">
-                        </div>
-                        <div class="content">
-                            <h2>Retro</h2>
-                            <span><a href="thm/retro.html"><button class="glow-on-hover" type="button">SEE NOW</button></a></span>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="box">
-                        <div class="imgBx">
-                            <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/7a8797ae59733f2a72f0e8a8748be128.jpeg"
-                                height="200px" alt="Mr Robot CTF">
-                        </div>
-                        <div class="content">
-                            <h2>Mr Robot CTF</h2>
-                            <span><a href="thm/mr.robot-ctf.html"><button class="glow-on-hover" type="button">SEE NOW</button></a></span>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="box">
-                        <div class="imgBx">
-                            <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/62c435d1f4d84a005f5df811-1728982657816"
-                                height="200px" alt="Mr Robot CTF">
-                        </div>
-                        <div class="content">
-                            <h2>AOC 2024</h2>
-                            <span><a href="aoc2024.html"><button class="glow-on-hover" type="button">SEE NOW</button></a></span>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </table>
-
-        <footer class="mt-auto text-white-50">
-            © 2022 Remote Coders (A Community for Hackers and Programmers)<br>by - Tanmay Tiwari
-        </footer>
+      <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-controls="menuOverlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <!-- Custom JavaScript -->
-    <script src="index.js"></script>
-</body>
 
+    <!-- Mobile Fullscreen Menu -->
+    <div id="menuOverlay" class="menu-overlay" hidden>
+      <nav class="overlay-nav" aria-label="Mobile">
+        <a class="overlay-link" href="index.html">> Home</a>
+        <a class="overlay-link" href="blogs.html">> Blogs</a>
+        <a class="overlay-link" href="tryhackme.html" aria-current="page">> THM Walkthroughs</a>
+        <a class="overlay-link" href="contact us.html">> Contact Us</a>
+        <a class="overlay-link" href="about us.html">> About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero-min">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="noise" aria-hidden="true"></div>
+      <div class="grid-floor" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <p class="status monospace" data-reveal>
+          <span class="dot"></span> SYS: ONLINE • TRYHACKME WALKTHROUGHS
+        </p>
+        <h1 class="hero-title glitch" data-text="THM WALKTHROUGHS" data-reveal>THM WALKTHROUGHS</h1>
+        <p class="hero-subtitle monospace" data-reveal>
+          Advent of Cyber, CTFs, and boot2root — clean writeups with methodology.
+        </p>
+      </div>
+    </section>
+
+    <!-- Toolbar -->
+    <section class="thm-toolbar">
+      <div class="container">
+        <input id="search" class="search-input monospace" type="search" placeholder="Search rooms, tags, years..." aria-label="Search rooms" />
+        <div class="tags" role="toolbar" aria-label="Filter by tag">
+          <button class="tag monospace" data-tag="aoc" aria-pressed="false">#aoc</button>
+          <button class="tag monospace" data-tag="ctf" aria-pressed="false">#ctf</button>
+          <button class="tag monospace" data-tag="boot2root" aria-pressed="false">#boot2root</button>
+          <button class="tag monospace" data-tag="linux" aria-pressed="false">#linux</button>
+          <button class="tag monospace" data-tag="windows" aria-pressed="false">#windows</button>
+          <button class="tag monospace" data-tag="2022" aria-pressed="false">#2022</button>
+          <button class="tag monospace" data-tag="2023" aria-pressed="false">#2023</button>
+          <button class="tag monospace" data-tag="2024" aria-pressed="false">#2024</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rooms Grid -->
+    <section class="thm-section">
+      <div class="container">
+        <div id="roomGrid" class="room-grid">
+          <!-- AOC 2022 -->
+          <a href="aoc2022.html" class="card tilt room-card" data-reveal
+             data-tags="aoc 2022 ctf event" data-title="AOC 2022" data-difficulty="easy">
+            <div class="thumb">
+              <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/62c435d1f4d84a005f5df811-1728982657816" alt="AOC 2022" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">2022 • Event</div>
+              <h3 class="title">AOC 2022</h3>
+              <p class="excerpt">Advent of Cyber 2022 solutions and notes.</p>
+              <div class="thm-badges">
+                <span class="chip chip--easy monospace">easy</span>
+                <span class="chip monospace">#aoc</span>
+                <span class="chip monospace">#ctf</span>
+              </div>
+              <span class="arrow monospace">></span>
+            </div>
+          </a>
+
+          <!-- AOC 2023 -->
+          <a href="aoc2023.html" class="card tilt room-card" data-reveal
+             data-tags="aoc 2023 ctf event" data-title="AOC 2023" data-difficulty="easy">
+            <div class="thumb">
+              <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/62c435d1f4d84a005f5df811-1728982657816" alt="AOC 2023" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">2023 • Event</div>
+              <h3 class="title">AOC 2023</h3>
+              <p class="excerpt">Daily room writeups with reasoning.</p>
+              <div class="thm-badges">
+                <span class="chip chip--easy monospace">easy</span>
+                <span class="chip monospace">#aoc</span>
+                <span class="chip monospace">#ctf</span>
+              </div>
+              <span class="arrow monospace">></span>
+            </div>
+          </a>
+
+          <!-- AOC '23 Side Quest -->
+          <a href="thm/aocsidequest2023.html" class="card tilt room-card" data-reveal
+             data-tags="aoc 2023 ctf sidequest" data-title="AOC'23 Side Quest" data-difficulty="medium">
+            <div class="thumb">
+              <img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/62c435d1f4d84a005f5df811/room-content/9c33c0b93029579bbba5deeb37356ebc.png" alt="AOC 2023 Side Quest" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">2023 • Event</div>
+              <h3 class="title">AOC'23 Side Quest</h3>
+              <p class="excerpt">Extra challenges with deeper dives.</p>
+              <div class="thm-badges">
+                <span class="chip chip--med monospace">medium</span>
+                <span class="chip monospace">#aoc</span>
+                <span class="chip monospace">#ctf</span>
+              </div>
+              <span class="arrow monospace">></span>
+            </div>
+          </a>
+
+          <!-- Retro -->
+          <a href="thm/retro.html" class="card tilt room-card" data-reveal
+             data-tags="boot2root windows ctf" data-title="Retro" data-difficulty="easy">
+            <div class="thumb">
+              <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/a222ca9fb08b8bdc9e10a0f6ba41ea99.jpeg" alt="Retro room" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">Boot2Root • Windows</div>
+              <h3 class="title">Retro</h3>
+              <p class="excerpt">Enumeration to privilege escalation, end-to-end.</p>
+              <div class="thm-badges">
+                <span class="chip chip--easy monospace">easy</span>
+                <span class="chip monospace">#boot2root</span>
+                <span class="chip monospace">#windows</span>
+              </div>
+              <span class="arrow monospace">></span>
+            </div>
+          </a>
+
+          <!-- Mr Robot CTF -->
+          <a href="thm/mr.robot-ctf.html" class="card tilt room-card" data-reveal
+             data-tags="ctf linux web boot2root" data-title="Mr Robot CTF" data-difficulty="hard">
+            <div class="thumb">
+              <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/7a8797ae59733f2a72f0e8a8748be128.jpeg" alt="Mr Robot CTF" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">CTF • Linux/Web</div>
+              <h3 class="title">Mr Robot CTF</h3>
+              <p class="excerpt">OSINT, web foothold, and privesc walkthrough.</p>
+              <div class="thm-badges">
+                <span class="chip chip--hard monospace">hard</span>
+                <span class="chip monospace">#ctf</span>
+                <span class="chip monospace">#linux</span>
+              </div>
+              <span class="arrow monospace">></span>
+            </div>
+          </a>
+
+          <!-- AOC 2024 -->
+          <a href="aoc2024.html" class="card tilt room-card" data-reveal
+             data-tags="aoc 2024 ctf event" data-title="AOC 2024" data-difficulty="easy">
+            <div class="thumb">
+              <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/62c435d1f4d84a005f5df811-1728982657816" alt="AOC 2024" />
+            </div>
+            <div class="card-inner">
+              <div class="meta monospace">2024 • Event</div>
+              <h3 class="title">AOC 2024</h3>
+              <p class="excerpt">Fresh AOC runs with concise answers.</p>
+              <div class="thm-badges">
+                <span class="chip chip--easy monospace">easy</span>
+                <span class="chip monospace">#aoc</span>
+                <span class="chip monospace">#ctf</span>
+              </div>
+              <span class="arrow monospace">></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="foot-brand">
+          <span class="brand-bracket">[</span>
+          <span class="monospace">RC</span>
+          <span class="brand-bracket">]</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="blogs.html">Blogs</a>
+          <a href="tryhackme.html" aria-current="page">THM</a>
+          <a href="contact us.html">Contact</a>
+          <a href="about us.html">About</a>
+        </nav>
+        <div class="foot-copy monospace">
+          © 2022 Remote Coders — A Community for Hackers and Programmers<br />
+          Developed by Silent Programmer
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page filtering script -->
+  <script>
+    document.documentElement.classList.remove('no-js');
+
+    (function thmFilters() {
+      const input = document.getElementById('search');
+      const tags = Array.from(document.querySelectorAll('.thm-toolbar .tag'));
+      const cards = Array.from(document.querySelectorAll('.room-card'));
+      const norm = s => (s || '').toLowerCase().trim();
+
+      let activeTags = new Set();
+
+      function matches(card, q, tagSet) {
+        const hay = [
+          card.dataset.title,
+          card.dataset.tags,
+          card.textContent
+        ].join(' ').toLowerCase();
+
+        const qOk = !q || hay.includes(q);
+        const tOk = !tagSet.size || [...tagSet].every(t => (card.dataset.tags || '').toLowerCase().includes(t));
+        return qOk && tOk;
+      }
+
+      function apply() {
+        const q = norm(input.value);
+        cards.forEach(c => {
+          c.style.display = matches(c, q, activeTags) ? '' : 'none';
+        });
+      }
+
+      input.addEventListener('input', apply);
+
+      tags.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const t = btn.dataset.tag.toLowerCase();
+          const pressed = btn.getAttribute('aria-pressed') === 'true';
+          btn.setAttribute('aria-pressed', String(!pressed));
+          if (pressed) activeTags.delete(t); else activeTags.add(t);
+          apply();
+        });
+      });
+
+      apply();
+    })();
+  </script>
+</body>
 </html>
