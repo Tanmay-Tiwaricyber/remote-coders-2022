@@ -1,111 +1,265 @@
 <!DOCTYPE html>
-<html lang="en" class="h-100">
+<html lang="en" class="no-js h-100">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="About Remote Coders Community">
-    <meta name="author" content="Tanmay Tiwari, Remote Coders">
-    <title>About Us - Remote Coders</title>
-    
-    <!-- Bootstrap core CSS -->
-    <link href="CSS/style.css" rel="stylesheet">
-    <link rel="shortcut icon" href="res/web_icon.png">
-    
-    <!-- Custom styles for this template -->
-    <style>
-        body, html {
-            /* height: 100%; */
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            /* background: linear-gradient(45deg, #121212, #282828); */
-            color: #fff;
-            font-family: 'Arial', sans-serif;
-        }
-        .cover-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            width: 100%;
-            padding: 2rem;
-            text-align: center;
-        }
-        header {
-            margin-bottom: 3rem;
-        }
-        h1 {
-            font-size: 3.5rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            background: -webkit-linear-gradient(45deg, #ff007a, #4ff2c8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientMove 3s ease infinite;
-        }
-        @keyframes gradientMove {
-            0% { background-position: 0 50%; }
-            100% { background-position: 100% 50%; }
-        }
-        .nav-link {
-            color: #fff;
-            font-size: 1.2rem;
-            margin-right: 1rem;
-            transition: all 0.3s ease;
-        }
-        .nav-link:hover {
-            color: #4ff2c8;
-            text-shadow: 0 0 10px #4ff2c8;
-        }
-        .div3 {
-            max-width: 700px;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
-            font-size: 1.1rem;
-        }
-        .div3 b {
-            color: #4ff2c8;
-        }
-        footer {
-            margin-top: 3rem;
-            font-size: 0.9rem;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Tanmay Tiwari, Remote Coders" />
+  <meta name="description" content="About Remote Coders — a community for hackers and programmers." />
+  <meta name="theme-color" content="#000000" />
+  <title>Remote Coders — About</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="res/web_icon.png" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="CSS/style.css" />
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="CSS/about.css" />
+
+  <!-- Global JS -->
+  <script defer src="index.js"></script>
 </head>
-<body>
-    <div class="cover-container">
-        <header class="mb-auto">
-            <div class="nav-container">
-                <h3 class="float-md-start mb-0">Remote Coders</h3>
-                <button class="hamburger" onclick="toggleMenu()">&#9776;</button> <!-- Hamburger icon -->
-                <nav class="nav nav-masthead justify-content-center float-md-end" id="navLinks">
-                    <a class="nav-link" href="index.html">Home</a>
-                    <a class="nav-link" href="blogs.html">Blogs</a>
-                    <a class="nav-link" href="tryhackme.html">THM Walkthroughs</a>
-                    <!-- <a class="nav-link" href="partners.html">Partners</a> -->
-                    <!-- <a class="nav-link" href="supporters.html">Supporters</a> -->
-                    <a class="nav-link" href="contact us.html">Contact Us</a>
-                    <a class="nav-link active" aria-current="page" href="about us.html">About Us</a>
-                </nav>
-            </div>
-            
-        </header>
+<body class="h-100">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="cursor"></div>
 
-        <h1>About Us</h1>
-        
-        <div class="div3">
-            <p><b>Remote Coders</b> is a thriving community for hackers and programmers. My name is Tanmay Tiwari, the proud owner and founder of this community.</p>
-            <p>I created this space to bring together hackers and developers where they can collaborate, solve challenges, and help secure the digital world.</p>
-            <p>With over 150+ members to date, our mission is to make the world a safer place by sharing knowledge and solving problems together.</p>
-        </div>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a class="brand" href="index.html" aria-label="Remote Coders Home">
+        <span class="brand-bracket">[</span>
+        <span class="brand-name glitch" data-text="REMOTE CODERS">REMOTE CODERS</span>
+        <span class="brand-bracket">]</span>
+      </a>
 
-        <footer class="mt-auto text-white-50">
-            © 2022 Remote Coders - A Community for Hackers and Programmers <br> Developed by Tanmay Tiwari
-        </footer>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="blogs.html">Blogs</a></li>
+          <li><a class="nav-link" href="tryhackme.html">THM Walkthroughs</a></li>
+          <li><a class="nav-link" href="contact us.html">Contact Us</a></li>
+          <li><a class="nav-link active" aria-current="page" href="about us.html">About Us</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-controls="menuOverlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+
+    <!-- Mobile Fullscreen Menu -->
+    <div id="menuOverlay" class="menu-overlay" hidden>
+      <nav class="overlay-nav" aria-label="Mobile">
+        <a class="overlay-link" href="index.html">> Home</a>
+        <a class="overlay-link" href="blogs.html">> Blogs</a>
+        <a class="overlay-link" href="tryhackme.html">> THM Walkthroughs</a>
+        <a class="overlay-link" href="contact us.html">> Contact Us</a>
+        <a class="overlay-link" href="about us.html" aria-current="page">> About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero-min">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="noise" aria-hidden="true"></div>
+      <div class="grid-floor" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <!-- <p class="status monospace" data-reveal>
+          <span class="dot"></span> SYS: ONLINE • ABOUT
+        </p> -->
+        <h1 class="hero-title glitch" data-text="ABOUT US" data-reveal>ABOUT US</h1>
+        <p class="hero-subtitle monospace" data-reveal>
+          A community for hackers and programmers. Learn, build, secure — together.
+        </p>
+      </div>
+    </section>
+
+    <!-- About + Stats -->
+    <section class="about-section">
+      <div class="container">
+        <div class="about-grid">
+          <!-- About copy -->
+          <article class="card tilt about-card" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Who we are</div>
+              <h2 class="title">Remote Coders</h2>
+              <p class="excerpt">
+                Remote Coders is a thriving community founded by <strong>Tanmay Tiwari</strong>. We bring
+                hackers and developers together to collaborate, solve challenges, and help secure the digital world.
+              </p>
+              <p class="excerpt">
+                From CTF writeups to programming guides, we focus on clear methodology and knowledge sharing.
+                Our mission is to make the world safer by learning and building together.
+              </p>
+              <div class="about-list monospace">
+                <div class="row"><span class="k">Focus</span><span class="v">Cybersecurity • Programming</span></div>
+                <div class="row"><span class="k">Content</span><span class="v">Blogs • THM Walkthroughs • Notes</span></div>
+                <div class="row"><span class="k">Approach</span><span class="v">Hands-on • Transparent • Practical</span></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Stats -->
+          <aside class="card tilt about-card" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">At a glance</div>
+              <div class="stats-grid">
+                <div class="stat">
+                  <div class="num">150+</div>
+                  <div class="lab">Members</div>
+                </div>
+                <div class="stat">
+                  <div class="num">2022</div>
+                  <div class="lab">Founded</div>
+                </div>
+                <div class="stat">
+                  <div class="num">CTFs</div>
+                  <div class="lab">Writeups</div>
+                </div>
+                <div class="stat">
+                  <div class="num">Guides</div>
+                  <div class="lab">Programming</div>
+                </div>
+              </div>
+              <div class="cta">
+                <a class="btn btn-primary" href="blogs.html">> Explore Blogs</a>
+                <a class="btn btn-ghost" href="tryhackme.html">> THM Walkthroughs</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline-section">
+      <div class="container">
+        <div class="card" data-reveal>
+          <div class="card-inner">
+            <div class="meta monospace">Story so far</div>
+            <ol class="timeline">
+              <li class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-content">
+                  <h3 class="tl-title">2022 — Remote Coders founded</h3>
+                  <p>Launched the community with a mission to learn and secure the web together.</p>
+                </div>
+              </li>
+              <li class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-content">
+                  <h3 class="tl-title">2023 — First THM series</h3>
+                  <p>Started publishing TryHackMe walkthroughs with step-by-step methodology.</p>
+                </div>
+              </li>
+              <li class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-content">
+                  <h3 class="tl-title">2024 — 150+ members</h3>
+                  <p>Grew into a reliable hub for writeups, tools, and quick study notes.</p>
+                </div>
+              </li>
+              <li class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-content">
+                  <h3 class="tl-title">2025 — Expanding</h3>
+                  <p>More guides, collabs, and structured learning tracks.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values-section">
+      <div class="container">
+        <div class="values-grid">
+          <div class="card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Value 01</div>
+              <h3 class="title">Share Openly</h3>
+              <p class="excerpt">Clear writeups and notes so others can learn fast and contribute back.</p>
+            </div>
+          </div>
+          <div class="card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Value 02</div>
+              <h3 class="title">Stay Ethical</h3>
+              <p class="excerpt">Practice responsibly and respect privacy. Skills build safety, not harm.</p>
+            </div>
+          </div>
+          <div class="card tilt" data-reveal>
+            <div class="card-inner">
+              <div class="meta monospace">Value 03</div>
+              <h3 class="title">Think Attacker + Defender</h3>
+              <p class="excerpt">Understand both sides to design better defenses and robust code.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Founder -->
+    <section class="founder-section">
+      <div class="container">
+        <div class="card tilt founder-card" data-reveal>
+          <div class="thumb">
+            <img src="logo.png" alt="Remote Coders logo" />
+          </div>
+          <div class="card-inner">
+            <div class="meta monospace">Founder</div>
+            <h3 class="title">Tanmay Tiwari</h3>
+            <p class="excerpt">Owner and founder of Remote Coders. Building a focused, hands-on space for learning and sharing.</p>
+            <div class="cta">
+              <a class="btn btn-ghost" href="contact us.html">> Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Callout -->
+    <section class="callout" data-reveal>
+      <div class="container">
+        <div class="callout-inner">
+          <h2 class="glitch" data-text="BUILD WITH US">BUILD WITH US</h2>
+          <p class="hero-subtitle monospace">Contribute posts, THM writeups, and tools to help the community.</p>
+          <a class="btn btn-primary" href="blogs.html">> Start Reading</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="foot-brand">
+          <span class="brand-bracket">[</span>
+          <span class="monospace">RC</span>
+          <span class="brand-bracket">]</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="blogs.html">Blogs</a>
+          <a href="tryhackme.html">THM</a>
+          <a href="contact us.html">Contact</a>
+          <a href="about us.html" aria-current="page">About</a>
+        </nav>
+        <div class="foot-copy monospace">
+          © 2022 Remote Coders — A Community for Hackers and Programmers<br />
+          Developed by Silent Programmer
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- <script>document.documentElement.classList.remove('no-js');</script> -->
 </body>
 </html>
