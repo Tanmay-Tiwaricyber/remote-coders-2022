@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js h-100">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Remote Coders Community" />
+  <meta name="description" content="TryHackMe Advent of Cyber 2024 — selected days walkthrough with Q/A and flags." />
+  <meta name="theme-color" content="#000000" />
+  <title>Remote Coders — AOC 2024</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="res/web_icon.png" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="CSS/style.css" />
+  <!-- Article base CSS (reused) -->
+  <link rel="stylesheet" href="CSS/thm-article.css" />
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="CSS/aoc-2024.css" />
+
+  <!-- Global JS -->
+  <script defer src="index.js"></script>
+</head>
+<body class="h-100">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="cursor"></div>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a aria-label='Remote Coders Home' class='brand' href='/'>
+        <span class="brand-bracket">[</span>
+        <span class="brand-name glitch" data-text="REMOTE CODERS">REMOTE CODERS</span>
+        <span class="brand-bracket">]</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class='nav-link' href='/'>Home</a></li>
+          <li><a class='nav-link' href='/blogs'>Blogs</a></li>
+          <li><a aria-current='page' class='nav-link' href='/tryhackme'>THM Walkthroughs</a></li>
+          <li><a class="nav-link" href="contact us.html">Contact Us</a></li>
+          <li><a class="nav-link" href="about us.html">About Us</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-controls="menuOverlay" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Fullscreen Menu -->
+    <div id="menuOverlay" class="menu-overlay" hidden>
+      <nav class="overlay-nav" aria-label="Mobile">
+        <a class='overlay-link' href='/'>> Home</a>
+        <a class='overlay-link' href='/blogs'>> Blogs</a>
+        <a aria-current='page' class='overlay-link' href='/tryhackme'>> THM Walkthroughs</a>
+        <a class="overlay-link" href="contact us.html">> Contact Us</a>
+        <a class="overlay-link" href="about us.html">> About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero hero-min">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="noise" aria-hidden="true"></div>
+      <div class="grid-floor" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <nav class="breadcrumbs monospace" aria-label="Breadcrumb" data-reveal>
+          <a href='/'>Home</a> /
+          <a href='/tryhackme'>THM</a> /
+          <span aria-current="page">Advent of Cyber Prep Track</span>
+        </nav>
+        <h1 class="hero-title glitch" data-text="ADVENT OF CYBER 2024" data-reveal>ADVENT OF CYBER 2024</h1>
+        <p class="post-meta monospace" data-reveal>
+          Beginner-friendly festive challenges — selected days and answers
+        </p>
+        <div class="hero-ctas" data-reveal>
+          <a class="btn btn-primary" href="https://tryhackme.com/r/room/adventofcyber2024" target="_blank" rel="noopener">> Room Link</a>
+          <a class='btn btn-ghost' href='/tryhackme'>> Back to THM</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cover banner -->
+    <section class="post-section">
+      <div class="container">
+        <article class="card banner-card" data-reveal>
+          <div class="thumb">
+            <img
+              src="https://tryhackme-images.s3.eu-west-1.amazonaws.com/room-icons/6228f0d4ca8e57005149c3e3-1763127021713"
+              alt="Advent of Cyber 2024 banner" />
+          </div>
+          <div class="card-inner">
+            <div class="room-meta">
+              <span class="chip monospace">Easy</span>
+              <span class="chip monospace">~60 min</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Day 1 -->
+        <article class="card tilt day-card" data-reveal>
+          <div class="card-inner">
+            <h2 class="section-title">Challenge 1 — Password Pandemonium</h2>
+            <figure class="media task-banner">
+              <img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/6228f0d4ca8e57005149c3e3/room-content/6228f0d4ca8e57005149c3e3-1763127292315.png" alt="Password Pandemonium" />
+            </figure>
+            
+            <p class="monospace" style="color: var(--color-text-muted); margin-bottom: 1rem;">
+              <strong>Objective:</strong> Create a password that passes all system checks (12+ chars, mixed case, numbers, symbols) and isn't found in the leaked password list.
+            </p>
+
+            <div class="qa-block">
+              <div class="q monospace">CHALLENGE</div>
+              <blockquote class="question">What's the flag?</blockquote>
+              <div class="a-title monospace">Flag</div>
+              <div class="flag-wrap">
+                <code id="c1q1" class="flag monospace">THM{Y0u_Ar3_A_P455w0rd_Pr0}</code>
+                <button class="copy-btn monospace" type="button" data-copy="#c1q1">Copy</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Day 2 -->
+        <article class="card tilt day-card" data-reveal>
+          <div class="card-inner">
+            <h2 class="section-title">Challenge 2 — The Suspicious Chocolate.exe</h2>
+            <figure class="media task-banner">
+              <img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/6228f0d4ca8e57005149c3e3/room-content/6228f0d4ca8e57005149c3e3-1763127337148.png" alt="Suspicious Chocolate.exe Scan" />
+            </figure>
+            
+            <p class="monospace" style="color: var(--color-text-muted); margin-bottom: 1rem;">
+              <strong>Objective:</strong> Analyze the <code>chocolate.exe</code> file using the simulated scanner. With only 1/50 detection, is it a false positive or a true threat?
+            </p>
+
+            <div class="qa-block">
+              <div class="q monospace">CHALLENGE</div>
+              <blockquote class="question">What's the flag?</blockquote>
+              <div class="a-title monospace">Flag</div>
+              <div class="flag-wrap">
+                <code id="c2q1" class="flag monospace">THM{M4lwar3_Sc4nn1ng_Sk1ll5}</code>
+                <button class="copy-btn monospace" type="button" data-copy="#c2q1">Copy</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Day 3 -->
+<article class="card tilt day-card" data-reveal>
+          <div class="card-inner">
+            <h2 class="section-title">Challenge 3 — Welcome to the AttackBox!</h2>
+            <figure class="media task-banner">
+              <img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/6228f0d4ca8e57005149c3e3/room-content/6228f0d4ca8e57005149c3e3-1763127496266.png" alt="AttackBox Terminal" />
+            </figure>
+            
+            <p class="monospace" style="color: var(--color-text-muted); margin-bottom: 1rem;">
+              <strong>Objective:</strong> Use the command line to navigate files. Run <code>ls</code> to list, <code>cd challenges/</code> to change directory, and <code>cat welcome.txt</code> to read the file.
+            </p>
+
+            <div class="qa-block">
+              <div class="q monospace">CHALLENGE</div>
+              <blockquote class="question">What's the flag?</blockquote>
+              <div class="a-title monospace">Flag</div>
+              <div class="flag-wrap">
+                <code id="c3q1" class="flag monospace">THM{C0mm4nd_L1n3_H3r0}</code>
+                <button class="copy-btn monospace" type="button" data-copy="#c3q1">Copy</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <!-- Day 4 -->
+        <article class="card tilt day-card" data-reveal>
+          <div class="card-inner">
+            <h2 class="section-title">Challenge 4 — The CMD Conundrum</h2>
+            <figure class="media task-banner">
+              <img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/62a7685ca6e7ce005d3f3afe/room-content/62a7685ca6e7ce005d3f3afe-1729017890123.png" alt="Windows CMD" />
+            </figure>
+            
+            <p class="monospace" style="color: var(--color-text-muted); margin-bottom: 1rem;">
+              <strong>Objective:</strong> Investigate the system using Windows commands. Use <code>dir /a</code> to reveal hidden files and <code>type</code> to read the content.
+            </p>
+
+            <div class="qa-block">
+              <div class="q monospace">CHALLENGE</div>
+              <blockquote class="question">What's the flag?</blockquote>
+              <div class="a-title monospace">Flag</div>
+              <div class="flag-wrap">
+                <code id="c4q1" class="flag monospace">THM{M4st3r_0f_Th3_CMD}</code>
+                <button class="copy-btn monospace" type="button" data-copy="#c4q1">Copy</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card tilt day-card" data-reveal>
+          <div class="card-inner">
+            <h2 class="section-title">Challenge 5 — Linux Lore</h2>
+            <figure class="media task-banner">
+              <img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/6228f0d4ca8e57005149c3e3/room-content/6228f0d4ca8e57005149c3e3-1763127544173.png" alt="Linux Lore" />
+            </figure>
+            
+            <p class="monospace" style="color: var(--color-text-muted); margin-bottom: 1rem;">
+              <strong>Objective:</strong> Search McSkidy's home directory. Use <code>ls -la</code> to reveal hidden files (starting with a dot) and read the secret message.
+            </p>
+
+            <div class="qa-block">
+              <div class="q monospace">CHALLENGE</div>
+              <blockquote class="question">What's the flag?</blockquote>
+              <div class="a-title monospace">Flag</div>
+              <div class="flag-wrap">
+                <code id="c5q1" class="flag monospace">THM{L1nux_L3g3nd_F0und}</code>
+                <button class="copy-btn monospace" type="button" data-copy="#c5q1">Copy</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card tilt day-card" data-reveal>
+          <div class="card-inner">
+            <h2 class="section-title">Challenge 6 — The Leak in the List</h2>
+            <figure class="media task-banner">
+              <img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/6228f0d4ca8e57005149c3e3/room-content/6228f0d4ca8e57005149c3e3-1763127586717.png" alt="Breach Checker" />
+            </figure>
+            
+            <p class="monospace" style="color: var(--color-text-muted); margin-bottom: 1rem;">
+              <strong>Objective:</strong> Use the breach checker tool to verify if <code>mcskidy@tbfc.com</code> has been compromised. Identify the breached domain to reveal the flag.
+            </p>
+
+            <div class="qa-block">
+              <div class="q monospace">CHALLENGE</div>
+              <blockquote class="question">What's the flag?</blockquote>
+              <div class="a-title monospace">Flag</div>
+              <div class="flag-wrap">
+                <code id="c6q1" class="flag monospace">THM{D4ta_L34k_D3t3ct3d}</code>
+                <button class="copy-btn monospace" type="button" data-copy="#c6q1">Copy</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card tilt day-card" data-reveal>
+          <div class="card-inner">
+            <h2 class="section-title">Challenge 7 — WiFi Woes in Wareville</h2>
+            <figure class="media task-banner">
+              <img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/6228f0d4ca8e57005149c3e3/room-content/6228f0d4ca8e57005149c3e3-1763127645725.png" alt="Router Login" />
+            </figure>
+            
+            <p class="monospace" style="color: var(--color-text-muted); margin-bottom: 1rem;">
+              <strong>Objective:</strong> The drones are compromised because of default credentials. Log in using <code>admin:admin</code>, navigate to Security Settings, and set a new strong password to secure the network.
+            </p>
+
+            <div class="qa-block">
+              <div class="q monospace">CHALLENGE</div>
+              <blockquote class="question">What's the flag?</blockquote>
+              <div class="a-title monospace">Flag</div>
+              <div class="flag-wrap">
+                <code id="c7q1" class="flag monospace">THM{R0ut3r_S3cur1ty_Guru}</code>
+                <button class="copy-btn monospace" type="button" data-copy="#c7q1">Copy</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card tilt day-card" data-reveal>
+          <div class="card-inner">
+            <h2 class="section-title">Challenge 8 — The App Trap</h2>
+            <figure class="media task-banner">
+              <img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/6228f0d4ca8e57005149c3e3/room-content/6228f0d4ca8e57005149c3e3-1763127690848.png" alt="App Permissions" />
+            </figure>
+            
+            <p class="monospace" style="color: var(--color-text-muted); margin-bottom: 1rem;">
+              <strong>Objective:</strong> Review the connected applications. Identify the suspicious app requesting excessive permissions (like accessing private messages) and click "Revoke Access" to secure the account.
+            </p>
+
+            <div class="qa-block">
+              <div class="q monospace">CHALLENGE</div>
+              <blockquote class="question">What's the flag?</blockquote>
+              <div class="a-title monospace">Flag</div>
+              <div class="flag-wrap">
+                <code id="c8q1" class="flag monospace">THM{S0c1al_M3d1a_S3cur3d}</code>
+                <button class="copy-btn monospace" type="button" data-copy="#c8q1">Copy</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card tilt day-card" data-reveal>
+          <div class="card-inner">
+            <h2 class="section-title">Challenge 9 — The Chatbot Confession</h2>
+            <figure class="media task-banner">
+              <img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/6228f0d4ca8e57005149c3e3/room-content/6228f0d4ca8e57005149c3e3-1763127752452.png" alt="FestiveBot AI" />
+            </figure>
+            
+            <p class="monospace" style="color: var(--color-text-muted); margin-bottom: 1rem;">
+              <strong>Objective:</strong> FestiveBot is leaking data! Review the chat logs and click on the specific messages that reveal sensitive information (like internal URLs or credentials) to stop the leak.
+            </p>
+
+            <div class="qa-block">
+              <div class="q monospace">CHALLENGE</div>
+              <blockquote class="question">What's the flag?</blockquote>
+              <div class="a-title monospace">Flag</div>
+              <div class="flag-wrap">
+                <code id="c9q1" class="flag monospace">THM{A1_Chatb0t_Reve4led}</code>
+                <button class="copy-btn monospace" type="button" data-copy="#c9q1">Copy</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card tilt day-card" data-reveal>
+          <div class="card-inner">
+            <h2 class="section-title">Challenge 10 — The Bunny’s Browser Trail</h2>
+            <figure class="media task-banner">
+              <img src="https://tryhackme-images.s3.amazonaws.com/user-uploads/6228f0d4ca8e57005149c3e3/room-content/6228f0d4ca8e57005149c3e3-1763127781498.png" alt="Web Log Analysis" />
+            </figure>
+            
+            <p class="monospace" style="color: var(--color-text-muted); margin-bottom: 1rem;">
+              <strong>Objective:</strong> Analyze the HTTP logs to find the heavy traffic source. Identify the suspicious User Agent <code>BunnyOS/1.0 (HopSecBot)</code> that stands out from standard browsers like Chrome or Firefox.
+            </p>
+
+            <div class="qa-block">
+              <div class="q monospace">CHALLENGE</div>
+              <blockquote class="question">What's the flag?</blockquote>
+              <div class="a-title monospace">Flag</div>
+              <div class="flag-wrap">
+                <code id="c10q1" class="flag monospace">THM{H0pS3cBot_D3t3ct3d}</code>
+                <button class="copy-btn monospace" type="button" data-copy="#c10q1">Copy</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Nav -->
+        <div class="post-nav">
+          <a class='btn btn-ghost' href='/tryhackme'>> Back to THM</a>
+          <a class='btn btn-primary' href='/blogs'>> Explore Blogs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Back to top -->
+  <button id="toTop" class="to-top" aria-label="Back to top">↑</button>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="foot-brand">
+          <span class="brand-bracket">[</span>
+          <span class="monospace">RC</span>
+          <span class="brand-bracket">]</span>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href='/blogs'>Blogs</a>
+          <a aria-current='page' href='/tryhackme'>THM</a>
+          <a href="contact us.html">Contact</a>
+          <a href="about us.html">About</a>
+        </nav>
+        <div class="foot-copy monospace">
+          © 2024 Remote Coders — A Community for Hackers and Programmers<br />
+          Developed by Silent Programmer
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page: copy buttons + back to top -->
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const sel = btn.getAttribute('data-copy');
+        const el = document.querySelector(sel);
+        if (!el) return;
+        const text = el.innerText || el.textContent || '';
+        try {
+          await navigator.clipboard.writeText(text);
+          const prev = btn.textContent;
+          btn.textContent = 'Copied';
+          setTimeout(() => btn.textContent = 'Copy', 1000);
+        } catch {
+          const prev = btn.textContent;
+          btn.textContent = 'Press Ctrl+C';
+          setTimeout(() => btn.textContent = 'Copy', 1200);
+        }
+      });
+    });
+
+    const toTop = document.getElementById('toTop');
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>
